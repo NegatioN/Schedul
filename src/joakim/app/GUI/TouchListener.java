@@ -13,7 +13,6 @@ public class TouchListener implements OnTouchListener{
           ClipData data = ClipData.newPlainText("", "");
           DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
           view.startDrag(data, shadowBuilder, view, 0);
-          view.setVisibility(View.INVISIBLE);
           return true;
         } else {
           return false;

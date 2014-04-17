@@ -29,19 +29,20 @@ public final class R {
         public static final int shape_droptarget=0x7f020005;
     }
     public static final class id {
-        public static final int action_add=0x7f08000f;
-        public static final int action_settings=0x7f08000e;
+        public static final int action_add=0x7f080010;
+        public static final int action_settings=0x7f08000f;
         public static final int botLeft=0x7f08000c;
+        public static final int listView1=0x7f080001;
+        public static final int listView2=0x7f080003;
+        public static final int listView3=0x7f080005;
+        public static final int listView4=0x7f080007;
+        public static final int listView5=0x7f080009;
+        public static final int listView6=0x7f08000b;
+        public static final int listView7=0x7f08000d;
         public static final int midCenter=0x7f080008;
         public static final int midLeft=0x7f080006;
         public static final int midRight=0x7f08000a;
-        public static final int myimage1=0x7f080001;
-        public static final int myimage2=0x7f080003;
-        public static final int myimage3=0x7f080005;
-        public static final int myimage4=0x7f080007;
-        public static final int myimage5=0x7f080009;
-        public static final int myimage6=0x7f08000b;
-        public static final int myimage7=0x7f08000d;
+        public static final int summary=0x7f08000e;
         public static final int topLeft=0x7f080000;
         public static final int topMid=0x7f080002;
         public static final int topRight=0x7f080004;
@@ -49,6 +50,7 @@ public final class R {
     public static final class layout {
         public static final int activity_add_todo=0x7f030000;
         public static final int activity_schedul=0x7f030001;
+        public static final int row_layout=0x7f030002;
     }
     public static final class menu {
         public static final int add_todo=0x7f070000;

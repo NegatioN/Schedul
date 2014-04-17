@@ -17,13 +17,12 @@
                 android:layout_width="106dp"
         android:layout_height="120dp" >
 
-        <ImageView
-            android:id="@+id/myimage1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_row="0"
-            android:src="@drawable/ic_launcher" />
+        <ListView
+            android:id="@+id/listView1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+        </ListView>
+
     </LinearLayout>
 
     <LinearLayout
@@ -36,13 +35,12 @@
         android:layout_width="106dp"
         android:layout_height="120dp" >
 
-        <ImageView
-            android:id="@+id/myimage2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_row="0"
-            android:src="@drawable/ic_launcher" />
+        <ListView
+            android:id="@+id/listView2"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+        </ListView>
+
     </LinearLayout>
 
     <LinearLayout
@@ -54,13 +52,12 @@
         android:layout_width="106dp"
         android:layout_height="120dp" >
 
-        <ImageView
-            android:id="@+id/myimage3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_row="0"
-            android:src="@drawable/ic_launcher" />
+        <ListView
+            android:id="@+id/listView3"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+        </ListView>
+
     </LinearLayout>
 
     <LinearLayout
@@ -72,13 +69,12 @@
                 android:layout_width="106dp"
         android:layout_height="120dp" >
 
-        <ImageView
-            android:id="@+id/myimage4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_row="0"
-            android:src="@drawable/ic_launcher" />
+        <ListView
+            android:id="@+id/listView4"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+        </ListView>
+
     </LinearLayout>
 
     <LinearLayout
@@ -90,13 +86,12 @@
                 android:layout_width="106dp"
         android:layout_height="120dp" >
 
-        <ImageView
-            android:id="@+id/myimage5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_row="0"
-            android:src="@drawable/ic_launcher" />
+        <ListView
+            android:id="@+id/listView5"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+        </ListView>
+
     </LinearLayout>
 
     <LinearLayout
@@ -108,13 +103,12 @@
                 android:layout_width="106dp"
         android:layout_height="120dp" >
 
-        <ImageView
-            android:id="@+id/myimage6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_row="0"
-            android:src="@drawable/ic_launcher" />
+        <ListView
+            android:id="@+id/listView6"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+        </ListView>
+
     </LinearLayout>
 
     <LinearLayout
@@ -126,13 +120,12 @@
                 android:layout_width="106dp"
         android:layout_height="120dp" >
 
-        <ImageView
-            android:id="@+id/myimage7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_row="0"
-            android:src="@drawable/ic_launcher" />
+        <ListView
+            android:id="@+id/listView7"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+        </ListView>
+
     </LinearLayout>
 
 </GridLayout>

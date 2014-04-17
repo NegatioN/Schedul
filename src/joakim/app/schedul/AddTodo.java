@@ -1,36 +1,38 @@
 package joakim.app.schedul;
 
+import java.util.ArrayList;
+
+import joakim.app.GUI.ArrayListAdapter;
 import joakim.app.GUI.DragZoneListener;
-import joakim.app.GUI.TouchListener;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 
 public class AddTodo extends Activity {
 
+	private ArrayList<Appointment> aMan = new ArrayList<Appointment>();
+	private ArrayList<Appointment> aTir = new ArrayList<Appointment>();
+	private ArrayList<Appointment> aOns = new ArrayList<Appointment>();
+	private ArrayList<Appointment> aTor = new ArrayList<Appointment>();
+	private ArrayList<Appointment> aFre = new ArrayList<Appointment>();
+	private ArrayList<Appointment> aLør = new ArrayList<Appointment>();
+	private ArrayList<Appointment> aSøn = new ArrayList<Appointment>();
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_todo);
 		// Show the Up button in the action bar.
 		setupActionBar();
+		testFillArray(aMan);
+		testFillArray(aSøn);
+		testFillArray(aTor);
+		initializeViews();
 		
-	    findViewById(R.id.myimage1).setOnTouchListener(new TouchListener());
-	    findViewById(R.id.myimage2).setOnTouchListener(new TouchListener());
-	    findViewById(R.id.myimage3).setOnTouchListener(new TouchListener());
-	    findViewById(R.id.myimage4).setOnTouchListener(new TouchListener());
-	    findViewById(R.id.myimage5).setOnTouchListener(new TouchListener());
-	    findViewById(R.id.myimage6).setOnTouchListener(new TouchListener());
-	    findViewById(R.id.myimage7).setOnTouchListener(new TouchListener());
-	    findViewById(R.id.topLeft).setOnDragListener(new DragZoneListener(this));
-	    findViewById(R.id.topMid).setOnDragListener(new DragZoneListener(this));
-	    findViewById(R.id.topRight).setOnDragListener(new DragZoneListener(this));
-	    findViewById(R.id.midLeft).setOnDragListener(new DragZoneListener(this));
-	    findViewById(R.id.midCenter).setOnDragListener(new DragZoneListener(this));
-	    findViewById(R.id.midRight).setOnDragListener(new DragZoneListener(this));
-	    findViewById(R.id.botLeft).setOnDragListener(new DragZoneListener(this));
 		
 	}
 
@@ -65,6 +67,43 @@ public class AddTodo extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	//initialize views, dropzoneadapters, ontouchadapters
+	private void initializeViews(){
+		ListView lw = (ListView)findViewById(R.id.listView1);
+		ListView lw2 = (ListView)findViewById(R.id.listView2);
+		ListView lw3 = (ListView)findViewById(R.id.listView3);
+		ListView lw4 = (ListView)findViewById(R.id.listView4);
+		ListView lw5 = (ListView)findViewById(R.id.listView5);
+		ListView lw6 = (ListView)findViewById(R.id.listView6);
+		ListView lw7 = (ListView)findViewById(R.id.listView7);
+		
+		lw.setAdapter(new ArrayListAdapter(this,aMan));
+		lw2.setAdapter(new ArrayListAdapter(this,aTir));
+		lw3.setAdapter(new ArrayListAdapter(this,aOns));
+		lw4.setAdapter(new ArrayListAdapter(this,aTor));
+		lw5.setAdapter(new ArrayListAdapter(this,aFre));
+		lw6.setAdapter(new ArrayListAdapter(this,aLør));
+		lw7.setAdapter(new ArrayListAdapter(this,aSøn));
+		
+		lw.setOnDragListener(new DragZoneListener(this,aMan));
+		lw2.setOnDragListener(new DragZoneListener(this,aTir));
+		lw3.setOnDragListener(new DragZoneListener(this,aOns));
+		lw4.setOnDragListener(new DragZoneListener(this,aTor));
+		lw5.setOnDragListener(new DragZoneListener(this,aFre));
+		lw6.setOnDragListener(new DragZoneListener(this,aLør));
+		lw7.setOnDragListener(new DragZoneListener(this,aSøn));
+	}
+	
+	private void testFillArray(ArrayList<Appointment> app){
+		Appointment[] appointments = new Appointment[3];
+		appointments[0] = new Appointment(Appointment.NIMPORTANT, "Yolo", "Yolo forever", null);
+		appointments[1] = new Appointment(Appointment.URGENT, "Programmer", "2 timer programmering", null);
+		appointments[2] = new Appointment(Appointment.MEDIUM, "Lag middag", "Lag middag", null);
+		app.add(appointments[0]);
+		app.add(appointments[1]);
+		app.add(appointments[2]);
 	}
 
 }
