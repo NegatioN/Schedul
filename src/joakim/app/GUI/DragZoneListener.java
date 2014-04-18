@@ -29,7 +29,8 @@ public class DragZoneListener implements OnDragListener{
         Drawable normalShape = context.getResources().getDrawable(R.drawable.shape);
         //finn parent av view som er dropzone, altså linearlayouten under.
         LinearLayout parent = (LinearLayout) v.getParent();
-        
+      //finn textview som har blitt flyttet
+        TextView view = (TextView) event.getLocalState();
         
         int action = event.getAction();
         switch (action) {
@@ -43,10 +44,7 @@ public class DragZoneListener implements OnDragListener{
           parent.setBackgroundDrawable(normalShape);
           break;
         case DragEvent.ACTION_DROP:
-          // Dropped, reassign View to ViewGroup
         	
-        	//finn textview som har blitt flyttet
-          TextView view = (TextView) event.getLocalState();
 
         //finn parent av view som er dropzone, altså linearlayouten under.
           //må dobbel getparent pga relativelayout i TV-definisjonen
@@ -70,6 +68,7 @@ public class DragZoneListener implements OnDragListener{
           break;
         case DragEvent.ACTION_DRAG_ENDED:
           parent.setBackgroundDrawable(normalShape);
+          view.setVisibility(View.VISIBLE);
         default:
           break;
         }
