@@ -77,6 +77,7 @@ public class DragZoneListener implements OnDragListener{
     
 	
 	private void addItem(Appointment a, ArrayList<Appointment> al, ArrayListAdapter taa){
+		//add en sortering av objektet on-add basert på Time-objektet. Comparator osv
 		al.add(a);
 		taa.notifyDataSetChanged();
 	}

@@ -3,15 +3,22 @@ package joakim.app.schedul;
 import java.util.ArrayList;
 
 import joakim.app.GUI.ArrayListAdapter;
+import joakim.app.GUI.CreateAppointmentDialog;
+import joakim.app.GUI.CreateAppointmentDialog.CreateAppointmentDialogListener;
 import joakim.app.GUI.DragZoneListener;
 import android.app.Activity;
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
-public class AddTodo extends Activity {
+public class AddTodo extends Activity implements CreateAppointmentDialogListener{
 
 	private ArrayList<Appointment> aMan = new ArrayList<Appointment>();
 	private ArrayList<Appointment> aTir = new ArrayList<Appointment>();
@@ -20,12 +27,28 @@ public class AddTodo extends Activity {
 	private ArrayList<Appointment> aFre = new ArrayList<Appointment>();
 	private ArrayList<Appointment> aLør = new ArrayList<Appointment>();
 	private ArrayList<Appointment> aSøn = new ArrayList<Appointment>();
+	private TextView draggableAppointment;
+	private Button bFragmentStart;
 	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_todo);
+		
+		draggableAppointment = (TextView) findViewById(R.id.tvDraggableAppointment);
+		draggableAppointment.setVisibility(View.GONE);
+		bFragmentStart = (Button) findViewById(R.id.bFragmentStart);
+		bFragmentStart.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				showFragment();
+			}
+		});
+		
+		
+		
 		// Show the Up button in the action bar.
 		setupActionBar();
 		testFillArray(aMan);
@@ -69,6 +92,25 @@ public class AddTodo extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
+	
+	private void showFragment() {
+		FragmentManager fm = getFragmentManager();
+		CreateAppointmentDialog appDialog = CreateAppointmentDialog
+				.newInstance(this, "Create Appointment");
+		appDialog.show(fm, "fragment_create_appointment");
+	}
+
+	public void onFinishCreateAppointmentDialog(Appointment app) {
+		//use appointment for create textview/button?
+		draggableAppointment.setBackgroundColor(app.getPriority());
+		draggableAppointment.setText(app.getSummary());
+		draggableAppointment.setVisibility(View.VISIBLE);
+		
+	}
+	
+	
+	
+	
 	//initialize views, dropzoneadapters, ontouchadapters
 	private void initializeViews(){
 		ListView lw = (ListView)findViewById(R.id.listView1);
@@ -78,6 +120,9 @@ public class AddTodo extends Activity {
 		ListView lw5 = (ListView)findViewById(R.id.listView5);
 		ListView lw6 = (ListView)findViewById(R.id.listView6);
 		ListView lw7 = (ListView)findViewById(R.id.listView7);
+		
+		if(lw == null)
+		System.out.println("LISTVIEW NULL");
 		
 		lw.setAdapter(new ArrayListAdapter(this,aMan));
 		lw2.setAdapter(new ArrayListAdapter(this,aTir));

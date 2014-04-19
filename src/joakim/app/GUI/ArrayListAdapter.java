@@ -29,7 +29,7 @@ public class ArrayListAdapter extends ArrayAdapter<Appointment>{
 		    View rowView = inflater.inflate(R.layout.row_layout, parent, false);
 		    TextView textView = (TextView) rowView.findViewById(R.id.summary);
 		    textView.setBackgroundColor(objects.get(position).getPriority());
-		    textView.setText(objects.get(position).toString());
+		    textView.setText(objects.get(position).getSummary());
 		    textView.setOnTouchListener(new LvOnItemTouchListener());
 
 		    return rowView;

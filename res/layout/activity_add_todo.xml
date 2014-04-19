@@ -8,124 +8,155 @@
     android:rowCount="3" >
 
     <LinearLayout
-        android:id="@+id/topLeft"
+        android:id="@+id/buttonHolder"
+        android:layout_width="106dp"
+        android:layout_height="120dp"
         android:layout_column="0"
         android:layout_columnSpan="1"
         android:layout_row="0"
         android:background="@drawable/shape"
-        android:orientation="vertical"
-                android:layout_width="106dp"
-        android:layout_height="120dp" >
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/bFragmentStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:paddingTop="40dp"
+            android:text="@string/button_add" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/objectHolder"
+        android:layout_width="106dp"
+        android:layout_height="120dp"
+        android:layout_column="1"
+        android:layout_columnSpan="1"
+        android:layout_row="0"
+        android:background="@drawable/shape"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tvDraggableAppointment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:paddingTop="40dp"
+            android:text="TextView" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/topLeft"
+        android:layout_width="106dp"
+        android:layout_height="120dp"
+        android:layout_column="2"
+        android:layout_columnSpan="1"
+        android:layout_row="0"
+        android:background="@drawable/shape"
+        android:orientation="vertical" >
 
         <ListView
             android:id="@+id/listView1"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" >
         </ListView>
-
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/topMid"
-        android:layout_column="1"
-        android:layout_columnSpan="1"
-        android:layout_row="0"
-        android:background="@drawable/shape"
-        android:orientation="vertical"
         android:layout_width="106dp"
-        android:layout_height="120dp" >
+        android:layout_height="120dp"
+        android:layout_column="0"
+        android:layout_columnSpan="1"
+        android:layout_row="1"
+        android:background="@drawable/shape"
+        android:orientation="vertical" >
 
         <ListView
             android:id="@+id/listView2"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" >
         </ListView>
-
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/topRight"
-        android:layout_column="2"
-        android:layout_row="0"
-        android:background="@drawable/shape"
-        android:orientation="vertical"
         android:layout_width="106dp"
-        android:layout_height="120dp" >
+        android:layout_height="120dp"
+        android:layout_column="1"
+        android:layout_row="1"
+        android:background="@drawable/shape"
+        android:orientation="vertical" >
 
         <ListView
             android:id="@+id/listView3"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" >
         </ListView>
-
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/midLeft"
-        android:layout_column="0"
+        android:layout_width="106dp"
+        android:layout_height="120dp"
+        android:layout_column="2"
         android:layout_row="1"
         android:background="@drawable/shape"
-        android:orientation="vertical"
-                android:layout_width="106dp"
-        android:layout_height="120dp" >
+        android:orientation="vertical" >
 
         <ListView
             android:id="@+id/listView4"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" >
         </ListView>
-
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/midCenter"
-        android:layout_column="1"
-        android:layout_row="1"
+        android:layout_width="106dp"
+        android:layout_height="120dp"
+        android:layout_column="0"
+        android:layout_row="2"
         android:background="@drawable/shape"
-        android:orientation="vertical"
-                android:layout_width="106dp"
-        android:layout_height="120dp" >
+        android:orientation="vertical" >
 
         <ListView
             android:id="@+id/listView5"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" >
         </ListView>
-
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/midRight"
-        android:layout_column="2"
-        android:layout_row="1"
+        android:layout_width="106dp"
+        android:layout_height="120dp"
+        android:layout_column="1"
+        android:layout_row="2"
         android:background="@drawable/shape"
-        android:orientation="vertical"
-                android:layout_width="106dp"
-        android:layout_height="120dp" >
+        android:orientation="vertical" >
 
         <ListView
             android:id="@+id/listView6"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" >
         </ListView>
-
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/botLeft"
-        android:layout_column="0"
+        android:layout_width="106dp"
+        android:layout_height="120dp"
+        android:layout_column="2"
         android:layout_row="2"
         android:background="@drawable/shape"
-        android:orientation="vertical"
-                android:layout_width="106dp"
-        android:layout_height="120dp" >
+        android:orientation="vertical" >
 
         <ListView
             android:id="@+id/listView7"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" >
         </ListView>
-
     </LinearLayout>
 
 </GridLayout>

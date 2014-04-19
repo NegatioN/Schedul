@@ -6,6 +6,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_add_todo">AddTodo</string>
     <string name="actionbar_add">Add</string>
+    <string name="button_add">Add</string>
     
 
 </resources>

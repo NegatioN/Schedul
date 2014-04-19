@@ -5,6 +5,9 @@ import android.text.format.Time;
 
 public class Appointment {
 
+	
+	//ADD EN REPEATABLE-BOOLEAN. For når user vil at appointmenten skal gjentas neste uke også.
+	
 	public static final int URGENT = Color.RED, MEDIUM = Color.YELLOW, NIMPORTANT = Color.GREEN;
 	
 	private int priority;
@@ -21,7 +24,8 @@ public class Appointment {
 	}
 
 	public String toString(){
-		return summary;
+//		return "Prioritet: " + getPriority() + " Beskrivelse: " + getDescription() + " Tid: " + getTime().hour + ":" + getTime().minute;
+		return "tekst";
 	}
 	
 	public int getPriority() {
