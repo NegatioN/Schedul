@@ -9,6 +9,7 @@ import android.widget.TextView;
 public class ArrayListHandler {
 
 	//METODENE ER USIKRE FOR USYNKRONISERTE THREADS, MÅ FINNE ANNEN LØSNING?
+	//den søker også kun via teksten til textviewen, må endre denne metoden.
 	
 	public static Appointment findElementByText(ArrayList<Appointment> objects, TextView view){
 		String searchText = view.getText().toString();

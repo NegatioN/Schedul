@@ -6,7 +6,7 @@ import android.text.format.Time;
 
 
 public class AppointmentComparator implements Comparator<Appointment>{
-
+//comparator for sorting so that the "youngest" object is always on top.
 	@Override
 	public int compare(Appointment lhs, Appointment rhs) {
 		Time left = lhs.getTime();

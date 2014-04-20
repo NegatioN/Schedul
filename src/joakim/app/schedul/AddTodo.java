@@ -10,6 +10,7 @@ import joakim.app.GUI.LvOnItemTouchListener;
 import joakim.app.data.Appointment;
 import android.app.Activity;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.text.format.Time;
@@ -37,7 +38,13 @@ public class AddTodo extends Activity implements CreateAppointmentDialogListener
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		testFillArray(aMan);
+		testFillArray(aSøn);
+		testFillArray(aTor);
+		if(getIntent().hasExtra(Schedul.RESULT_REQUEST))
+			finish();
 		setContentView(R.layout.activity_add_todo);
+		
 		
 		draggableAppointment = (TextView) findViewById(R.id.tvDraggableAppointment);
 		draggableAppointment.setOnTouchListener(new LvOnItemTouchListener());
@@ -55,9 +62,6 @@ public class AddTodo extends Activity implements CreateAppointmentDialogListener
 		
 		// Show the Up button in the action bar.
 		setupActionBar();
-		testFillArray(aMan);
-		testFillArray(aSøn);
-		testFillArray(aTor);
 		initializeViews();
 		
 		
@@ -90,7 +94,8 @@ public class AddTodo extends Activity implements CreateAppointmentDialogListener
 			//
 			// http://developer.android.com/design/patterns/navigation.html#up-vs-back
 			//
-			NavUtils.navigateUpFromSameTask(this);
+//			NavUtils.navigateUpFromSameTask(this);
+			finish();
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
@@ -113,8 +118,56 @@ public class AddTodo extends Activity implements CreateAppointmentDialogListener
 		//send appointment to dragzonelistener
 		recentAppointment = app;
 	}
+	
+	//used in the dragListener when a new appointment is found
 	public Appointment getRecentAppointment(){
 		return recentAppointment;
+	}
+	
+	//finner første element i dagens arraylist
+	//omimplementer til å finn nærmeste fra tidspunktet nå
+	public void finish(){
+		Time time = new Time();
+		time.setToNow();
+		Appointment closestAppointment = null;
+		//finner riktig dagsarray
+		switch(time.weekDay){
+		case 0: 
+			if(!aSøn.isEmpty())
+			closestAppointment = aSøn.get(0);
+			break;
+		case 1: 
+			if(!aMan.isEmpty())
+			closestAppointment = aMan.get(0);
+			break;
+		case 2: 
+			if(!aTir.isEmpty())
+			closestAppointment = aTir.get(0);
+			break;
+		case 3: 
+			if(!aOns.isEmpty())
+			closestAppointment = aOns.get(0);
+			break;
+		case 4: 
+			if(!aTor.isEmpty())
+			closestAppointment = aTor.get(0);
+			break;
+		case 5: 
+			if(!aFre.isEmpty())
+			closestAppointment = aFre.get(0);
+			break;
+		default:
+			if(!aLør.isEmpty())
+			closestAppointment = aLør.get(0);
+			break;
+		}
+		if(closestAppointment != null){
+			Intent result = new Intent();
+			result.putExtra("result", closestAppointment);
+			setResult(RESULT_OK, result);
+		}
+
+		super.finish();
 	}
 	
 	
@@ -151,9 +204,9 @@ public class AddTodo extends Activity implements CreateAppointmentDialogListener
 		Appointment[] appointments = new Appointment[3];
 		Time t = new Time();
 		t.set(0, 55, 4, 0, 0, 0);
-		appointments[0] = new Appointment(Appointment.NIMPORTANT, "Yolo", "Yolo forever", t);
-		appointments[1] = new Appointment(Appointment.URGENT, "Programmer", "2 timer programmering", t);
-		appointments[2] = new Appointment(Appointment.MEDIUM, "Lag middag", "Lag middag", t);
+		appointments[0] = new Appointment(Appointment.NIMPORTANT, "Yolo forever", t,false);
+		appointments[1] = new Appointment(Appointment.URGENT, "2 timer programmering", t,false);
+		appointments[2] = new Appointment(Appointment.MEDIUM,  "Lag middag", t,false);
 		app.add(appointments[0]);
 		app.add(appointments[1]);
 		app.add(appointments[2]);

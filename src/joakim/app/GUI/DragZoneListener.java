@@ -103,7 +103,6 @@ public class DragZoneListener implements OnDragListener {
 // Comparator osv
 		al.add(a);
 		Collections.sort(al, new AppointmentComparator());
-		System.out.println(al.toString());
 		taa.notifyDataSetChanged();
 	}
 

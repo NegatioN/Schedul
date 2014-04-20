@@ -55,7 +55,7 @@ public class CreateAppointmentDialog extends DialogFragment implements OnItemSel
         tp = (TimePicker) view.findViewById(R.id.tpAppointment);
         tp.setIs24HourView(true);
         sPriorities = (Spinner) view.findViewById(R.id.priority_spinnerAppointment);
-        makeSpinners(sPriorities);
+        makeSpinner(sPriorities);
         //finner knapp, setter listener
         bAdd = (Button) view.findViewById(R.id.bCreate);
         fillPriorityArray();
@@ -88,7 +88,7 @@ public class CreateAppointmentDialog extends DialogFragment implements OnItemSel
 				
 	}
 	
-	private void makeSpinners(Spinner s){
+	private void makeSpinner(Spinner s){
 		ArrayAdapter<CharSequence> aa = ArrayAdapter.createFromResource(c, R.array.priorities, android.R.layout.simple_spinner_item);
 		aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		sPriorities.setOnItemSelectedListener(this);
@@ -105,17 +105,11 @@ public class CreateAppointmentDialog extends DialogFragment implements OnItemSel
 		String desc = mEditText.getText().toString();
 		
 		//endre til å lage en summary-text
-		Appointment app = new Appointment(priorityColor, desc, desc, time);
+		Appointment app = new Appointment(priorityColor, desc, time,false);
 		return app;
 	}
-	//lager summary-text basert på input description. "første ord, eller kode av setning"
-	private String summary(String string){
-		String summary = null;
-		
-		return summary;
-	}
 	
-	//onlistitemselectedListener
+	//onlistitemselectedListener for spinner-adapter
 	public void onItemSelected(AdapterView<?> parent, View view, int pos,
 			long id) {
 		priorityColor = priorityColors[pos];
