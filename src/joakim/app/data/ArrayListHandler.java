@@ -1,14 +1,15 @@
-package joakim.app.GUI;
+package joakim.app.data;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import joakim.app.schedul.Appointment;
 import android.widget.TextView;
 
 //searches through the arraylist of appointments for a string-value
-public class ArrayListSearch {
+public class ArrayListHandler {
 
+	//METODENE ER USIKRE FOR USYNKRONISERTE THREADS, MÅ FINNE ANNEN LØSNING?
+	
 	public static Appointment findElementByText(ArrayList<Appointment> objects, TextView view){
 		String searchText = view.getText().toString();
 		
@@ -23,5 +24,5 @@ public class ArrayListSearch {
 		
 		return null;
 	}
-	
+
 }

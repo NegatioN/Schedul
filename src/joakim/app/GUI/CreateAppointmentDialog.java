@@ -1,6 +1,6 @@
 package joakim.app.GUI;
 
-import joakim.app.schedul.Appointment;
+import joakim.app.data.Appointment;
 import joakim.app.schedul.R;
 import android.app.DialogFragment;
 import android.content.Context;
@@ -27,6 +27,7 @@ public class CreateAppointmentDialog extends DialogFragment implements OnItemSel
 	private int[] priorityColors = new int[3];
 	private static Context c;
 	private int priorityColor = 5;
+	
 	
 	//interface som importeres til main for sending av appointment-objekt.
     public interface CreateAppointmentDialogListener {

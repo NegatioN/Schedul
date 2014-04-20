@@ -1,4 +1,4 @@
-package joakim.app.schedul;
+package joakim.app.data;
 
 import android.graphics.Color;
 import android.text.format.Time;
@@ -24,8 +24,9 @@ public class Appointment {
 	}
 
 	public String toString(){
+		//testmetode som ikke gir noe atm.
 //		return "Prioritet: " + getPriority() + " Beskrivelse: " + getDescription() + " Tid: " + getTime().hour + ":" + getTime().minute;
-		return "tekst";
+		return getSummary();
 	}
 	
 	public int getPriority() {

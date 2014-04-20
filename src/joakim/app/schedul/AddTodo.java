@@ -6,14 +6,16 @@ import joakim.app.GUI.ArrayListAdapter;
 import joakim.app.GUI.CreateAppointmentDialog;
 import joakim.app.GUI.CreateAppointmentDialog.CreateAppointmentDialogListener;
 import joakim.app.GUI.DragZoneListener;
+import joakim.app.GUI.LvOnItemTouchListener;
+import joakim.app.data.Appointment;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.text.format.Time;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -29,6 +31,7 @@ public class AddTodo extends Activity implements CreateAppointmentDialogListener
 	private ArrayList<Appointment> aSøn = new ArrayList<Appointment>();
 	private TextView draggableAppointment;
 	private Button bFragmentStart;
+	private Appointment recentAppointment;
 	
 	
 	@Override
@@ -37,6 +40,7 @@ public class AddTodo extends Activity implements CreateAppointmentDialogListener
 		setContentView(R.layout.activity_add_todo);
 		
 		draggableAppointment = (TextView) findViewById(R.id.tvDraggableAppointment);
+		draggableAppointment.setOnTouchListener(new LvOnItemTouchListener());
 		draggableAppointment.setVisibility(View.GONE);
 		bFragmentStart = (Button) findViewById(R.id.bFragmentStart);
 		bFragmentStart.setOnClickListener(new View.OnClickListener() {
@@ -106,6 +110,11 @@ public class AddTodo extends Activity implements CreateAppointmentDialogListener
 		draggableAppointment.setText(app.getSummary());
 		draggableAppointment.setVisibility(View.VISIBLE);
 		
+		//send appointment to dragzonelistener
+		recentAppointment = app;
+	}
+	public Appointment getRecentAppointment(){
+		return recentAppointment;
 	}
 	
 	
@@ -121,9 +130,6 @@ public class AddTodo extends Activity implements CreateAppointmentDialogListener
 		ListView lw6 = (ListView)findViewById(R.id.listView6);
 		ListView lw7 = (ListView)findViewById(R.id.listView7);
 		
-		if(lw == null)
-		System.out.println("LISTVIEW NULL");
-		
 		lw.setAdapter(new ArrayListAdapter(this,aMan));
 		lw2.setAdapter(new ArrayListAdapter(this,aTir));
 		lw3.setAdapter(new ArrayListAdapter(this,aOns));
@@ -132,20 +138,22 @@ public class AddTodo extends Activity implements CreateAppointmentDialogListener
 		lw6.setAdapter(new ArrayListAdapter(this,aLør));
 		lw7.setAdapter(new ArrayListAdapter(this,aSøn));
 		
-		lw.setOnDragListener(new DragZoneListener(this,aMan));
-		lw2.setOnDragListener(new DragZoneListener(this,aTir));
-		lw3.setOnDragListener(new DragZoneListener(this,aOns));
-		lw4.setOnDragListener(new DragZoneListener(this,aTor));
-		lw5.setOnDragListener(new DragZoneListener(this,aFre));
-		lw6.setOnDragListener(new DragZoneListener(this,aLør));
-		lw7.setOnDragListener(new DragZoneListener(this,aSøn));
+		lw.setOnDragListener(new DragZoneListener(this));
+		lw2.setOnDragListener(new DragZoneListener(this));
+		lw3.setOnDragListener(new DragZoneListener(this));
+		lw4.setOnDragListener(new DragZoneListener(this));
+		lw5.setOnDragListener(new DragZoneListener(this));
+		lw6.setOnDragListener(new DragZoneListener(this));
+		lw7.setOnDragListener(new DragZoneListener(this));
 	}
 	
 	private void testFillArray(ArrayList<Appointment> app){
 		Appointment[] appointments = new Appointment[3];
-		appointments[0] = new Appointment(Appointment.NIMPORTANT, "Yolo", "Yolo forever", null);
-		appointments[1] = new Appointment(Appointment.URGENT, "Programmer", "2 timer programmering", null);
-		appointments[2] = new Appointment(Appointment.MEDIUM, "Lag middag", "Lag middag", null);
+		Time t = new Time();
+		t.set(0, 55, 4, 0, 0, 0);
+		appointments[0] = new Appointment(Appointment.NIMPORTANT, "Yolo", "Yolo forever", t);
+		appointments[1] = new Appointment(Appointment.URGENT, "Programmer", "2 timer programmering", t);
+		appointments[2] = new Appointment(Appointment.MEDIUM, "Lag middag", "Lag middag", t);
 		app.add(appointments[0]);
 		app.add(appointments[1]);
 		app.add(appointments[2]);

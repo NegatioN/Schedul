@@ -2,7 +2,7 @@ package joakim.app.GUI;
 
 import java.util.ArrayList;
 
-import joakim.app.schedul.Appointment;
+import joakim.app.data.Appointment;
 import joakim.app.schedul.R;
 import android.content.Context;
 import android.view.LayoutInflater;
