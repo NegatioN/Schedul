@@ -10,9 +10,9 @@ import joakim.app.GUI.LvOnItemTouchListener;
 import joakim.app.data.Appointment;
 import android.app.Activity;
 import android.app.FragmentManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
 import android.text.format.Time;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,35 +23,31 @@ import android.widget.TextView;
 
 public class AddTodo extends Activity implements CreateAppointmentDialogListener{
 
-	private ArrayList<Appointment> aMan = new ArrayList<Appointment>();
-	private ArrayList<Appointment> aTir = new ArrayList<Appointment>();
-	private ArrayList<Appointment> aOns = new ArrayList<Appointment>();
-	private ArrayList<Appointment> aTor = new ArrayList<Appointment>();
-	private ArrayList<Appointment> aFre = new ArrayList<Appointment>();
-	private ArrayList<Appointment> aLør = new ArrayList<Appointment>();
-	private ArrayList<Appointment> aSøn = new ArrayList<Appointment>();
+	private ArrayList<Appointment> aMan;
+	private ArrayList<Appointment> aTir;
+	private ArrayList<Appointment> aOns;
+	private ArrayList<Appointment> aTor;
+	private ArrayList<Appointment> aFre;
+	private ArrayList<Appointment> aLør;
+	private ArrayList<Appointment> aSøn;
 	private TextView draggableAppointment;
 	private Button bFragmentStart;
 	private Appointment recentAppointment;
 	
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		testFillArray(aMan);
-		testFillArray(aSøn);
-		testFillArray(aTor);
-		if(getIntent().hasExtra(Schedul.RESULT_REQUEST))
-			finish();
-		setContentView(R.layout.activity_add_todo);
 		
+		if(getIntent().hasExtra(Schedul.RESULT_REQUEST))
+			loadArrayLists(getIntent());
+		
+		setContentView(R.layout.activity_add_todo);
 		
 		draggableAppointment = (TextView) findViewById(R.id.tvDraggableAppointment);
 		draggableAppointment.setOnTouchListener(new LvOnItemTouchListener());
 		draggableAppointment.setVisibility(View.GONE);
 		bFragmentStart = (Button) findViewById(R.id.bFragmentStart);
 		bFragmentStart.setOnClickListener(new View.OnClickListener() {
-			
 			@Override
 			public void onClick(View v) {
 				showFragment();
@@ -124,49 +120,10 @@ public class AddTodo extends Activity implements CreateAppointmentDialogListener
 		return recentAppointment;
 	}
 	
-	//finner første element i dagens arraylist
-	//omimplementer til å finn nærmeste fra tidspunktet nå
+	//avslutter activity og sender alle arrays til main.
 	public void finish(){
-		Time time = new Time();
-		time.setToNow();
-		Appointment closestAppointment = null;
-		//finner riktig dagsarray
-		switch(time.weekDay){
-		case 0: 
-			if(!aSøn.isEmpty())
-			closestAppointment = aSøn.get(0);
-			break;
-		case 1: 
-			if(!aMan.isEmpty())
-			closestAppointment = aMan.get(0);
-			break;
-		case 2: 
-			if(!aTir.isEmpty())
-			closestAppointment = aTir.get(0);
-			break;
-		case 3: 
-			if(!aOns.isEmpty())
-			closestAppointment = aOns.get(0);
-			break;
-		case 4: 
-			if(!aTor.isEmpty())
-			closestAppointment = aTor.get(0);
-			break;
-		case 5: 
-			if(!aFre.isEmpty())
-			closestAppointment = aFre.get(0);
-			break;
-		default:
-			if(!aLør.isEmpty())
-			closestAppointment = aLør.get(0);
-			break;
-		}
-		if(closestAppointment != null){
-			Intent result = new Intent();
-			result.putExtra("result", closestAppointment);
-			setResult(RESULT_OK, result);
-		}
-
+		setResult(RESULT_OK, sendArrayLists());
+		System.out.println("RESULT SET");
 		super.finish();
 	}
 	
@@ -200,16 +157,26 @@ public class AddTodo extends Activity implements CreateAppointmentDialogListener
 		lw7.setOnDragListener(new DragZoneListener(this));
 	}
 	
-	private void testFillArray(ArrayList<Appointment> app){
-		Appointment[] appointments = new Appointment[3];
-		Time t = new Time();
-		t.set(0, 55, 4, 0, 0, 0);
-		appointments[0] = new Appointment(Appointment.NIMPORTANT, "Yolo forever", t,false);
-		appointments[1] = new Appointment(Appointment.URGENT, "2 timer programmering", t,false);
-		appointments[2] = new Appointment(Appointment.MEDIUM,  "Lag middag", t,false);
-		app.add(appointments[0]);
-		app.add(appointments[1]);
-		app.add(appointments[2]);
+	private void loadArrayLists(Intent data){
+		aMan = data.getParcelableArrayListExtra("man");
+		aTir = data.getParcelableArrayListExtra("tir");
+		aOns = data.getParcelableArrayListExtra("ons");
+		aTor = data.getParcelableArrayListExtra("tor");
+		aFre = data.getParcelableArrayListExtra("fre");
+		aLør = data.getParcelableArrayListExtra("lør");
+		aSøn = data.getParcelableArrayListExtra("søn");
 	}
+	private Intent sendArrayLists(){
+		Intent result = new Intent();
+		result.putParcelableArrayListExtra("man", aMan);
+		result.putParcelableArrayListExtra("tir", aTir);
+		result.putParcelableArrayListExtra("ons", aOns);
+		result.putParcelableArrayListExtra("tor", aTor);
+		result.putParcelableArrayListExtra("fre", aFre);
+		result.putParcelableArrayListExtra("lør", aLør);
+		result.putParcelableArrayListExtra("søn", aSøn);
+		return result;
+	}
+	
 
 }
