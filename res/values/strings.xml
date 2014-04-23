@@ -7,6 +7,13 @@
     <string name="title_activity_add_todo">AddTodo</string>
     <string name="actionbar_add">Add</string>
     <string name="button_add">Add</string>
-    
+    <string name="summary_locked_appointments">Låser appointments fra å flyttes innad, og legges til i timeplanen.</string>
+    <string name="title_locked_appointments">Lås appointments</string>
+    <string name="app_settings">App settings</string>
+    <string name="dialog_title_alarm_frequency">Alarmen skal ringe hvert:</string>
+    <string name="summary_alarm_frequency">Hvor ofte skal alarmen ringe i siste time før appointment?</string>
+    <string name="title_alarm_frequency">Alarm-frekvens</string>
+    <string name="actionbar_settings">Settings</string>
+    <string name="title_activity_user_settings">UserSettings</string>
 
 </resources>

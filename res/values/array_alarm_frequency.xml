@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="array_alarm_frequency">
+        <item>Kun alarm for avtalens tidspunkt.</item>
+        <item>1. Min</item>
+        <item>2. Min</item>
+        <item>3. Min</item>
+        <item>5. Min</item>
+        <item>10. Min</item>
+        <item>20. Min</item>
+        <item>30. Min</item>
+    </string-array>
+</resources>

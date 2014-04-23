@@ -30,6 +30,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="joakim.app.schedul.Schedul" />
         </activity>
+                <activity
+            android:name="joakim.app.schedul.UserSettings"
+            android:label="@string/title_activity_user_settings"
+            android:parentActivityName="joakim.app.schedul.Schedul" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="joakim.app.schedul.Schedul" />
+        </activity>
     </application>
 
 </manifest>

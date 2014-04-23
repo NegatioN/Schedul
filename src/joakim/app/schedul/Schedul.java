@@ -26,6 +26,8 @@ public class Schedul extends Activity {
 	private ArrayList<Appointment>	aLør			= new ArrayList<Appointment>();
 	private ArrayList<Appointment>	aSøn			= new ArrayList<Appointment>();
 	private TextView displayAppointment;
+	private Runnable tvUpdater;
+	private Handler tvHandler;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,28 +36,28 @@ public class Schedul extends Activity {
 
 		testFillArray(aMan);
 		testFillArray(aOns);
+		testFillArray(aTir);
 		testFillArray(aSøn);
 		displayAppointment = (TextView)findViewById(R.id.tvDisplayAppointment);
 		
 		
 		
-		 final Handler handler=new Handler();
-		 handler.post(new Runnable(){
+		 tvHandler =new Handler();
+		 tvUpdater = new Runnable(){
 
 		        @Override
 		        public void run() {
 		        	Appointment appointment = findMostRecentAppointment();
 		        	if(appointment != null){
+		        		removeExpiredAppointment(appointment);
 		        		displayAppointment.setBackgroundColor(appointment.getPriority());
 		        		displayAppointment.setText(appointment.getSummary());
 		        	}
-		             // upadte textView here
-
-		            handler.postDelayed(this,500); // set time here to refresh textView
 
 		        }
 
-		    });
+		    };
+		    tvHandler.post(tvUpdater);
 	}
 
 	@Override
@@ -66,11 +68,15 @@ public class Schedul extends Activity {
 	}
 
 	public boolean onOptionsItemSelected(MenuItem item) {
-
+		Intent intent;
 		switch (item.getItemId()) {
 		case R.id.action_add:
-			Intent intent = sendArrayLists();
+			intent = sendArrayLists();
 			startActivityForResult(intent, REQUEST_CODE);
+			break;
+		case R.id.action_settings:
+			intent = new Intent(this,UserSettings.class);
+			startActivity(intent);
 			break;
 		}
 
@@ -81,6 +87,7 @@ public class Schedul extends Activity {
 		if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
 			if (data.hasExtra("man")) {
 				updateArrayLists(data);
+				tvHandler.post(tvUpdater);
 			}
 		}
 	}
@@ -116,32 +123,57 @@ public class Schedul extends Activity {
 		time.setToNow();
 		Appointment closestAppointment = null;
 		// finner riktig dagsarray
-		switch (time.weekDay) {
-		case 0:
-			if (!aSøn.isEmpty()) closestAppointment = aSøn.get(0);
-			break;
-		case 1:
-			if (!aMan.isEmpty()) closestAppointment = aMan.get(0);
-			break;
-		case 2:
-			if (!aTir.isEmpty()) closestAppointment = aTir.get(0);
-			break;
-		case 3:
-			if (!aOns.isEmpty()) closestAppointment = aOns.get(0);
-			break;
-		case 4:
-			if (!aTor.isEmpty()) closestAppointment = aTor.get(0);
-			break;
-		case 5:
-			if (!aFre.isEmpty()) closestAppointment = aFre.get(0);
-			break;
-		default:
-			if (!aLør.isEmpty()) closestAppointment = aLør.get(0);
-			break;
-		}
+		ArrayList<Appointment> a = findDayArray(time);
+		closestAppointment = a.get(0);
 		return closestAppointment;
 	}
-
+	
+	private ArrayList<Appointment> findDayArray(Time t){
+		ArrayList<Appointment> array = null;
+		
+		switch (t.weekDay) {
+		case 0:
+			if (!aSøn.isEmpty()) array = aSøn;
+			break;
+		case 1:
+			if (!aMan.isEmpty()) array = aMan;
+			break;
+		case 2:
+			if (!aTir.isEmpty()) array = aTir;
+			break;
+		case 3:
+			if (!aOns.isEmpty()) array = aOns;
+			break;
+		case 4:
+			if (!aTor.isEmpty()) array = aTor;
+			break;
+		case 5:
+			if (!aFre.isEmpty()) array = aFre;
+			break;
+		default:
+			if (!aLør.isEmpty()) array = aLør;
+			break;
+		}
+		return array;
+	}
+	
+	private boolean appointmentExpired(Appointment a){
+		Time time = new Time();
+		time.setToNow();
+		//currently getTime will result in a time object with day0, second0, year0, month0 so it cant be compared well.
+		if(a.getTime().toMillis(false) - time.toMillis(false) < 0){
+			return true;
+		}
+		return false;
+	}
+	
+	private void removeExpiredAppointment(Appointment a){
+		if(appointmentExpired(a)){
+			findDayArray(a.getTime()).remove(a);
+		}
+	}
+	
+	//TEST-PROGRAM-METHODS
 	private void testFillArray(ArrayList<Appointment> app) {
 		Appointment[] appointments = new Appointment[3];
 		Time t = new Time();

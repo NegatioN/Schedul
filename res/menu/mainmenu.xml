@@ -8,5 +8,13 @@
         android:showAsAction="ifRoom"
         android:title="@string/actionbar_add">
     </item>
+        <item
+        android:id="@+id/action_settings"
+        android:icon="@drawable/ic_action_settings"
+        android:orderInCategory="101"
+        android:showAsAction="ifRoom"
+        android:title="@string/actionbar_settings">
+    </item>
+    
 
 </menu>

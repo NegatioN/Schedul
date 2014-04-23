@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    
+    <PreferenceCategory android:title="@string/app_settings">
+        <CheckBoxPreference 
+            android:key="checkbox_preference"
+            android:title="@string/title_locked_appointments"
+            android:summary="@string/summary_locked_appointments"
+            android:defaultValue="false" />
+        
+        <ListPreference
+            android:key="list_preference"
+            android:title="@string/title_alarm_frequency"
+            android:summary="@string/summary_alarm_frequency"
+            android:entries="@array/array_alarm_frequency"
+            android:entryValues="@array/entryvalues_alarm_frequency"
+            android:dialogTitle="@string/dialog_title_alarm_frequency"
+            />
+        
+    </PreferenceCategory>
+</PreferenceScreen>
