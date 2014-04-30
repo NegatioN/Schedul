@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import joakim.app.data.Appointment;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.text.format.Time;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -34,10 +36,13 @@ public class Schedul extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_schedul);
 
-		testFillArray(aMan);
-		testFillArray(aOns);
-		testFillArray(aTir);
-		testFillArray(aSøn);
+//		testFillArray(aMan);
+//		testFillArray(aOns);
+//		testFillArray(aTir);
+//		testFillArray(aSøn);
+		testFillArray(aLør);
+//		testFillArray(aTor);
+//		testFillArray(aFre);
 		displayAppointment = (TextView)findViewById(R.id.tvDisplayAppointment);
 		
 		
@@ -47,7 +52,10 @@ public class Schedul extends Activity {
 
 		        @Override
 		        public void run() {
-		        	Appointment appointment = findMostRecentAppointment();
+		        	Time t = new Time();
+		        	t.setToNow();
+		        	
+		        	Appointment appointment = findMostRecentAppointment(t);
 		        	if(appointment != null){
 		        		removeExpiredAppointment(appointment);
 		        		displayAppointment.setBackgroundColor(appointment.getPriority());
@@ -58,6 +66,10 @@ public class Schedul extends Activity {
 
 		    };
 		    tvHandler.post(tvUpdater);
+		    
+		    //test how to get sharedpreferences from settings-page.
+		    findPreferences();
+		    
 	}
 
 	@Override
@@ -118,13 +130,33 @@ public class Schedul extends Activity {
 	}
 	
 
-	private Appointment findMostRecentAppointment() {
-		Time time = new Time();
-		time.setToNow();
+	private Appointment findMostRecentAppointment(Time t) {
+		
+		return findMostRecentAppointment(t, 1);
+	}
+	
+	//recursive method for finding closest day with appointment. Gives up after 7 days with no appointments
+	private Appointment findMostRecentAppointment(Time t, int counter){
+		if(counter > 7)
+			return null;
+		
+		//finds current array
+		ArrayList<Appointment> a = findDayArray(t);
+		
 		Appointment closestAppointment = null;
-		// finner riktig dagsarray
-		ArrayList<Appointment> a = findDayArray(time);
+		
+		//tries getting earliest appointment from listview, else go to next day.
+		try{
 		closestAppointment = a.get(0);
+		}catch(NullPointerException e){
+			Time time = t;
+			//checks weekday and does ++ 
+			if(time.weekDay != 6)
+			time.weekDay++;
+			else
+				time.weekDay = 0;
+			return findMostRecentAppointment(time, ++counter);
+		}
 		return closestAppointment;
 	}
 	
@@ -164,16 +196,25 @@ public class Schedul extends Activity {
 		if(a.getTime().toMillis(false) - time.toMillis(false) < 0){
 			return true;
 		}
+		
 		return false;
 	}
 	
 	private void removeExpiredAppointment(Appointment a){
 		if(appointmentExpired(a)){
+			try{
 			findDayArray(a.getTime()).remove(a);
+			}catch(NullPointerException np){
+				return;
+			}
 		}
 	}
 	
 	//TEST-PROGRAM-METHODS
+	private void findPreferences(){
+		SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+		System.out.println(pref.getAll().toString());
+	}
 	private void testFillArray(ArrayList<Appointment> app) {
 		Appointment[] appointments = new Appointment[3];
 		Time t = new Time();
