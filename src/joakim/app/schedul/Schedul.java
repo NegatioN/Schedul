@@ -212,9 +212,13 @@ public class Schedul extends Activity {
 	
 	//TEST-PROGRAM-METHODS
 	private void findPreferences(){
+		//sånn her henter vi sharedpreferences om vi skal gjøre noe med det en plass.
 		SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+		boolean checkbox = pref.getBoolean("checkbox_preference", false);
+		System.out.println(checkbox);
 		System.out.println(pref.getAll().toString());
 	}
+	
 	private void testFillArray(ArrayList<Appointment> app) {
 		Appointment[] appointments = new Appointment[3];
 		Time t = new Time();
