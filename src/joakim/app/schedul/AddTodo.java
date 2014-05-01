@@ -10,10 +10,10 @@ import joakim.app.GUI.LvOnItemTouchListener;
 import joakim.app.data.Appointment;
 import android.app.Activity;
 import android.app.FragmentManager;
-import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.format.Time;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -140,21 +140,24 @@ public class AddTodo extends Activity implements CreateAppointmentDialogListener
 		ListView lw6 = (ListView)findViewById(R.id.listView6);
 		ListView lw7 = (ListView)findViewById(R.id.listView7);
 		
-		lw.setAdapter(new ArrayListAdapter(this,aMan));
-		lw2.setAdapter(new ArrayListAdapter(this,aTir));
-		lw3.setAdapter(new ArrayListAdapter(this,aOns));
-		lw4.setAdapter(new ArrayListAdapter(this,aTor));
-		lw5.setAdapter(new ArrayListAdapter(this,aFre));
-		lw6.setAdapter(new ArrayListAdapter(this,aLør));
-		lw7.setAdapter(new ArrayListAdapter(this,aSøn));
 		
+		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+		boolean appointmentLocked = preferences.getBoolean("checkbox_preference", false);
+			initializeListeners(lw, aMan,appointmentLocked);
+			initializeListeners(lw2, aTir,appointmentLocked);
+			initializeListeners(lw3, aOns,appointmentLocked);
+			initializeListeners(lw4, aTor,appointmentLocked);
+			initializeListeners(lw5, aFre,appointmentLocked);
+			initializeListeners(lw6, aLør,appointmentLocked);
+			initializeListeners(lw7, aSøn,appointmentLocked);
+			
+		
+	}
+	//initializes listeners based on user-settings
+	private void initializeListeners(ListView lw, ArrayList<Appointment> al, boolean appLocked){
+		lw.setAdapter(new ArrayListAdapter(this,al));
+		if(!appLocked)
 		lw.setOnDragListener(new DragZoneListener(this));
-		lw2.setOnDragListener(new DragZoneListener(this));
-		lw3.setOnDragListener(new DragZoneListener(this));
-		lw4.setOnDragListener(new DragZoneListener(this));
-		lw5.setOnDragListener(new DragZoneListener(this));
-		lw6.setOnDragListener(new DragZoneListener(this));
-		lw7.setOnDragListener(new DragZoneListener(this));
 	}
 	
 	private void loadArrayLists(Intent data){

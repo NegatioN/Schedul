@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import joakim.app.data.Appointment;
 import joakim.app.schedul.R;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +32,10 @@ public class ArrayListAdapter extends ArrayAdapter<Appointment>{
 		    TextView textView = (TextView) rowView.findViewById(R.id.summary);
 		    textView.setBackgroundColor(objects.get(position).getPriority());
 		    textView.setText(objects.get(position).getSummary());
+		    
+		    SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+		    boolean appointmentLocked = preferences.getBoolean("checkbox_preference", false);
+		    if(!appointmentLocked)
 		    textView.setOnTouchListener(new LvOnItemTouchListener());
 
 		    return rowView;
