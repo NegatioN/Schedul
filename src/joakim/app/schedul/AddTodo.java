@@ -43,6 +43,7 @@ public class AddTodo extends Activity implements CreateAppointmentDialogListener
 		
 		setContentView(R.layout.activity_add_todo);
 		
+		//define the area where we make a new appointment.
 		draggableAppointment = (TextView) findViewById(R.id.tvDraggableAppointment);
 		draggableAppointment.setOnTouchListener(new LvOnItemTouchListener());
 		draggableAppointment.setVisibility(View.GONE);

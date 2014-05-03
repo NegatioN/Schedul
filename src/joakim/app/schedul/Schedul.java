@@ -30,6 +30,7 @@ public class Schedul extends Activity {
 	private TextView displayAppointment;
 	private Runnable tvUpdater;
 	private Handler tvHandler;
+	private Alarm alarm;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +61,7 @@ public class Schedul extends Activity {
 		        		removeExpiredAppointment(appointment);
 		        		displayAppointment.setBackgroundColor(appointment.getPriority());
 		        		displayAppointment.setText(appointment.getSummary());
+		    		    setAlarmFragment(appointment);
 		        	}
 
 		        }
@@ -67,8 +69,6 @@ public class Schedul extends Activity {
 		    };
 		    tvHandler.post(tvUpdater);
 		    
-		    //test how to get sharedpreferences from settings-page.
-		    findPreferences();
 		    
 	}
 
@@ -160,6 +160,17 @@ public class Schedul extends Activity {
 		return closestAppointment;
 	}
 	
+	//makes an alarm and will remove the previous one if it has not triggered (last part not implemented yet)
+	private boolean setAlarmFragment(Appointment app){
+		if(app != null){
+			alarm = new Alarm();
+			alarm.setAlarm(this, app.getTime());
+			return true;
+		}
+		
+		return false;
+	}
+	
 	private ArrayList<Appointment> findDayArray(Time t){
 		ArrayList<Appointment> array = null;
 		
@@ -188,6 +199,7 @@ public class Schedul extends Activity {
 		}
 		return array;
 	}
+	
 	
 	private boolean appointmentExpired(Appointment a){
 		Time time = new Time();

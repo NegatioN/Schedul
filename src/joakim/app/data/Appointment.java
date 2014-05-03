@@ -33,6 +33,7 @@ public class Appointment implements Parcelable{
 		int minute = in.readInt();
 		time.set(0, minute, hour, 0, 0, 0);
 		this.time = time;
+		//FIKS PÅ TIME FRA PARCELABLE
 		if(in.readInt() == 1) this.persistent = true;
 		else
 			this.persistent = false;
