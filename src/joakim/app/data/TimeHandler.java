@@ -24,11 +24,12 @@ public class TimeHandler {
 		//if we have a sunday on our hands we treat it as a 7
 		if(startDay == 0)
 			startDay = 7;
-		System.out.println("startDay="+ startDay + ": endday=" + endDay + " GAYDAR");
+		if(nowDay == 0)
+			nowDay = 7;
 
 		
 		//difference between days times millis in a day
-		long displaceTime = (startDay - endDay)
+		long displaceTime = -(startDay - endDay)
 				* AlarmManager.INTERVAL_DAY; 
 
 		//special conditions 
@@ -41,16 +42,15 @@ public class TimeHandler {
 			// if next weeks appointment gets moved to current week, subtract 7
 			displaceTime -= 7 * AlarmManager.INTERVAL_DAY;
 		}
+		//if we're dropping it in the same day, we don't need to displace anything.
 		else if(startDay == endDay)
 			return;
 		
 		
 		
 		Time appTime = app.getTime();
-		appTime.set(appTime.toMillis(false) - displaceTime);
+		appTime.set(appTime.toMillis(false) + displaceTime);
 		app.setTime(appTime);
-		System.out.println(appTime.toString() + " GAYDAR");
-		System.out.println(app.getTime().weekDay + " should be: " + endDay + " GAYDAR");
 		return;
 	}
 

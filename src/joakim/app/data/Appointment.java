@@ -7,7 +7,7 @@ import android.text.format.Time;
 
 public class Appointment implements Parcelable{
 
-	public static final int URGENT = Color.RED, MEDIUM = Color.YELLOW, NIMPORTANT = Color.GREEN;
+	public static final int URGENT = Color.RED, MEDIUM = Color.YELLOW, NIMPORTANT = Color.GREEN, NOTREAL = Color.TRANSPARENT;
 	
 	private int priority;
 	private String description, summary;

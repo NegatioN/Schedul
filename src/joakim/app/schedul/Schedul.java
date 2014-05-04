@@ -3,8 +3,10 @@ package joakim.app.schedul;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Iterator;
 
 import joakim.app.data.Appointment;
+import joakim.app.data.AppointmentComparator;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -29,49 +31,47 @@ public class Schedul extends Activity {
 	private ArrayList<Appointment>	aFre			= new ArrayList<Appointment>();
 	private ArrayList<Appointment>	aLør			= new ArrayList<Appointment>();
 	private ArrayList<Appointment>	aSøn			= new ArrayList<Appointment>();
-	private TextView displayAppointment;
-	private Runnable tvUpdater;
-	private Handler tvHandler;
-	private Alarm alarm;
+	private TextView				displayAppointment;
+	private Runnable				tvUpdater;
+	private Handler					tvHandler;
+	private Alarm					alarm;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_schedul);
 
-//		testFillArray(aMan);
-//		testFillArray(aOns);
-//		testFillArray(aTir);
+// testFillArray(aMan);
+// testFillArray(aOns);
+// testFillArray(aTir);
 		testFillArray(aSøn);
-//		testFillArray(aLør);
-//		testFillArray(aTor);
-//		testFillArray(aFre);
-		displayAppointment = (TextView)findViewById(R.id.tvDisplayAppointment);
-		
-		
-		
-		 tvHandler =new Handler();
-		 tvUpdater = new Runnable(){
+// testFillArray(aLør);
+// testFillArray(aTor);
+// testFillArray(aFre);
+		displayAppointment = (TextView) findViewById(R.id.tvDisplayAppointment);
 
-		        @Override
-		        public void run() {
-		        	Time t = new Time();
-		        	t.setToNow();
-		        	
-		        	Appointment appointment = findMostRecentAppointment(t);
-		        	if(appointment != null){
-//		        		removeExpiredAppointment(appointment);
-		        		displayAppointment.setBackgroundColor(appointment.getPriority());
-		        		displayAppointment.setText(appointment.getSummary());
-		    		    setAlarmFragment(appointment);
-		        	}
+		tvHandler = new Handler();
+		tvUpdater = new Runnable() {
 
-		        }
+			@Override
+			public void run() {
+				Time t = new Time();
+				t.setToNow();
 
-		    };
-		    tvHandler.post(tvUpdater);
-		    
-		    
+				Appointment appointment = findMostRecentAppointment(t);
+				if (appointment != null) {
+// removeExpiredAppointment(appointment);
+					displayAppointment.setBackgroundColor(appointment
+							.getPriority());
+					displayAppointment.setText(appointment.getSummary());
+					setAlarmFragment(appointment);
+				}
+
+			}
+
+		};
+		tvHandler.post(tvUpdater);
+
 	}
 
 	@Override
@@ -89,7 +89,7 @@ public class Schedul extends Activity {
 			startActivityForResult(intent, REQUEST_CODE);
 			break;
 		case R.id.action_settings:
-			intent = new Intent(this,UserSettings.class);
+			intent = new Intent(this, UserSettings.class);
 			startActivity(intent);
 			break;
 		}
@@ -130,52 +130,76 @@ public class Schedul extends Activity {
 		aLør = data.getParcelableArrayListExtra("lør");
 		aSøn = data.getParcelableArrayListExtra("søn");
 	}
-	
 
 	private Appointment findMostRecentAppointment(Time t) {
-		
+
 		return findMostRecentAppointment(t, 1);
 	}
-	
-	//recursive method for finding closest day with appointment. Gives up after 7 days with no appointments
-	private Appointment findMostRecentAppointment(Time t, int counter){
-		if(counter > 7)
-			return null;
-		
-		//finds current array
+
+	// recursive method for finding closest day with appointment. Gives up after
+// 7 days with no appointments
+	private Appointment findMostRecentAppointment(Time t, int counter) {
+		if (counter > 7) return null;
+
+		// finds current array
 		ArrayList<Appointment> a = findDayArray(t);
-		
+
 		Appointment closestAppointment = null;
-		
-		//tries getting earliest appointment from listview, else go to next day.
-		try{
-		closestAppointment = a.get(0);
-		}catch(NullPointerException e){
-			Time time = t;
-			//checks weekday and does ++ 
-			if(time.weekDay != 6)
-			time.weekDay++;
+
+		Time time = new Time();
+		time.setToNow();
+		// tries getting next appointment from listview, else go to next day.
+
+//		closestAppointment = findClosestAppointmentByTime(time, a);
+try{
+//	closestAppointment = findClosestAppointmentByTime(time, a);
+       closestAppointment = a.get(0);
+       System.out.println(closestAppointment.getTime().toString() + "GayDar");
+}catch(NullPointerException e){
+		// we did not find a suitable appointment in searched array.
+			time = t;
+			// checks weekday and does ++
+			if (time.weekDay != 6)
+				time.weekDay++;
 			else
 				time.weekDay = 0;
 			return findMostRecentAppointment(time, ++counter);
 		}
 		return closestAppointment;
 	}
-	
-	//makes an alarm and will remove the previous one if it has not triggered (last part not implemented yet)
-	private boolean setAlarmFragment(Appointment app){
-		if(app != null){
+
+	//this method should work to find the closest appointment through an iterator of the arraylist.
+	private Appointment findClosestAppointmentByTime(Time t, ArrayList<Appointment> al) {
+		Appointment closestAppointment = null;
+
+		Appointment compareToAppointment = new Appointment(Appointment.NOTREAL,
+				"text", t, false);
+		AppointmentComparator ac = new AppointmentComparator();
+
+			for(Appointment a : al){
+				if (ac.compare(compareToAppointment, a) <= 0)
+					return closestAppointment = a;
+
+			}
+
+		return closestAppointment;
+	}
+
+	// makes an alarm and will remove the previous one if it has not triggered
+// (last part not implemented yet)
+	private boolean setAlarmFragment(Appointment app) {
+		if (app != null) {
 			alarm = new Alarm();
 			alarm.setAlarm(this, app.getTime());
 			return true;
 		}
-		
+
 		return false;
 	}
-	
-	private ArrayList<Appointment> findDayArray(Time t){
+
+	private ArrayList<Appointment> findDayArray(Time t) {
 		ArrayList<Appointment> array = null;
-		
+
 		switch (t.weekDay) {
 		case 0:
 			if (!aSøn.isEmpty()) array = aSøn;
@@ -201,55 +225,57 @@ public class Schedul extends Activity {
 		}
 		return array;
 	}
-	
-	
-	private boolean appointmentExpired(Appointment a){
+
+	private boolean appointmentExpired(Appointment a) {
 		Time time = new Time();
 		time.setToNow();
-		//currently getTime will result in a time object with day0, second0, year0, month0 so it cant be compared well.
-		if(a.getTime().toMillis(false) - time.toMillis(false) < 0){
+		// currently getTime will result in a time object with day0, second0,
+// year0, month0 so it cant be compared well.
+		if (a.getTime().toMillis(false) - time.toMillis(false) < 0) {
 			return true;
 		}
-		
+
 		return false;
 	}
-	
-	private void removeExpiredAppointment(Appointment a){
-		if(appointmentExpired(a)){
-			try{
-			findDayArray(a.getTime()).remove(a);
-			}catch(NullPointerException np){
+
+	private void removeExpiredAppointment(Appointment a) {
+		if (appointmentExpired(a)) {
+			try {
+				findDayArray(a.getTime()).remove(a);
+			} catch (NullPointerException np) {
 				return;
 			}
 		}
 	}
-	
-	//TEST-PROGRAM-METHODS
-	private void findPreferences(){
-		//sånn her henter vi sharedpreferences om vi skal gjøre noe med det en plass.
-		SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+
+	// TEST-PROGRAM-METHODS
+	private void findPreferences() {
+		// sånn her henter vi sharedpreferences om vi skal gjøre noe med det en
+// plass.
+		SharedPreferences pref = PreferenceManager
+				.getDefaultSharedPreferences(this);
 		boolean checkbox = pref.getBoolean("checkbox_preference", false);
 		System.out.println(checkbox);
 		System.out.println(pref.getAll().toString());
 	}
-	
+
 	private void testFillArray(ArrayList<Appointment> app) {
 		Appointment[] appointments = new Appointment[3];
 		Time time = new Time();
 		Calendar cal = new GregorianCalendar();
-		
-		//set all Time-variables except seconds.
-		time.set(0, 24, 5, cal.get(Calendar.DAY_OF_MONTH), cal.get(Calendar.MONTH), cal.get(Calendar.YEAR));
+
+		// set all Time-variables except seconds.
+		time.set(0, 24, 5, cal.get(Calendar.DAY_OF_MONTH),
+				cal.get(Calendar.MONTH), cal.get(Calendar.YEAR));
 		appointments[0] = new Appointment(Appointment.NIMPORTANT,
 				"Yolo forever", time, false);
 		appointments[1] = new Appointment(Appointment.URGENT,
 				"2 timer programmering", time, false);
-		appointments[2] = new Appointment(Appointment.MEDIUM, "Lag middag", time,
-				false);
+		appointments[2] = new Appointment(Appointment.MEDIUM, "Lag middag",
+				time, false);
 		app.add(appointments[0]);
 		app.add(appointments[1]);
 		app.add(appointments[2]);
 	}
-	
 
 }
