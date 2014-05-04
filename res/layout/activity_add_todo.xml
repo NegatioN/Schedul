@@ -43,7 +43,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/topLeft"
+        android:id="@+id/mondayHolder"
         android:layout_width="106dp"
         android:layout_height="120dp"
         android:layout_column="2"
@@ -53,14 +53,14 @@
         android:orientation="vertical" >
 
         <ListView
-            android:id="@+id/listView1"
+            android:id="@+id/mondayLv"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" >
         </ListView>
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/topMid"
+        android:id="@+id/tuesdayHolder"
         android:layout_width="106dp"
         android:layout_height="120dp"
         android:layout_column="0"
@@ -70,14 +70,14 @@
         android:orientation="vertical" >
 
         <ListView
-            android:id="@+id/listView2"
+            android:id="@+id/tuesdayLv"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" >
         </ListView>
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/topRight"
+        android:id="@+id/wednesdayHolder"
         android:layout_width="106dp"
         android:layout_height="120dp"
         android:layout_column="1"
@@ -86,14 +86,14 @@
         android:orientation="vertical" >
 
         <ListView
-            android:id="@+id/listView3"
+            android:id="@+id/wednesdayLv"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" >
         </ListView>
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/midLeft"
+        android:id="@+id/thursdayHolder"
         android:layout_width="106dp"
         android:layout_height="120dp"
         android:layout_column="2"
@@ -102,14 +102,14 @@
         android:orientation="vertical" >
 
         <ListView
-            android:id="@+id/listView4"
+            android:id="@+id/thursdayLv"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" >
         </ListView>
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/midCenter"
+        android:id="@+id/fridayHolder"
         android:layout_width="106dp"
         android:layout_height="120dp"
         android:layout_column="0"
@@ -118,14 +118,14 @@
         android:orientation="vertical" >
 
         <ListView
-            android:id="@+id/listView5"
+            android:id="@+id/fridayLv"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" >
         </ListView>
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/midRight"
+        android:id="@+id/saturdayHolder"
         android:layout_width="106dp"
         android:layout_height="120dp"
         android:layout_column="1"
@@ -134,14 +134,14 @@
         android:orientation="vertical" >
 
         <ListView
-            android:id="@+id/listView6"
+            android:id="@+id/saturdayLv"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" >
         </ListView>
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/botLeft"
+        android:id="@+id/sundayHolder"
         android:layout_width="106dp"
         android:layout_height="120dp"
         android:layout_column="2"
@@ -150,7 +150,7 @@
         android:orientation="vertical" >
 
         <ListView
-            android:id="@+id/listView7"
+            android:id="@+id/sundayLv"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" >
         </ListView>

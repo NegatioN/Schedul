@@ -1,6 +1,8 @@
 package joakim.app.schedul;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import joakim.app.data.Appointment;
 import android.app.Activity;
@@ -40,8 +42,8 @@ public class Schedul extends Activity {
 //		testFillArray(aMan);
 //		testFillArray(aOns);
 //		testFillArray(aTir);
-//		testFillArray(aSøn);
-		testFillArray(aLør);
+		testFillArray(aSøn);
+//		testFillArray(aLør);
 //		testFillArray(aTor);
 //		testFillArray(aFre);
 		displayAppointment = (TextView)findViewById(R.id.tvDisplayAppointment);
@@ -58,7 +60,7 @@ public class Schedul extends Activity {
 		        	
 		        	Appointment appointment = findMostRecentAppointment(t);
 		        	if(appointment != null){
-		        		removeExpiredAppointment(appointment);
+//		        		removeExpiredAppointment(appointment);
 		        		displayAppointment.setBackgroundColor(appointment.getPriority());
 		        		displayAppointment.setText(appointment.getSummary());
 		    		    setAlarmFragment(appointment);
@@ -233,13 +235,16 @@ public class Schedul extends Activity {
 	
 	private void testFillArray(ArrayList<Appointment> app) {
 		Appointment[] appointments = new Appointment[3];
-		Time t = new Time();
-		t.set(0, 55, 4, 0, 0, 0);
+		Time time = new Time();
+		Calendar cal = new GregorianCalendar();
+		
+		//set all Time-variables except seconds.
+		time.set(0, 24, 5, cal.get(Calendar.DAY_OF_MONTH), cal.get(Calendar.MONTH), cal.get(Calendar.YEAR));
 		appointments[0] = new Appointment(Appointment.NIMPORTANT,
-				"Yolo forever", t, false);
+				"Yolo forever", time, false);
 		appointments[1] = new Appointment(Appointment.URGENT,
-				"2 timer programmering", t, false);
-		appointments[2] = new Appointment(Appointment.MEDIUM, "Lag middag", t,
+				"2 timer programmering", time, false);
+		appointments[2] = new Appointment(Appointment.MEDIUM, "Lag middag", time,
 				false);
 		app.add(appointments[0]);
 		app.add(appointments[1]);

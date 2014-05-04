@@ -21,25 +21,36 @@ public class TimeHandler {
 		int endDay = findWeekDay(slutt);
 		int nowDay = time.weekDay;
 		int startDay = app.getTime().weekDay;
+		//if we have a sunday on our hands we treat it as a 7
+		if(startDay == 0)
+			startDay = 7;
+		System.out.println("startDay="+ startDay + ": endday=" + endDay + " GAYDAR");
 
-		// flip the denominator so it makes sense.
+		
+		//difference between days times millis in a day
 		long displaceTime = (startDay - endDay)
-				* AlarmManager.INTERVAL_DAY; // days times milliseconds in a day
+				* AlarmManager.INTERVAL_DAY; 
 
 		//special conditions 
-		if (endDay < startDay && endDay < nowDay && nowDay < startDay) {
+		if (startDay >= nowDay && endDay < nowDay) {
 				// if this weeks appointment gets moved to next week, add 7
 				displaceTime += 7 * AlarmManager.INTERVAL_DAY;
 			
 		} 
-		else if(nowDay < endDay && startDay < endDay && startDay < nowDay){
+		else if(startDay < nowDay && endDay >= nowDay){
 			// if next weeks appointment gets moved to current week, subtract 7
 			displaceTime -= 7 * AlarmManager.INTERVAL_DAY;
 		}
+		else if(startDay == endDay)
+			return;
+		
+		
+		
 		Time appTime = app.getTime();
-		appTime.set(appTime.toMillis(true) - displaceTime);
+		appTime.set(appTime.toMillis(false) - displaceTime);
 		app.setTime(appTime);
 		System.out.println(appTime.toString() + " GAYDAR");
+		System.out.println(app.getTime().weekDay + " should be: " + endDay + " GAYDAR");
 		return;
 	}
 
@@ -48,20 +59,20 @@ public class TimeHandler {
 	private static int findWeekDay(View view) {
 	// treat sunday as 7 for practical purposes.
 		switch (view.getId()) {
-		case R.id.listView1:
+		case R.id.mondayLv:
 			return Time.MONDAY;
-		case R.id.listView2:
+		case R.id.tuesdayLv:
 			return Time.TUESDAY;
-		case R.id.listView3:
+		case R.id.wednesdayLv:
 			return Time.WEDNESDAY;
-		case R.id.listView4:
+		case R.id.thursdayLv:
 			return Time.THURSDAY;
-		case R.id.listView5:
+		case R.id.fridayLv:
 			return Time.FRIDAY;
-		case R.id.listView6:
+		case R.id.saturdayLv:
 			return Time.SATURDAY;
 		default:
-			return Time.SUNDAY + 7;
+			return (Time.SUNDAY + 7);
 		}
 
 	}

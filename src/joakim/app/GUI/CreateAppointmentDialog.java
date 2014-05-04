@@ -1,5 +1,8 @@
 package joakim.app.GUI;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 import joakim.app.data.Appointment;
 import joakim.app.schedul.R;
 import android.app.DialogFragment;
@@ -97,8 +100,10 @@ public class CreateAppointmentDialog extends DialogFragment implements OnItemSel
 	//create an appointment for display on screen so user can drag into desired week-day
 	private Appointment createAppointmentObject(){
 		Time time = new Time();
-		//sorterer bare relativt innenfor lista, og dag/måned/år settes når vi dropper en appointment inn i lista.
-		time.set(0, tp.getCurrentMinute(), tp.getCurrentHour(), 0, 0, 0);
+		Calendar cal = new GregorianCalendar();
+		
+		//set all Time-variables except seconds.
+		time.set(0, tp.getCurrentMinute(), tp.getCurrentHour(), cal.get(Calendar.DAY_OF_MONTH), cal.get(Calendar.MONTH), cal.get(Calendar.YEAR));
 		
 		String desc = mEditText.getText().toString();
 		

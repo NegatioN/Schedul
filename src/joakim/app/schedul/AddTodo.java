@@ -124,7 +124,6 @@ public class AddTodo extends Activity implements CreateAppointmentDialogListener
 	//avslutter activity og sender alle arrays til main.
 	public void finish(){
 		setResult(RESULT_OK, sendArrayLists());
-		System.out.println("RESULT SET");
 		super.finish();
 	}
 	
@@ -133,13 +132,13 @@ public class AddTodo extends Activity implements CreateAppointmentDialogListener
 	
 	//initialize views, dropzoneadapters, ontouchadapters
 	private void initializeViews(){
-		ListView lw = (ListView)findViewById(R.id.listView1);
-		ListView lw2 = (ListView)findViewById(R.id.listView2);
-		ListView lw3 = (ListView)findViewById(R.id.listView3);
-		ListView lw4 = (ListView)findViewById(R.id.listView4);
-		ListView lw5 = (ListView)findViewById(R.id.listView5);
-		ListView lw6 = (ListView)findViewById(R.id.listView6);
-		ListView lw7 = (ListView)findViewById(R.id.listView7);
+		ListView lw = (ListView)findViewById(R.id.mondayLv);
+		ListView lw2 = (ListView)findViewById(R.id.tuesdayLv);
+		ListView lw3 = (ListView)findViewById(R.id.wednesdayLv);
+		ListView lw4 = (ListView)findViewById(R.id.thursdayLv);
+		ListView lw5 = (ListView)findViewById(R.id.fridayLv);
+		ListView lw6 = (ListView)findViewById(R.id.saturdayLv);
+		ListView lw7 = (ListView)findViewById(R.id.sundayLv);
 		
 		
 		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
