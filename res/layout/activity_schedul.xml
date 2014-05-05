@@ -17,4 +17,11 @@
         android:layout_marginTop="40dp"
         android:text="@string/hello_world" />
 
+    <TextView
+        android:id="@+id/tvCountDown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvDisplayAppointment"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

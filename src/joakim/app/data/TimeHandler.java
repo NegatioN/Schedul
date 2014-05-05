@@ -54,6 +54,14 @@ public class TimeHandler {
 		return;
 	}
 
+	public static Appointment makeNew(Appointment a){
+		long displaceTime = 7 * AlarmManager.INTERVAL_DAY; 
+		
+		Time appTime = a.getTime();
+		appTime.set(appTime.toMillis(false) + displaceTime);
+		a.setTime(appTime);
+		return a;
+	}
 
 	// finds the weekday of a Listview passed in by the draglistener
 	private static int findWeekDay(View view) {

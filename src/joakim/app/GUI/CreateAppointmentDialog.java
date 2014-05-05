@@ -108,7 +108,7 @@ public class CreateAppointmentDialog extends DialogFragment implements OnItemSel
 		String desc = mEditText.getText().toString();
 		
 		//endre til å lage en summary-text
-		Appointment app = new Appointment(priorityColor, desc, time,false);
+		Appointment app = new Appointment(priorityColor, desc, time,true);
 		return app;
 	}
 	
