@@ -41,6 +41,14 @@
                 android:value="joakim.app.schedul.Schedul" />
         </activity>
         
+                <activity
+            android:name="joakim.app.schedul.DummyAlarmActivity"
+            android:label="@string/title_activity_dummy_alarm_activity"
+            android:parentActivityName="joakim.app.schedul.Schedul"
+            android:theme="@android:style/Theme.Dialog"
+            android:excludeFromRecents="true">
+        </activity>
+        
         <receiver android:name=".Alarm"/>
     </application>
 

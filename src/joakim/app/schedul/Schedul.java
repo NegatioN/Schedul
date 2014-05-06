@@ -194,10 +194,10 @@ try{
 // (last part not implemented yet)
 	private boolean setAlarmFragment(Appointment app) {
 		if (app != null) {
-//			alarm = new Alarm();
+			alarm = new Alarm();
 			Time t = app.getTime();
 			t.set(t.toMillis(false) - AlarmManager.INTERVAL_HOUR);
-//			alarm.setAlarm(this, t);
+			alarm.setAlarm(this, t);
 
 			return true;
 		}
@@ -252,8 +252,9 @@ try{
 				al.remove(a);
 				
 				//we create a new object 7 days in the future after current appointment and add it to the list.
-				if(a.isPersistent())
-					al.add(TimeHandler.makeNew(a));
+				if(a.isPersistent()){
+//					al.add(TimeHandler.makeNew(a));
+				}
 					
 			} catch (NullPointerException np) {
 				return;
@@ -281,11 +282,11 @@ try{
 		time.set(0, 24, 5, cal.get(Calendar.DAY_OF_MONTH),
 				cal.get(Calendar.MONTH), cal.get(Calendar.YEAR));
 		appointments[0] = new Appointment(Appointment.NIMPORTANT,
-				"Yolo forever", time, false);
+				"Yolo forever", time, true);
 		appointments[1] = new Appointment(Appointment.URGENT,
-				"2 timer programmering", time, false);
+				"2 timer programmering", time, true);
 		appointments[2] = new Appointment(Appointment.MEDIUM, "Lag middag",
-				time, false);
+				time, true);
 		app.add(appointments[0]);
 		app.add(appointments[1]);
 		app.add(appointments[2]);

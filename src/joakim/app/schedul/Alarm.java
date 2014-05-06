@@ -1,5 +1,6 @@
 package joakim.app.schedul;
 
+import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -9,7 +10,7 @@ import android.content.SharedPreferences;
 import android.os.PowerManager;
 import android.preference.PreferenceManager;
 import android.text.format.Time;
-import android.widget.Toast;
+import android.util.Log;
 
 public class Alarm extends BroadcastReceiver {
 
@@ -28,14 +29,18 @@ public class Alarm extends BroadcastReceiver {
 		//TODO IN BROADCAST
 		if(counter > interval/HOUR){
 			cancelAlarm(context);
+			wl.release();
 			return;
 		}
-		Toast.makeText(context, "Alarm !!!!!!!!!!", Toast.LENGTH_LONG).show(); 
+		Log.d("AlarmFragment", "Runde:" + counter);
+		showFragment(context);
+//		Toast.makeText(context, "Alarm !!!!!!!!!!", Toast.LENGTH_LONG).show(); 
 		counter++;
 		wl.release();
 	}
 
 	public void setAlarm(Context context, Time time) {
+		
 		AlarmManager am = (AlarmManager) context
 				.getSystemService(Context.ALARM_SERVICE);
 		Intent i = new Intent(context, Alarm.class);
@@ -67,6 +72,14 @@ public class Alarm extends BroadcastReceiver {
 		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
 		int intervalMinutes = Integer.parseInt(preferences.getString("list_preference", "-1"));
 		interval = intervalMinutes;
+	}
+	private void showFragment(Context c) {
+//		DummyAlarmActivity daa = new DummyAlarmActivity();
+//		FragmentManager fm =  daa.getFragmentManager();
+//		AlarmDialog alarmDialog = AlarmDialog.newInstance(daa, "ALARM");
+//		alarmDialog.show(fm, "fragment_alarm");
+		Intent i = new Intent(c, DummyAlarmActivity.class);
+		((Activity)c).startActivity(i);
 	}
 
 }
