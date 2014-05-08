@@ -90,6 +90,7 @@ public final class R {
         public static final int button_add=0x7f070005;
         public static final int dialog_title_alarm_frequency=0x7f070009;
         public static final int hello_world=0x7f070002;
+        public static final int service_alarm=0x7f070010;
         public static final int summary_alarm_frequency=0x7f07000a;
         public static final int summary_locked_appointments=0x7f070006;
         public static final int title_activity_add_todo=0x7f070003;

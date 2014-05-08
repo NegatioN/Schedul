@@ -17,6 +17,7 @@ public class Alarm extends BroadcastReceiver {
 	private int counter = 0;
 	private int interval = -1;
 	private final int HOUR = 60;
+	private Context context;
 	
 	@Override
 	public void onReceive(Context context, Intent intent) {
@@ -32,18 +33,20 @@ public class Alarm extends BroadcastReceiver {
 			wl.release();
 			return;
 		}
+		
 		Log.d("AlarmFragment", "Runde:" + counter);
-		showFragment(context);
+//		showFragment(this.context);
 //		Toast.makeText(context, "Alarm !!!!!!!!!!", Toast.LENGTH_LONG).show(); 
 		counter++;
 		wl.release();
 	}
 
 	public void setAlarm(Context context, Time time) {
+		this.context = context;
 		
 		AlarmManager am = (AlarmManager) context
 				.getSystemService(Context.ALARM_SERVICE);
-		Intent i = new Intent(context, Alarm.class);
+		Intent i = new Intent(context, DummyAlarmActivity.class);
 		
 		//find user setting for intervals
 		setInterval(context);

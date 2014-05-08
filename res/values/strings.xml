@@ -17,5 +17,6 @@
     <string name="title_activity_user_settings">UserSettings</string>
     <string name="bClose">Close</string>
     <string name="title_activity_dummy_alarm_activity">Dummy</string>
+    <string name="service_alarm">AlarmService</string>
 
 </resources>

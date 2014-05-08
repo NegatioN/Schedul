@@ -40,16 +40,21 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="joakim.app.schedul.Schedul" />
         </activity>
-        
-                <activity
+        <activity
             android:name="joakim.app.schedul.DummyAlarmActivity"
+            android:excludeFromRecents="true"
             android:label="@string/title_activity_dummy_alarm_activity"
             android:parentActivityName="joakim.app.schedul.Schedul"
-            android:theme="@android:style/Theme.Dialog"
-            android:excludeFromRecents="true">
+            android:theme="@android:style/Theme.Dialog" >
         </activity>
-        
-        <receiver android:name=".Alarm"/>
+
+        <service
+            android:name="AlarmService"
+            android:icon="@drawable/ic_launcher"
+            android:label="@string/service_alarm" >
+        </service>
+
+        <receiver android:name=".Alarm" />
     </application>
 
 </manifest>
