@@ -53,6 +53,10 @@
             android:icon="@drawable/ic_launcher"
             android:label="@string/service_alarm" >
         </service>
+        <service
+            android:name="ObjectSaver"
+            android:icon="@drawable/ic_launcher" >
+        </service>
 
         <receiver android:name=".Alarm" />
     </application>

@@ -47,7 +47,7 @@ public class Schedul extends Activity {
 // testFillArray(aMan);
 // testFillArray(aOns);
 // testFillArray(aTir);
-//		testFillArray(aSøn);
+		testFillArray(aSøn);
 // testFillArray(aLør);
 // testFillArray(aTor);
 // testFillArray(aFre);
@@ -272,6 +272,7 @@ try{
 		System.out.println(checkbox);
 		System.out.println(pref.getAll().toString());
 	}
+	
 
 	private void testFillArray(ArrayList<Appointment> app) {
 		Appointment[] appointments = new Appointment[3];

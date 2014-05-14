@@ -15,6 +15,10 @@ public class Appointment implements Parcelable{
 	private boolean persistent;
 	private String regex = "\\s+";
 	
+	public Appointment(){
+		//empty constructor for ease in DB
+	}
+	
 	public Appointment(int priority, String description, Time time, boolean persistent){
 		//rekkefølgen er viktig pga summary caller time
 		this.priority = priority;
@@ -100,7 +104,30 @@ public class Appointment implements Parcelable{
 	public void setPersistent(boolean persistent) {
 		this.persistent = persistent;
 	}
+	//methods for interaction with timeObject and database
+	public String getDateTime(){
+		Time time = getTime();
+		String dateTime = "" + time.year + "-" +time.month+"-"+time.monthDay+"T"+time.hour+":"+time.minute+":"+time.second;
+		return dateTime;
+	}
+	public void setDateTime(String string){
+		String reg = "[-:T]";
+		String[] values = string.split(reg);
+		
+		Time time = new Time();
+		time.year = Integer.parseInt(values[0]);
+		time.month = Integer.parseInt(values[1]);
+		time.monthDay = Integer.parseInt(values[2]);
+		time.hour = Integer.parseInt(values[3]);
+		time.minute = Integer.parseInt(values[4]);
+		time.second = Integer.parseInt(values[5]);
+		
+		time.normalize(false);
+		setTime(time);
+		
+	}
 
+	//start Parcelable-stuff
 	@Override
 	public int describeContents() {
 		return 0;

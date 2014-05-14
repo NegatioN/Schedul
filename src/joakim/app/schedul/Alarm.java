@@ -11,13 +11,13 @@ import android.os.PowerManager;
 import android.preference.PreferenceManager;
 import android.text.format.Time;
 import android.util.Log;
+import android.widget.Toast;
 
 public class Alarm extends BroadcastReceiver {
 
 	private int counter = 0;
 	private int interval = -1;
 	private final int HOUR = 60;
-	private Context context;
 	
 	@Override
 	public void onReceive(Context context, Intent intent) {
@@ -42,24 +42,26 @@ public class Alarm extends BroadcastReceiver {
 	}
 
 	public void setAlarm(Context context, Time time) {
-		this.context = context;
+		
+		
 		
 		AlarmManager am = (AlarmManager) context
 				.getSystemService(Context.ALARM_SERVICE);
-		Intent i = new Intent(context, DummyAlarmActivity.class);
-		
-		//find user setting for intervals
-		setInterval(context);
-		
-		PendingIntent pi = PendingIntent.getBroadcast(context, 0, i, 0);
+		Intent i = new Intent(context, AlarmService.class);
+//		
+//		//find user setting for intervals
+//		setInterval(context);
+//		
+		PendingIntent pi = PendingIntent.getService(context, 0, i, 0);
 		
 		//set repeating or not based on user settings
 		if(interval == -1){
-			am.set(AlarmManager.RTC_WAKEUP, time.toMillis(true), pi);
+			am.set(AlarmManager.RTC_WAKEUP, time.toMillis(false), pi);
 		}
 		else
-		am.setRepeating(AlarmManager.RTC_WAKEUP, time.toMillis(true),
+		am.setRepeating(AlarmManager.RTC_WAKEUP, time.toMillis(false),
 				1000 * 60 * interval, pi); // Millisec * Second * Minute
+		Toast.makeText(context, "Alarm set", Toast.LENGTH_SHORT).show();
 	}
 
 	public void cancelAlarm(Context context) {
@@ -81,8 +83,8 @@ public class Alarm extends BroadcastReceiver {
 //		FragmentManager fm =  daa.getFragmentManager();
 //		AlarmDialog alarmDialog = AlarmDialog.newInstance(daa, "ALARM");
 //		alarmDialog.show(fm, "fragment_alarm");
-		Intent i = new Intent(c, DummyAlarmActivity.class);
-		((Activity)c).startActivity(i);
+//		Intent i = new Intent(c, DummyAlarmActivity.class);
+//		((Activity)c).startActivity(i);
 	}
 
 }
