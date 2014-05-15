@@ -14,6 +14,7 @@ public class Appointment implements Parcelable{
 	private Time time;
 	private boolean persistent;
 	private String regex = "\\s+";
+	private int id;
 	
 	public Appointment(){
 		//empty constructor for ease in DB
@@ -95,6 +96,12 @@ public class Appointment implements Parcelable{
 
 	public void setTime(Time time) {
 		this.time = time;
+	}
+	public void setId(int id){
+		this.id = id;
+	}
+	public int getId(){
+		return this.id;
 	}
 
 	public boolean isPersistent() {
