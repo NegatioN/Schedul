@@ -7,6 +7,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.text.format.Time;
 import android.util.Log;
 
 public class MySQLHelper extends SQLiteOpenHelper{
@@ -26,13 +27,13 @@ public class MySQLHelper extends SQLiteOpenHelper{
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		String CREATE_APPOINTMENT_TABLE = "CREATE TABLE Appointments (" +
+		String CREATE_APPOINTMENT_TABLE = "CREATE TABLE appointments (" +
 	"id INTEGER PRIMARY KEY AUTOINCREMENT," +
 	"priority INTEGER," +
 	"description TEXT," +
-	"summary TEXT" + 
-	"time DATETIME, " +
-	"persistent BOOLEAN )";
+	"summary TEXT," + 
+	"time TEXT, " +
+	"persistent INTEGER )";
 		//dateTime formatted as YYYY-MM-DDTHH:MM:SS
 		db.execSQL(CREATE_APPOINTMENT_TABLE);
 	}
@@ -56,11 +57,12 @@ public class MySQLHelper extends SQLiteOpenHelper{
 		
 		//create contentvalues to add key column/value
 		ContentValues values = new ContentValues();
+
 		values.put(KEY_PRIORITY, appointment.getPriority());
 		values.put(KEY_DESCRIPTION, appointment.getDescription());
 		values.put(KEY_SUMMARY, appointment.getSummary());
 		values.put(KEY_TIME, appointment.getDateTime());
-		values.put(KEY_PERSISTENT, appointment.isPersistent());
+		values.put(KEY_PERSISTENT, appointment.isPersistent() ? 1 : 0);
 		
 		db.insert(TABLE_APPOINTMENTS,
 				null,
@@ -69,9 +71,12 @@ public class MySQLHelper extends SQLiteOpenHelper{
 		//set the auto-increment ID from database to the current object.
 		String query = "Select * FROM " + TABLE_APPOINTMENTS;
 		
+		//create function to assign ID from database to object
 		Cursor cursor = db.rawQuery(query, null);
 		if(cursor != null){
 			cursor.moveToLast();
+			int id = cursor.getInt(0);
+			Log.d("setId " + id, appointment.toString());
 			appointment.setId(cursor.getInt(0));
 		}
 		
@@ -97,13 +102,28 @@ public class MySQLHelper extends SQLiteOpenHelper{
 		
 		Appointment app = new Appointment();
 		app = setAppointmentInfo(app, cursor);
-		
+		db.close();
 		Log.d("getAppointment("+id+")", app.toString());
 						
 		return app;
 	}
-	public ArrayList<Appointment> getAllAppointments(){
-		ArrayList<Appointment> appointments = new ArrayList<Appointment>();
+	public ArrayList<ArrayList<Appointment>> getAllAppointments(){
+		ArrayList<Appointment> aMon = new ArrayList<Appointment>();
+		ArrayList<Appointment> aTue = new ArrayList<Appointment>();
+		ArrayList<Appointment> aWed = new ArrayList<Appointment>();
+		ArrayList<Appointment> aThu = new ArrayList<Appointment>();
+		ArrayList<Appointment> aFri = new ArrayList<Appointment>();
+		ArrayList<Appointment> aSat = new ArrayList<Appointment>();
+		ArrayList<Appointment> aSun = new ArrayList<Appointment>();
+		
+		ArrayList<ArrayList<Appointment>> appointmentDays = new ArrayList<ArrayList<Appointment>>();
+		appointmentDays.add(aMon);
+		appointmentDays.add(aTue);
+		appointmentDays.add(aWed);
+		appointmentDays.add(aThu);
+		appointmentDays.add(aFri);
+		appointmentDays.add(aSat);
+		appointmentDays.add(aSun);
 		
 		String query = "Select * FROM " + TABLE_APPOINTMENTS;
 		
@@ -116,14 +136,14 @@ public class MySQLHelper extends SQLiteOpenHelper{
 				app = new Appointment();
 				app = setAppointmentInfo(app, cursor);
 				
-				appointments.add(app);
+				addToDayArray(appointmentDays, app);
 			}while(cursor.moveToNext());
 		}
 		
-		Log.d("getAllAppointments()", appointments.toString());
+		Log.d("getAllAppointments()", appointmentDays.toString());
 		
 		
-		return appointments;
+		return appointmentDays;
 	}
 	//sets all the info from from the database in to a given Appointment-object.
 	private Appointment setAppointmentInfo(Appointment a, Cursor c){
@@ -132,6 +152,7 @@ public class MySQLHelper extends SQLiteOpenHelper{
 		a.setSummary(c.getString(3));
 		a.setDateTime(c.getString(4));
 		a.setPersistent(c.getInt(5)>0);
+		Log.d("setAppointmentInfo", a.toString());
 		return a;
 	}
 	
@@ -143,7 +164,7 @@ public class MySQLHelper extends SQLiteOpenHelper{
 		values.put(KEY_DESCRIPTION, appointment.getDescription());
 		values.put(KEY_SUMMARY, appointment.getSummary());
 		values.put(KEY_TIME, appointment.getDateTime());
-		values.put(KEY_PERSISTENT, appointment.isPersistent());
+		values.put(KEY_PERSISTENT, appointment.isPersistent() ? 1 : 0);
 		
 		//find relevant row
 		int i = db.update(TABLE_APPOINTMENTS, values, KEY_ID+" = ?", new String[]{String.valueOf(appointment.getId())});
@@ -159,6 +180,34 @@ public class MySQLHelper extends SQLiteOpenHelper{
 		
 		db.close();
 		Log.d("deleteAppointment()", appointment.toString());
+	}
+	
+	//random methods for help
+	private void addToDayArray(ArrayList<ArrayList<Appointment>> appointmentDays, Appointment a) {
+
+		switch (a.getTime().weekDay) {
+		case 0:
+			appointmentDays.get(0).add(a);
+			break;
+		case 1:
+			appointmentDays.get(1).add(a);
+			break;
+		case 2:
+			appointmentDays.get(2).add(a);
+			break;
+		case 3:
+			appointmentDays.get(3).add(a);
+			break;
+		case 4:
+			appointmentDays.get(4).add(a);
+			break;
+		case 5:
+			appointmentDays.get(5).add(a);
+			break;
+		default:
+			appointmentDays.get(6).add(a);
+			break;
+		}
 	}
 
 }

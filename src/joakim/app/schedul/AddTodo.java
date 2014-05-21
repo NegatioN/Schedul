@@ -8,6 +8,7 @@ import joakim.app.GUI.CreateAppointmentDialog.CreateAppointmentDialogListener;
 import joakim.app.GUI.DragZoneListener;
 import joakim.app.GUI.LvOnItemTouchListener;
 import joakim.app.data.Appointment;
+import joakim.app.data.MySQLHelper;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.content.Intent;
@@ -143,21 +144,24 @@ public class AddTodo extends Activity implements CreateAppointmentDialogListener
 		
 		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
 		boolean appointmentLocked = preferences.getBoolean("checkbox_preference", false);
-			initializeListeners(lw, aMan,appointmentLocked);
-			initializeListeners(lw2, aTir,appointmentLocked);
-			initializeListeners(lw3, aOns,appointmentLocked);
-			initializeListeners(lw4, aTor,appointmentLocked);
-			initializeListeners(lw5, aFre,appointmentLocked);
-			initializeListeners(lw6, aLør,appointmentLocked);
-			initializeListeners(lw7, aSøn,appointmentLocked);
+		
+		//we make the db here, so all dragzones can share the same one for writing objects.
+		MySQLHelper db = new MySQLHelper(getApplicationContext());
+			initializeListeners(lw, aMan,appointmentLocked,db);
+			initializeListeners(lw2, aTir,appointmentLocked,db);
+			initializeListeners(lw3, aOns,appointmentLocked,db);
+			initializeListeners(lw4, aTor,appointmentLocked,db);
+			initializeListeners(lw5, aFre,appointmentLocked,db);
+			initializeListeners(lw6, aLør,appointmentLocked,db);
+			initializeListeners(lw7, aSøn,appointmentLocked,db);
 			
 		
 	}
 	//initializes listeners based on user-settings
-	private void initializeListeners(ListView lw, ArrayList<Appointment> al, boolean appLocked){
+	private void initializeListeners(ListView lw, ArrayList<Appointment> al, boolean appLocked, MySQLHelper db){
 		lw.setAdapter(new ArrayListAdapter(this,al));
 		if(!appLocked)
-		lw.setOnDragListener(new DragZoneListener(this));
+		lw.setOnDragListener(new DragZoneListener(this, db));
 	}
 	
 	private void loadArrayLists(Intent data){

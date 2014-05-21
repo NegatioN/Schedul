@@ -6,12 +6,12 @@ import java.util.Collections;
 import joakim.app.data.Appointment;
 import joakim.app.data.AppointmentComparator;
 import joakim.app.data.ArrayListHandler;
+import joakim.app.data.MySQLHelper;
 import joakim.app.data.TimeHandler;
 import joakim.app.schedul.AddTodo;
 import joakim.app.schedul.R;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.text.format.Time;
 import android.view.DragEvent;
 import android.view.View;
 import android.view.View.OnDragListener;
@@ -23,9 +23,11 @@ import android.widget.TextView;
 public class DragZoneListener implements OnDragListener {
 
 	private Context	context;
-
-	public DragZoneListener(Context c) {
+	private MySQLHelper db;
+	
+	public DragZoneListener(Context c, MySQLHelper db) {
 		context = c;
+		this.db = db;
 	}
 	
 	
@@ -62,6 +64,8 @@ public class DragZoneListener implements OnDragListener {
 			if (parentView instanceof LinearLayout) {
 				AddTodo getter = (AddTodo) context;
 				appointment = getter.getRecentAppointment();
+				db.addAppointment(appointment);
+				
 			} 
 			//hvis dette er ett objekt som flyttes fra en list til en annen
 			else {
@@ -76,7 +80,7 @@ public class DragZoneListener implements OnDragListener {
 				appointment = ArrayListHandler.findElementByText(
 						startList, view);
 
-
+				db.updateAppointment(appointment);
 				// use all variables and update listviews
 				removeItem(appointment, startList, startAdapter);
 			}

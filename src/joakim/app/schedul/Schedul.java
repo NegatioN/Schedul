@@ -7,7 +7,7 @@ import java.util.GregorianCalendar;
 import joakim.app.GUI.AlarmCountdown;
 import joakim.app.data.Appointment;
 import joakim.app.data.AppointmentComparator;
-import joakim.app.data.TimeHandler;
+import joakim.app.data.MySQLHelper;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.content.Intent;
@@ -38,19 +38,16 @@ public class Schedul extends Activity {
 	private Handler					tvHandler;
 	private Alarm					alarm;
 	private AlarmCountdown alarmCountDown;
+	private MySQLHelper db;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_schedul);
 
-// testFillArray(aMan);
-// testFillArray(aOns);
-// testFillArray(aTir);
-		testFillArray(aSøn);
-// testFillArray(aLør);
-// testFillArray(aTor);
-// testFillArray(aFre);
+		//gets all the information we may or may not have in the database.
+		fillArraysFromDb();
+		
 		displayAppointment = (TextView) findViewById(R.id.tvDisplayAppointment);
 		countDown = (TextView) findViewById(R.id.tvCountDown);
 
@@ -291,6 +288,24 @@ try{
 		app.add(appointments[0]);
 		app.add(appointments[1]);
 		app.add(appointments[2]);
+		db = new MySQLHelper(this);
+		db.addAppointment(appointments[0]);
+		db.addAppointment(appointments[1]);
+		db.addAppointment(appointments[2]);
+	}
+	
+	private void fillArraysFromDb(){
+		db = new MySQLHelper(this);
+		ArrayList<ArrayList<Appointment>> appointmentDays = db.getAllAppointments();
+		
+		aMan = appointmentDays.get(0);
+		aTir = appointmentDays.get(1);
+		aOns = appointmentDays.get(2);
+		aTor = appointmentDays.get(3);
+		aFre = appointmentDays.get(4);
+		aLør = appointmentDays.get(5);
+		aSøn = appointmentDays.get(6);
+		
 	}
 
 }
