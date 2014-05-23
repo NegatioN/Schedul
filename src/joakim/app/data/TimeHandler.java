@@ -10,40 +10,54 @@ import android.view.View;
 // motion in addTodo-screen.
 public class TimeHandler {
 
-	// remove milliseconds from Time-object? that way we only need to find the
-// difference in days.
-	public static void changeTimeOfAppointment(Appointment app, View slutt) {
+	//displaces the date of an appointment based on where user moves it in the week-calendar.
+	public static void changeTimeOfAppointment(Appointment a, View slutt){
 		Time time = new Time();
 		time.setToNow();
 
 		int endDay = findWeekDay(slutt);
 		int nowDay = time.weekDay;
-		int startDay = app.getTime().weekDay;
+		int startDay = a.getTime().weekDay;
 		// if we have a sunday on our hands we treat it as a 7
 		if (startDay == 0) startDay = 7;
 		if (nowDay == 0) nowDay = 7;
-
-		// difference between days times millis in a day
-		long displaceTime = -(startDay - endDay) * AlarmManager.INTERVAL_DAY;
-
-		// special conditions
-		if (startDay >= nowDay && endDay < nowDay) {
-			// if this weeks appointment gets moved to next week, add 7
-			displaceTime += (7 * AlarmManager.INTERVAL_DAY);
-
-		} else if (startDay < nowDay && endDay >= nowDay) {
-			// if next weeks appointment gets moved to current week, subtract 7
-			displaceTime -= (7 * AlarmManager.INTERVAL_DAY);
+		
+		Log.d("Timehandler Days", "now:" + nowDay + " start:" + startDay + " end:" + endDay);
+		
+		int displaceDays = endDay - startDay;
+		
+		if(displaceDays == 0)
+			return;
+		else if(displaceDays < 0 ){
+			//our appointment has been moved "backwards" since END - START < 0
+			//if we traverse back, but both start and end are HIGHER than NOW, it should be unchanged! we have moved back in current week
+			//if we traverse back, but both start and end are LOWER than NOW it should be unchanged! we have moved back within the next week.
+			
+			//if traverse back, start is higher than or equal to NOW, but end is lower, we have gone into the next week
+			if(nowDay <= startDay && nowDay > endDay){
+			displaceDays += 7;
+				if(nowDay == endDay){
+					//we need to check the time-object as to wether we are in current week, or next
+				}
+			}
 		}
-		// if we're dropping it in the same day, we don't need to displace
-// anything.
-		else if (startDay == endDay) return;
-
-		Time appTime = app.getTime();
-		appTime.set(appTime.toMillis(false) + displaceTime);
-		app.setTime(appTime);
-		Log.d("Timehandler changeApp", appTime.toString());
-		return;
+		else{
+			//our appointment has been moved "forward"
+			
+			if(nowDay <= endDay && nowDay > startDay){
+				displaceDays -= 7;
+				if(nowDay == endDay){
+					//we need to check the time-object as to wether we are in current week, or previous
+				}
+			}
+			
+		}
+		a.getTime().monthDay += displaceDays;
+		Log.d("Timehandler displacedays", displaceDays + "");
+		a.getTime().normalize(false);
+		
+		Log.d("Timehandler changeApp", a.getTime().toString());
+		
 	}
 
 	//metoden funker ikke som den skal. Vi vil incremente med 7 dager på appointmenten.

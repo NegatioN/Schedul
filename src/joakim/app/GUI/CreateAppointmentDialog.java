@@ -100,10 +100,12 @@ public class CreateAppointmentDialog extends DialogFragment implements OnItemSel
 	//create an appointment for display on screen so user can drag into desired week-day
 	private Appointment createAppointmentObject(){
 		Time time = new Time();
-		Calendar cal = new GregorianCalendar();
 		
+		time.setToNow();
 		//set all Time-variables except seconds.
-		time.set(0, tp.getCurrentMinute(), tp.getCurrentHour(), cal.get(Calendar.DAY_OF_MONTH), cal.get(Calendar.MONTH), cal.get(Calendar.YEAR));
+		time.set(0, tp.getCurrentMinute(), tp.getCurrentHour(), time.monthDay, time.month, time.year);
+		
+		time.normalize(false);
 		
 		String desc = mEditText.getText().toString();
 		

@@ -136,6 +136,7 @@ public class MySQLHelper extends SQLiteOpenHelper{
 				app = new Appointment();
 				app = setAppointmentInfo(app, cursor);
 				
+				Log.d("setAppointment.Getappointments", app.getSummary() + " - " + app.getTime().toString());
 				addToDayArray(appointmentDays, app);
 			}while(cursor.moveToNext());
 		}
@@ -152,7 +153,7 @@ public class MySQLHelper extends SQLiteOpenHelper{
 		a.setSummary(c.getString(3));
 		a.setDateTime(c.getString(4));
 		a.setPersistent(c.getInt(5)>0);
-		Log.d("setAppointmentInfo", a.toString());
+		Log.d("setAppointmentInfo", a.toString() + ":" + a.getTime().toString());
 		return a;
 	}
 	
@@ -166,8 +167,9 @@ public class MySQLHelper extends SQLiteOpenHelper{
 		values.put(KEY_TIME, appointment.getDateTime());
 		values.put(KEY_PERSISTENT, appointment.isPersistent() ? 1 : 0);
 		
-		//find relevant row
+		//find relevant row in database to update
 		int i = db.update(TABLE_APPOINTMENTS, values, KEY_ID+" = ?", new String[]{String.valueOf(appointment.getId())});
+		Log.d("updateAppointment", appointment.getTime().toString());
 		
 		db.close();
 		

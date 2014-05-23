@@ -258,6 +258,21 @@ try{
 			}
 		}
 	}
+	
+	//gets all the information from the database and fills in our arrays.
+	private void fillArraysFromDb(){
+		db = new MySQLHelper(this);
+		ArrayList<ArrayList<Appointment>> appointmentDays = db.getAllAppointments();
+		
+		aMan = appointmentDays.get(0);
+		aTir = appointmentDays.get(1);
+		aOns = appointmentDays.get(2);
+		aTor = appointmentDays.get(3);
+		aFre = appointmentDays.get(4);
+		aLør = appointmentDays.get(5);
+		aSøn = appointmentDays.get(6);
+		
+	}
 
 	// TEST-PROGRAM-METHODS
 	private void findPreferences() {
@@ -294,18 +309,5 @@ try{
 		db.addAppointment(appointments[2]);
 	}
 	
-	private void fillArraysFromDb(){
-		db = new MySQLHelper(this);
-		ArrayList<ArrayList<Appointment>> appointmentDays = db.getAllAppointments();
-		
-		aMan = appointmentDays.get(0);
-		aTir = appointmentDays.get(1);
-		aOns = appointmentDays.get(2);
-		aTor = appointmentDays.get(3);
-		aFre = appointmentDays.get(4);
-		aLør = appointmentDays.get(5);
-		aSøn = appointmentDays.get(6);
-		
-	}
 
 }
