@@ -32,6 +32,7 @@ public class Appointment implements Parcelable{
 	//constructor for create parcelable i main.
 	public Appointment(Parcel in){
 		Time time = new Time();
+		this.id = in.readInt();
 		this.priority = in.readInt();
 		this.description = in.readString();
 		this.summary = in.readString();
@@ -171,6 +172,7 @@ public class Appointment implements Parcelable{
 	@Override
 	public void writeToParcel(Parcel dest, int flags) {
 		Time time = getTime();
+		dest.writeInt(id);
 		dest.writeInt(priority);
 		dest.writeString(description);
 		dest.writeString(summary);

@@ -67,6 +67,7 @@ public class DragZoneListener implements OnDragListener {
 				appointment = getter.getRecentAppointment();
 				//edits day/week of appointment based on where we start and end.
 				TimeHandler.changeTimeOfAppointment(appointment, v);
+				//add appointment to database
 				db.addAppointment(appointment);
 				
 				
@@ -86,7 +87,8 @@ public class DragZoneListener implements OnDragListener {
 				
 				//edits day/week of appointment based on where we start and end.
 				TimeHandler.changeTimeOfAppointment(appointment, v);
-				Log.d("updateAppDragZone", appointment.getTime().toString());
+
+				//update appointment in DB
 				db.updateAppointment(appointment);
 				// use all variables and update listviews
 				removeItem(appointment, startList, startAdapter);

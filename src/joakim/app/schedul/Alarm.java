@@ -50,18 +50,20 @@ public class Alarm extends BroadcastReceiver {
 		Intent i = new Intent(context, AlarmService.class);
 //		
 //		//find user setting for intervals
-//		setInterval(context);
+		setInterval(context);
 //		
 		PendingIntent pi = PendingIntent.getService(context, 0, i, 0);
 		
 		//set repeating or not based on user settings
 		if(interval == -1){
-			am.set(AlarmManager.RTC_WAKEUP, time.toMillis(false), pi);
+			am.set(AlarmManager.RTC_WAKEUP, time.toMillis(false) 
+//					+ AlarmManager.INTERVAL_HOUR
+					, pi);
 		}
 		else
 		am.setRepeating(AlarmManager.RTC_WAKEUP, time.toMillis(false),
 				1000 * 60 * interval, pi); // Millisec * Second * Minute
-		Toast.makeText(context, "Alarm set", Toast.LENGTH_SHORT).show();
+		Toast.makeText(context, "Alarm set " + interval, Toast.LENGTH_SHORT).show();
 	}
 
 	public void cancelAlarm(Context context) {

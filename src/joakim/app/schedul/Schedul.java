@@ -114,16 +114,6 @@ public class Schedul extends Activity {
 		Intent result = new Intent(this, AddTodo.class);
 		result.putExtra(RESULT_REQUEST, true);
 		
-		//LOG!!!
-		parcelableLog(aMan);
-		parcelableLog(aTir);
-		parcelableLog(aOns);
-		parcelableLog(aTor);
-		parcelableLog(aFre);
-		parcelableLog(aLør);
-		parcelableLog(aSøn);
-		
-		
 		result.putParcelableArrayListExtra("man", aMan);
 		result.putParcelableArrayListExtra("tir", aTir);
 		result.putParcelableArrayListExtra("ons", aOns);
@@ -161,14 +151,14 @@ public class Schedul extends Activity {
 		Appointment closestAppointment = null;
 
 		// tries getting next appointment from a day's arraylist, else go to next day.
-try{
+		try{
 	//if we're in current day, find closest appointment by hours+minutes and upwards
 	if(counter == 1)
 		closestAppointment = findClosestAppointmentByTime(t, a);
 	//else get first object in closest array with object in it.
 	else
        closestAppointment = a.get(0);
-}catch(NullPointerException e){
+		}catch(NullPointerException e){
 		// we did not find a suitable appointment in searched array.
 			Time time = t;
 			// checks weekday and does ++

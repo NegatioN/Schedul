@@ -33,7 +33,8 @@ public class AlarmService extends Service{
     	.setContentText("THIS IS AN ALARM")
     	.setSmallIcon(R.drawable.ic_launcher)
     	.setContentIntent(pi)
-    	.setSound(sound);
+    	.setSound(sound)
+    	.setVibrate(new long[] { 1000, 1000 });
 //    	.addAction(0, "Exit?", pi);
     	
     	final Notification notify = mNotify.getNotification();
