@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.text.format.Time;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -112,6 +113,17 @@ public class Schedul extends Activity {
 	private Intent sendArrayLists() {
 		Intent result = new Intent(this, AddTodo.class);
 		result.putExtra(RESULT_REQUEST, true);
+		
+		//LOG!!!
+		parcelableLog(aMan);
+		parcelableLog(aTir);
+		parcelableLog(aOns);
+		parcelableLog(aTor);
+		parcelableLog(aFre);
+		parcelableLog(aLør);
+		parcelableLog(aSøn);
+		
+		
 		result.putParcelableArrayListExtra("man", aMan);
 		result.putParcelableArrayListExtra("tir", aTir);
 		result.putParcelableArrayListExtra("ons", aOns);
@@ -264,13 +276,14 @@ try{
 		db = new MySQLHelper(this);
 		ArrayList<ArrayList<Appointment>> appointmentDays = db.getAllAppointments();
 		
-		aMan = appointmentDays.get(0);
-		aTir = appointmentDays.get(1);
-		aOns = appointmentDays.get(2);
-		aTor = appointmentDays.get(3);
-		aFre = appointmentDays.get(4);
-		aLør = appointmentDays.get(5);
-		aSøn = appointmentDays.get(6);
+		
+		aMan = appointmentDays.get(1);
+		aTir = appointmentDays.get(2);
+		aOns = appointmentDays.get(3);
+		aTor = appointmentDays.get(4);
+		aFre = appointmentDays.get(5);
+		aLør = appointmentDays.get(6);
+		aSøn = appointmentDays.get(0);
 		
 	}
 
@@ -309,5 +322,10 @@ try{
 		db.addAppointment(appointments[2]);
 	}
 	
+	
+	private void parcelableLog(ArrayList<Appointment> appointments){
+		for(Appointment a : appointments)
+			Log.d("parcelableLog", a.getTime().toString());
+	}
 
 }

@@ -50,7 +50,7 @@ public class MySQLHelper extends SQLiteOpenHelper{
 	//------------------ Methods for interacting with objects
 	
 	public void addAppointment(Appointment appointment){
-		Log.d("addAppointment", appointment.toString());
+		Log.d("addAppointment", appointment.getTime().toString());
 		
 		//get reference to writeable database
 		SQLiteDatabase db = this.getWritableDatabase();
@@ -148,6 +148,8 @@ public class MySQLHelper extends SQLiteOpenHelper{
 	}
 	//sets all the info from from the database in to a given Appointment-object.
 	private Appointment setAppointmentInfo(Appointment a, Cursor c){
+		Log.d("cursorInfo", c.getInt(0) + ":" + c.getInt(1) + ":" + c.getString(2) + ":" + c.getString(3) + ":" + c.getString(4) + ":" + c.getInt(5));
+		a.setId(c.getInt(0));
 		a.setPriority(c.getInt(1));
 		a.setDescription(c.getString(2));
 		a.setSummary(c.getString(3));
@@ -168,8 +170,17 @@ public class MySQLHelper extends SQLiteOpenHelper{
 		values.put(KEY_PERSISTENT, appointment.isPersistent() ? 1 : 0);
 		
 		//find relevant row in database to update
-		int i = db.update(TABLE_APPOINTMENTS, values, KEY_ID+" = ?", new String[]{String.valueOf(appointment.getId())});
-		Log.d("updateAppointment", appointment.getTime().toString());
+		int i = db.update(TABLE_APPOINTMENTS, 
+				values, 
+				KEY_ID+" = ?", 
+				new String[]{String.valueOf(appointment.getId())});
+		
+//		String query = "Select * FROM " + TABLE_APPOINTMENTS + " WHERE id=" + appointment.getId();
+//		Cursor c = db.rawQuery(query, null);
+//		c.moveToFirst();
+		
+		Log.d("updateAppointment", appointment.getTime().toString() + " : " + appointment.getId());
+//		+ c.getInt(0) + ":" + c.getInt(1) + ":" + c.getString(2) + ":" + c.getString(3) + ":" + c.getString(4) + ":" + c.getInt(5));
 		
 		db.close();
 		
@@ -178,7 +189,9 @@ public class MySQLHelper extends SQLiteOpenHelper{
 	public void deleteAppointment(Appointment appointment){
 		SQLiteDatabase db = this.getWritableDatabase();
 		
-		db.delete(TABLE_APPOINTMENTS, KEY_ID+" = ?", new String[] {String.valueOf(appointment.getId())});
+		db.delete(TABLE_APPOINTMENTS, 
+				KEY_ID+" = ?", 
+				new String[] {String.valueOf(appointment.getId())});
 		
 		db.close();
 		Log.d("deleteAppointment()", appointment.toString());
@@ -187,7 +200,9 @@ public class MySQLHelper extends SQLiteOpenHelper{
 	//random methods for help
 	private void addToDayArray(ArrayList<ArrayList<Appointment>> appointmentDays, Appointment a) {
 
-		switch (a.getTime().weekDay) {
+		int weekday = a.getTime().weekDay;
+		
+		switch (weekday) {
 		case 0:
 			appointmentDays.get(0).add(a);
 			break;

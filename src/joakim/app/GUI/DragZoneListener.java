@@ -12,6 +12,7 @@ import joakim.app.schedul.AddTodo;
 import joakim.app.schedul.R;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.DragEvent;
 import android.view.View;
 import android.view.View.OnDragListener;
@@ -64,7 +65,10 @@ public class DragZoneListener implements OnDragListener {
 			if (parentView instanceof LinearLayout) {
 				AddTodo getter = (AddTodo) context;
 				appointment = getter.getRecentAppointment();
+				//edits day/week of appointment based on where we start and end.
+				TimeHandler.changeTimeOfAppointment(appointment, v);
 				db.addAppointment(appointment);
+				
 				
 			} 
 			//hvis dette er ett objekt som flyttes fra en list til en annen
@@ -79,7 +83,10 @@ public class DragZoneListener implements OnDragListener {
 				// finner appointment i LV vi starta i, slik at vi kan fjerne og adde.
 				appointment = ArrayListHandler.findElementByText(
 						startList, view);
-
+				
+				//edits day/week of appointment based on where we start and end.
+				TimeHandler.changeTimeOfAppointment(appointment, v);
+				Log.d("updateAppDragZone", appointment.getTime().toString());
 				db.updateAppointment(appointment);
 				// use all variables and update listviews
 				removeItem(appointment, startList, startAdapter);
@@ -91,8 +98,7 @@ public class DragZoneListener implements OnDragListener {
 					.getAdapter();
 			
 			
-			//edits day/week of appointment based on where we start and end.
-			TimeHandler.changeTimeOfAppointment(appointment, v);
+
 			
 			ArrayList<Appointment> dropList = dropAdapter.getObjects();
 			addItem(appointment, dropList, dropAdapter);

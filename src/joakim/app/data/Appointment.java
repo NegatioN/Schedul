@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.format.Time;
+import android.util.Log;
 
 public class Appointment implements Parcelable{
 
@@ -34,11 +35,20 @@ public class Appointment implements Parcelable{
 		this.priority = in.readInt();
 		this.description = in.readString();
 		this.summary = in.readString();
+		
+		//read Time-object
+		int year = in.readInt();
+		int month = in.readInt();
+		int monthDay = in.readInt();
 		int hour = in.readInt();
 		int minute = in.readInt();
-		time.set(0, minute, hour, 0, 0, 0);
+		Log.d("createParcel", "Y:"+year + " M:" + month + " D:" + monthDay + " H:" +hour + "M:" + minute);
+		time.set(0, minute, hour, monthDay, month, year);
+		
+		time.normalize(false);
 		this.time = time;
-		//FIKS PÅ TIME FRA PARCELABLE
+
+		
 		if(in.readInt() == 1) this.persistent = true;
 		else
 			this.persistent = false;
@@ -62,8 +72,7 @@ public class Appointment implements Parcelable{
 
 	public String toString(){
 		//testmetode som ikke gir noe atm.
-//		return "Prioritet: " + getPriority() + " Beskrivelse: " + getDescription() + " Tid: " + getTime().hour + ":" + getTime().minute;
-		return getSummary();
+		return "ID:" + getId() + " Prioritet: " + getPriority() + " Beskrivelse: " + getDescription() + " Tid: " + getTime().hour + ":" + getTime().minute + " isPersistent:" + isPersistent();
 	}
 	
 	public int getPriority() {
@@ -114,6 +123,7 @@ public class Appointment implements Parcelable{
 	//methods for interaction with timeObject and database
 	public String getDateTime(){
 		Time time = getTime();
+		Log.d("getDateTime", time.toString() + " Month:" + time.month);
 		String dateTime = "" + time.year + "-" +time.month+"-"+time.monthDay+"T"+time.hour+":"+time.minute+":"+time.second;
 		return dateTime;
 	}
@@ -130,6 +140,8 @@ public class Appointment implements Parcelable{
 		time.second = Integer.parseInt(values[5]);
 		
 		time.normalize(false);
+		
+		Log.d("setDateTime", values[0]+":"+values[1]+":"+values[2]+":"+values[3]+":"+values[4]+":"+values[5]+ "    "+ time.toString());
 		setTime(time);
 		
 	}
@@ -158,11 +170,15 @@ public class Appointment implements Parcelable{
 	
 	@Override
 	public void writeToParcel(Parcel dest, int flags) {
+		Time time = getTime();
 		dest.writeInt(priority);
 		dest.writeString(description);
 		dest.writeString(summary);
-		dest.writeInt(getTime().hour);
-		dest.writeInt(getTime().minute);
+		dest.writeInt(time.year);
+		dest.writeInt(time.month);
+		dest.writeInt(time.monthDay);
+		dest.writeInt(time.hour);
+		dest.writeInt(time.minute);
 		dest.writeInt(persistent ? 1 : 0);
 	}
 	
