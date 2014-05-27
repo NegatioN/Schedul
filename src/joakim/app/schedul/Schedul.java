@@ -194,7 +194,8 @@ public class Schedul extends Activity {
 	private boolean setAlarmFragment(Appointment app) {
 		if (app != null) {
 			alarm = new Alarm();
-			Time t = app.getTime();
+			//create new object because otherwise appointment gets changed.
+			Time t = new Time(app.getTime());
 			t.set(t.toMillis(false) - AlarmManager.INTERVAL_HOUR);
 			alarm.setAlarm(this, t);
 
