@@ -197,6 +197,17 @@ public class MySQLHelper extends SQLiteOpenHelper{
 		Log.d("deleteAppointment()", appointment.toString());
 	}
 	
+	//how many rows are in the table?
+	public int getCount(){
+		String query = "Select COUNT(*) FROM " + TABLE_APPOINTMENTS;
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cur = db.rawQuery(query, null);
+		cur.moveToFirst();
+		int count = cur.getInt(0);
+		
+		return count;
+	}
+	
 	//random methods for help
 	private void addToDayArray(ArrayList<ArrayList<Appointment>> appointmentDays, Appointment a) {
 

@@ -1,6 +1,6 @@
 package joakim.app.schedul;
 
-import android.app.Activity;
+import joakim.app.data.Appointment;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -30,6 +30,7 @@ public class Alarm extends BroadcastReceiver {
 		//TODO IN BROADCAST
 		if(counter > interval/HOUR){
 			cancelAlarm(context);
+			Log.d("AlarmFragment", "Alarm cancelled");
 			wl.release();
 			return;
 		}
@@ -41,18 +42,25 @@ public class Alarm extends BroadcastReceiver {
 		wl.release();
 	}
 
-	public void setAlarm(Context context, Time time) {
+	public void setAlarm(Context context, Appointment app) {
 		
+		//create new object because otherwise appointment gets changed.
+		Time time = new Time(app.getTime());
+		time.set(time.toMillis(false) - AlarmManager.INTERVAL_HOUR);
 		
 		
 		AlarmManager am = (AlarmManager) context
 				.getSystemService(Context.ALARM_SERVICE);
 		Intent i = new Intent(context, AlarmService.class);
+		
+		//add the appointment so we can reference the information in our notification.
+		i.putExtra("appointment", app);
 //		
 //		//find user setting for intervals
 		setInterval(context);
 //		
 		PendingIntent pi = PendingIntent.getService(context, 0, i, 0);
+
 		
 		//set repeating or not based on user settings
 		//if -1, we should only have one alarm for the appointment at the designated time.
@@ -62,7 +70,7 @@ public class Alarm extends BroadcastReceiver {
 		else
 		am.setRepeating(AlarmManager.RTC_WAKEUP, time.toMillis(false),
 				1000 * 60 * interval, pi); // Millisec * Second * Minute
-		Toast.makeText(context, "Alarm set " + time.hour + ":" + time.minute, Toast.LENGTH_SHORT).show();
+		Toast.makeText(context, "Alarm set " + time.hour+1 + ":" + time.minute + " - Interval:" + interval, Toast.LENGTH_SHORT).show();
 	}
 
 	public void cancelAlarm(Context context) {

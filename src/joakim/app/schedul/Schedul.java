@@ -153,8 +153,9 @@ public class Schedul extends Activity {
 		// tries getting next appointment from a day's arraylist, else go to next day.
 		try{
 	//if we're in current day, find closest appointment by hours+minutes and upwards
-	if(counter == 1)
+	if(counter == 1){
 		closestAppointment = findClosestAppointmentByTime(t, a);
+	}
 	//else get first object in closest array with object in it.
 	else
        closestAppointment = a.get(0);
@@ -181,6 +182,7 @@ public class Schedul extends Activity {
 			for(Appointment a : al){
 				//is current time less than the appointment we're checking?
 				if (ac.compare(currentTimeAppointment, a) <= 0){
+					Log.d("findAppointmentByTime", a.getTime().toString());
 					return a;
 				}
 
@@ -194,10 +196,8 @@ public class Schedul extends Activity {
 	private boolean setAlarmFragment(Appointment app) {
 		if (app != null) {
 			alarm = new Alarm();
-			//create new object because otherwise appointment gets changed.
-			Time t = new Time(app.getTime());
-			t.set(t.toMillis(false) - AlarmManager.INTERVAL_HOUR);
-			alarm.setAlarm(this, t);
+
+			alarm.setAlarm(this, app);
 
 			return true;
 		}
@@ -250,11 +250,13 @@ public class Schedul extends Activity {
 			try {
 				ArrayList<Appointment>al = findDayArray(a.getTime());
 				al.remove(a);
-				
 				//we create a new object 7 days in the future after current appointment and add it to the list.
 				if(a.isPersistent()){
+					
 //					al.add(TimeHandler.makeNew(a));
 				}
+				db.deleteAppointment(a);
+					
 					
 			} catch (NullPointerException np) {
 				return;
