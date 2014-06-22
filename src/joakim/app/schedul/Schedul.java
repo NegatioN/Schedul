@@ -37,7 +37,7 @@ public class Schedul extends Activity {
 	private TextView				displayAppointment, countDown;
 	private Runnable				tvUpdater;
 	private Handler					tvHandler;
-	private Alarm					alarm;
+	private AlarmService					alarm;
 	private AlarmCountdown alarmCountDown;
 	private MySQLHelper db;
 
@@ -195,7 +195,7 @@ public class Schedul extends Activity {
 // (last part not implemented yet)
 	private boolean setAlarmFragment(Appointment app) {
 		if (app != null) {
-			alarm = new Alarm();
+			alarm = new AlarmService();
 
 			alarm.setAlarm(this, app);
 
@@ -281,39 +281,6 @@ public class Schedul extends Activity {
 	}
 
 	// TEST-PROGRAM-METHODS
-	private void findPreferences() {
-		// sånn her henter vi sharedpreferences om vi skal gjøre noe med det en
-// plass.
-		SharedPreferences pref = PreferenceManager
-				.getDefaultSharedPreferences(this);
-		boolean checkbox = pref.getBoolean("checkbox_preference", false);
-		System.out.println(checkbox);
-		System.out.println(pref.getAll().toString());
-	}
-	
-
-	private void testFillArray(ArrayList<Appointment> app) {
-		Appointment[] appointments = new Appointment[3];
-		Time time = new Time();
-		Calendar cal = new GregorianCalendar();
-
-		// set all Time-variables except seconds.
-		time.set(0, 24, 5, cal.get(Calendar.DAY_OF_MONTH),
-				cal.get(Calendar.MONTH), cal.get(Calendar.YEAR));
-		appointments[0] = new Appointment(Appointment.NIMPORTANT,
-				"Yolo forever", time, true);
-		appointments[1] = new Appointment(Appointment.URGENT,
-				"2 timer programmering", time, true);
-		appointments[2] = new Appointment(Appointment.MEDIUM, "Lag middag",
-				time, true);
-		app.add(appointments[0]);
-		app.add(appointments[1]);
-		app.add(appointments[2]);
-		db = new MySQLHelper(this);
-		db.addAppointment(appointments[0]);
-		db.addAppointment(appointments[1]);
-		db.addAppointment(appointments[2]);
-	}
 	
 	
 	private void parcelableLog(ArrayList<Appointment> appointments){

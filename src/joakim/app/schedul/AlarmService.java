@@ -73,21 +73,13 @@ public class AlarmService extends IntentService{
 		
 		//add the appointment so we can reference the information in our notification.
 		i.putExtra("appointment", app);
-
-//		//find user setting for intervals
-		setInterval(context);
-//		
+		
 		PendingIntent pi = PendingIntent.getService(context, 0, i, 0);
 
+		am.set(AlarmManager.RTC_WAKEUP, app.getTime().toMillis(false), pi);
 		
-		//set repeating or not based on user settings
-		//if -1, we should only have one alarm for the appointment at the designated time.
-			am.set(AlarmManager.RTC_WAKEUP, app.getTime().toMillis(false), pi);
+		Toast.makeText(context, "ALARM SET to: " + app.getTime().hour, Toast.LENGTH_SHORT).show();
 
-//		am.setRepeating(AlarmManager.RTC_WAKEUP, time.toMillis(false),
-//				1000 * 60 * interval, pi); // Millisec * Second * Minute
-		
-		counter++;
 	}
     
 	public void cancelAlarm(Context context) {
