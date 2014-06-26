@@ -18,8 +18,8 @@ public class MySQLHelper extends SQLiteOpenHelper{
 	
 	private static final String TABLE_APPOINTMENTS = "appointments";
 	private static final String KEY_ID = "id";
-	private static final String KEY_PRIORITY = "priority", KEY_DESCRIPTION = "description",KEY_SUMMARY = "summary",KEY_TIME = "time",KEY_PERSISTENT = "persistent"; 
-	private static final String[] COLUMNS = {KEY_ID, KEY_PRIORITY, KEY_DESCRIPTION, KEY_SUMMARY, KEY_TIME, KEY_PERSISTENT};
+	private static final String KEY_PRIORITY = "priority", KEY_DESCRIPTION = "description",KEY_SUMMARY = "summary",KEY_YEAR = "year", KEY_TIME = "time",KEY_PERSISTENT = "persistent"; 
+	private static final String[] COLUMNS = {KEY_ID, KEY_PRIORITY, KEY_DESCRIPTION, KEY_SUMMARY, KEY_YEAR, KEY_TIME, KEY_PERSISTENT};
 	
 	public MySQLHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -32,9 +32,10 @@ public class MySQLHelper extends SQLiteOpenHelper{
 	"priority INTEGER," +
 	"description TEXT," +
 	"summary TEXT," + 
-	"time TEXT, " +
+	"year INTEGER," +
+	"time INTEGER, " +
 	"persistent INTEGER )";
-		//dateTime formatted as YYYY-MM-DDTHH:MM:SS
+		//dateTime formatted as YYYYMMDDHHMMSS
 		db.execSQL(CREATE_APPOINTMENT_TABLE);
 	}
 
@@ -58,10 +59,13 @@ public class MySQLHelper extends SQLiteOpenHelper{
 		//create contentvalues to add key column/value
 		ContentValues values = new ContentValues();
 
+		int datetime = Integer.parseInt(outputDateTime(appointment.getDateTime()));
+		
 		values.put(KEY_PRIORITY, appointment.getPriority());
 		values.put(KEY_DESCRIPTION, appointment.getDescription());
 		values.put(KEY_SUMMARY, appointment.getSummary());
-		values.put(KEY_TIME, appointment.getDateTime());
+		values.put(KEY_YEAR, appointment.getTime().year);
+		values.put(KEY_TIME, datetime);
 		values.put(KEY_PERSISTENT, appointment.isPersistent() ? 1 : 0);
 		
 		db.insert(TABLE_APPOINTMENTS,
@@ -71,7 +75,7 @@ public class MySQLHelper extends SQLiteOpenHelper{
 		//set the auto-increment ID from database to the current object.
 		String query = "Select * FROM " + TABLE_APPOINTMENTS;
 		
-		//create function to assign ID from database to object
+		//function to assign ID from database to object
 		Cursor cursor = db.rawQuery(query, null);
 		if(cursor != null){
 			cursor.moveToLast();
@@ -106,6 +110,15 @@ public class MySQLHelper extends SQLiteOpenHelper{
 		Log.d("getAppointment("+id+")", app.toString());
 						
 		return app;
+	}
+	
+	//should find the closest appointment to given appointment forward in time.
+	public Appointment getClosestAppointment(Appointment a){
+		SQLiteDatabase db = this.getReadableDatabase();
+		String sql = "";
+		Cursor cursor = db.rawQuery(sql, null);
+		
+		return null;
 	}
 	public ArrayList<ArrayList<Appointment>> getAllAppointments(){
 		ArrayList<Appointment> aMon = new ArrayList<Appointment>();
@@ -153,8 +166,8 @@ public class MySQLHelper extends SQLiteOpenHelper{
 		a.setPriority(c.getInt(1));
 		a.setDescription(c.getString(2));
 		a.setSummary(c.getString(3));
-		a.setDateTime(c.getString(4));
-		a.setPersistent(c.getInt(5)>0);
+		a.setDateTime(c.getInt(4), c.getInt(5));
+		a.setPersistent(c.getInt(6)>0);
 		Log.d("setAppointmentInfo", a.toString() + ":" + a.getTime().toString());
 		return a;
 	}
@@ -162,11 +175,14 @@ public class MySQLHelper extends SQLiteOpenHelper{
 	public int updateAppointment(Appointment appointment){
 		SQLiteDatabase db = this.getWritableDatabase();
 		
+		int datetime = Integer.parseInt(outputDateTime(appointment.getDateTime()));
+		
 		ContentValues values = new ContentValues();
 		values.put(KEY_PRIORITY, appointment.getPriority());
 		values.put(KEY_DESCRIPTION, appointment.getDescription());
 		values.put(KEY_SUMMARY, appointment.getSummary());
-		values.put(KEY_TIME, appointment.getDateTime());
+		values.put(KEY_YEAR, appointment.getTime().year);
+		values.put(KEY_TIME, datetime);
 		values.put(KEY_PERSISTENT, appointment.isPersistent() ? 1 : 0);
 		
 		//find relevant row in database to update
@@ -206,6 +222,20 @@ public class MySQLHelper extends SQLiteOpenHelper{
 		int count = cur.getInt(0);
 		
 		return count;
+	}
+	//outputs a string that is always length == 10 with datetime.
+	
+	private String outputDateTime(int[] array){
+		int i = 0;
+		StringBuilder sb = new StringBuilder();
+			while(i < array.length){
+				if(array[i] < 10)
+					sb.append('0').append(array[i]);
+				else
+					sb.append(array[i]);
+				i++;
+			}
+		return sb.toString();
 	}
 	
 	//random methods for help

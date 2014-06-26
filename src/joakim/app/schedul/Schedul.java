@@ -62,7 +62,7 @@ public class Schedul extends Activity {
 
 				Appointment appointment = findMostRecentAppointment(t);
 				if (appointment != null) {
-					removeExpiredAppointment(appointment);
+//					removeExpiredAppointment(appointment);
 					displayAppointment.setBackgroundColor(appointment
 							.getPriority());
 					displayAppointment.setText(appointment.getSummary());
@@ -135,7 +135,7 @@ public class Schedul extends Activity {
 		aSøn = data.getParcelableArrayListExtra("søn");
 	}
 
-	private Appointment findMostRecentAppointment(Time t) {
+	public Appointment findMostRecentAppointment(Time t) {
 
 		return findMostRecentAppointment(t, 1);
 	}
@@ -193,7 +193,7 @@ public class Schedul extends Activity {
 
 	// makes an alarm and will remove the previous one if it has not triggered
 // (last part not implemented yet)
-	private boolean setAlarmFragment(Appointment app) {
+	public boolean setAlarmFragment(Appointment app) {
 		if (app != null) {
 			alarm = new AlarmService();
 
@@ -238,16 +238,20 @@ public class Schedul extends Activity {
 	private boolean appointmentExpired(Appointment a) {
 		Time time = new Time();
 		time.setToNow();
+		Log.d("removeLog", "First: " + a.getTime().toMillis(false) + "\n Second: " + time.toMillis(false));
 		if (a.getTime().toMillis(false) - time.toMillis(false) < 0) {
 			return true;
 		}
 
 		return false;
 	}
+	
 
-	private void removeExpiredAppointment(Appointment a) {
-		if (appointmentExpired(a)) {
+	public void removeExpiredAppointment(Appointment a) {
+		Log.d("removeLog", "vi er i metoden, appointment ikke null");
+		if(appointmentExpired(a)){
 			try {
+				Log.d("removeLog", "appointment == expired");
 				ArrayList<Appointment>al = findDayArray(a.getTime());
 				al.remove(a);
 				//we create a new object 7 days in the future after current appointment and add it to the list.
@@ -261,7 +265,8 @@ public class Schedul extends Activity {
 			} catch (NullPointerException np) {
 				return;
 			}
-		}
+	}
+
 	}
 	
 	//gets all the information from the database and fills in our arrays.
@@ -280,7 +285,12 @@ public class Schedul extends Activity {
 		
 	}
 
+	
 	// TEST-PROGRAM-METHODS
+	
+	public void checkArrays(){
+		Log.d("ArrayAccess", aMan.toString() +"\n"+aTir.toString()+"\n"+aOns.toString()+"\n"+aTor.toString());
+	}
 	
 	
 	private void parcelableLog(ArrayList<Appointment> appointments){

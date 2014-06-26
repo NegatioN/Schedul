@@ -157,6 +157,18 @@ public class AddTodo extends Activity implements CreateAppointmentDialogListener
 			
 		
 	}
+	
+	//generates new arraylists if the database is empty.
+	private void newLists(){
+		aMan = new ArrayList<Appointment>();
+		aTir = new ArrayList<Appointment>();
+		aOns = new ArrayList<Appointment>();
+		aTor = new ArrayList<Appointment>();
+		aFre = new ArrayList<Appointment>();
+		aLør = new ArrayList<Appointment>();
+		aSøn = new ArrayList<Appointment>();
+	}
+	
 	//initializes listeners based on user-settings
 	private void initializeListeners(ListView lw, ArrayList<Appointment> al, boolean appLocked, MySQLHelper db){
 		lw.setAdapter(new ArrayListAdapter(this,al));

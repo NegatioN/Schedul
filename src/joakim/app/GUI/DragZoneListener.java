@@ -9,10 +9,10 @@ import joakim.app.data.ArrayListHandler;
 import joakim.app.data.MySQLHelper;
 import joakim.app.data.TimeHandler;
 import joakim.app.schedul.AddTodo;
+import joakim.app.schedul.AlarmService;
 import joakim.app.schedul.R;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.util.Log;
 import android.view.DragEvent;
 import android.view.View;
 import android.view.View.OnDragListener;
@@ -123,6 +123,8 @@ public class DragZoneListener implements OnDragListener {
 		al.add(a);
 		Collections.sort(al, new AppointmentComparator());
 		taa.notifyDataSetChanged();
+		AlarmService as = new AlarmService();
+		as.setAlarm(context, a);
 	}
 
 	private void removeItem(Appointment a, ArrayList<Appointment> al,

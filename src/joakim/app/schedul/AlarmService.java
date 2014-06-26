@@ -18,10 +18,8 @@ import android.util.Log;
 import android.widget.Toast;
 
 public class AlarmService extends IntentService{
-
-	private int counter = 0;
-	private int interval = -1;
-	private final int HOUR = 60;
+	//current context and appointment
+	private static Context context; 
 	
 	public AlarmService() {
 		super("AlarmService");
@@ -38,11 +36,11 @@ public class AlarmService extends IntentService{
     	Appointment a;
     	String appTitle = "";
     	String time = "";
-    	if(intent.hasExtra("appointment")){
+//    	if(intent.hasExtra("appointment")){
     		a = intent.getParcelableExtra("appointment");
     		appTitle = a.getDescription();
     		time = a.getTime().hour + ":" + a.getTime().minute;
-    	}
+//    	}
     	
     	Uri sound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
     	
@@ -63,10 +61,19 @@ public class AlarmService extends IntentService{
     	final Notification notify = mNotify.getNotification();
     	
     	mNM.notify(1, notify);
+    	
+    	
+    	Time t = new Time();
+    	t.setToNow();
+    	Log.d("AS.time", t.toString());
+    	((Schedul) this.context).checkArrays();
+    	Log.d("AS.CurAppointment", a.toString());
+    	Log.d("AS.NextAppointment",((Schedul) this.context).findMostRecentAppointment(t).toString());
+//    	callNextAlarm(a);
     }
     
 	public void setAlarm(Context context, Appointment app) {
-				
+		this.context = context;
 		AlarmManager am = (AlarmManager) context
 				.getSystemService(Context.ALARM_SERVICE);
 		Intent i = new Intent(context, AlarmService.class);
@@ -90,11 +97,23 @@ public class AlarmService extends IntentService{
 				.getSystemService(Context.ALARM_SERVICE);
 		alarmManager.cancel(sender);
 	}
+	
+	private void callNextAlarm(Appointment a){
+    	Schedul master = (Schedul) this.context;
+    	//we delete the appointment from the database
+    	master.removeExpiredAppointment(a);
+    	
+    	//we set the next alarm when the notification is sent.
+    	Time t = new Time();
+    	t.setToNow();
+    	Appointment nextAppointment = master.findMostRecentAppointment(t);
+    	setAlarm(this.context, nextAppointment);
+	}
 
 	private void setInterval(Context context){
 		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
 		int intervalMinutes = Integer.parseInt(preferences.getString("list_preference", "-1"));
-		interval = intervalMinutes;
+//		interval = intervalMinutes;
 	}
     
 	@Override

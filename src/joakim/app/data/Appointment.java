@@ -122,27 +122,36 @@ public class Appointment implements Parcelable{
 		this.persistent = persistent;
 	}
 	//methods for interaction with timeObject and database
-	public String getDateTime(){
+	public int[] getDateTime(){
 		Time time = getTime();
-		Log.d("getDateTime", time.toString() + " Month:" + time.month);
-		String dateTime = "" + time.year + "-" +time.month+"-"+time.monthDay+"T"+time.hour+":"+time.minute+":"+time.second;
-		return dateTime;
+		int[] array = {time.month, time.monthDay, time.hour, time.minute, time.second};
+		return array;
 	}
-	public void setDateTime(String string){
-		String reg = "[-:T]";
-		String[] values = string.split(reg);
+	public void setDateTime(int year, int datetime){
+		String string = Integer.toString(datetime);
+		Log.d("APPOINTMENT", string);
+		
+		int length = string.length();
+		int month, day, hour, minute, second;
+		if(length == 14){
+			month = Integer.parseInt(string.substring(4, 5));
+		}
+		else if (length == 13){
+			
+		}
+			
 		
 		Time time = new Time();
-		time.year = Integer.parseInt(values[0]);
-		time.month = Integer.parseInt(values[1]);
-		time.monthDay = Integer.parseInt(values[2]);
-		time.hour = Integer.parseInt(values[3]);
-		time.minute = Integer.parseInt(values[4]);
-		time.second = Integer.parseInt(values[5]);
+		time.year = year;
+		time.month = Integer.parseInt(string.substring(0, 1));
+		time.monthDay = Integer.parseInt(string.substring(2, 3));
+		time.hour = Integer.parseInt(string.substring(4, 5));
+		time.minute = Integer.parseInt(string.substring(6, 7));
+		time.second = Integer.parseInt(string.substring(8, 9));
 		
 		time.normalize(false);
 		
-		Log.d("setDateTime", values[0]+":"+values[1]+":"+values[2]+":"+values[3]+":"+values[4]+":"+values[5]+ "    "+ time.toString());
+		Log.d("setDateTime", time.year+":"+time.month+":"+time.monthDay+":"+time.hour+":"+time.minute+":"+time.second+ "    "+ time.toString());
 		setTime(time);
 		
 	}
