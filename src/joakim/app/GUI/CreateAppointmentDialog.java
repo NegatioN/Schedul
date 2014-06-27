@@ -9,6 +9,7 @@ import android.app.DialogFragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.format.Time;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -107,6 +108,7 @@ public class CreateAppointmentDialog extends DialogFragment implements OnItemSel
 		
 		time.normalize(false);
 		
+		Log.d("createAppointmentDialog", time.toString());
 		String desc = mEditText.getText().toString();
 		
 		//endre til å lage en summary-text

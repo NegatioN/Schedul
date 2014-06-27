@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.CursorIndexOutOfBoundsException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.text.format.Time;
@@ -33,9 +34,9 @@ public class MySQLHelper extends SQLiteOpenHelper{
 	"description TEXT," +
 	"summary TEXT," + 
 	"year INTEGER," +
-	"time INTEGER, " +
+	"time TEXT, " +
 	"persistent INTEGER )";
-		//dateTime formatted as YYYYMMDDHHMMSS
+		//dateTime formatted as MMDDHHMMSS
 		db.execSQL(CREATE_APPOINTMENT_TABLE);
 	}
 
@@ -59,7 +60,7 @@ public class MySQLHelper extends SQLiteOpenHelper{
 		//create contentvalues to add key column/value
 		ContentValues values = new ContentValues();
 
-		int datetime = Integer.parseInt(outputDateTime(appointment.getDateTime()));
+		String datetime = outputDateTime(appointment.getDateTime());
 		
 		values.put(KEY_PRIORITY, appointment.getPriority());
 		values.put(KEY_DESCRIPTION, appointment.getDescription());
@@ -113,10 +114,30 @@ public class MySQLHelper extends SQLiteOpenHelper{
 	}
 	
 	//should find the closest appointment to given appointment forward in time.
-	public Appointment getClosestAppointment(Appointment a){
+	public Appointment getClosestAppointment(Time time){
 		SQLiteDatabase db = this.getReadableDatabase();
-		String sql = "";
+		int[] array = {time.month, time.monthDay, time.hour, time.minute, time.second};
+		
+		String currentDate = outputDateTime(array);
+		Log.d("db.getClosest", currentDate);
+		int year = time.year;
+		String sql = "SELECT * FROM "+  TABLE_APPOINTMENTS + 
+				" WHERE " + year + " <= " + KEY_YEAR + 
+				" AND "+ KEY_TIME + " <= " + currentDate + 
+				" ORDER BY "+ KEY_TIME + " ASC LIMIT 1";
 		Cursor cursor = db.rawQuery(sql, null);
+			try{
+			cursor.moveToFirst();
+			Appointment app = new Appointment();
+			app = setAppointmentInfo(app, cursor);
+			Log.d("db.getClosestAppointment", app.getTime().toString());
+			db.close();
+			return app;
+			}catch(CursorIndexOutOfBoundsException e){
+				e.printStackTrace();
+		}
+		db.close();
+		
 		
 		return null;
 	}
@@ -161,12 +182,12 @@ public class MySQLHelper extends SQLiteOpenHelper{
 	}
 	//sets all the info from from the database in to a given Appointment-object.
 	private Appointment setAppointmentInfo(Appointment a, Cursor c){
-		Log.d("cursorInfo", c.getInt(0) + ":" + c.getInt(1) + ":" + c.getString(2) + ":" + c.getString(3) + ":" + c.getString(4) + ":" + c.getInt(5));
+		Log.d("cursorInfo", c.getInt(0) + ":" + c.getInt(1) + ":" + c.getString(2) + ":" + c.getString(3) + ":" + c.getString(4) + ":" + c.getString(5));
 		a.setId(c.getInt(0));
 		a.setPriority(c.getInt(1));
 		a.setDescription(c.getString(2));
 		a.setSummary(c.getString(3));
-		a.setDateTime(c.getInt(4), c.getInt(5));
+		a.setDateTime(c.getInt(4), c.getString(5));
 		a.setPersistent(c.getInt(6)>0);
 		Log.d("setAppointmentInfo", a.toString() + ":" + a.getTime().toString());
 		return a;
@@ -175,7 +196,7 @@ public class MySQLHelper extends SQLiteOpenHelper{
 	public int updateAppointment(Appointment appointment){
 		SQLiteDatabase db = this.getWritableDatabase();
 		
-		int datetime = Integer.parseInt(outputDateTime(appointment.getDateTime()));
+		String datetime = outputDateTime(appointment.getDateTime());
 		
 		ContentValues values = new ContentValues();
 		values.put(KEY_PRIORITY, appointment.getPriority());

@@ -135,10 +135,14 @@ public class Schedul extends Activity {
 		aSøn = data.getParcelableArrayListExtra("søn");
 	}
 
-	public Appointment findMostRecentAppointment(Time t) {
-
-		return findMostRecentAppointment(t, 1);
+	public Appointment findMostRecentAppointment(Time t){
+		return db.getClosestAppointment(t);
 	}
+	
+//	public Appointment findMostRecentAppointment(Time t) {
+//
+//		return findMostRecentAppointment(t, 1);
+//	}
 
 	// recursive method for finding closest day with appointment. Gives up after
 // 7 days with no appointments
@@ -287,10 +291,6 @@ public class Schedul extends Activity {
 
 	
 	// TEST-PROGRAM-METHODS
-	
-	public void checkArrays(){
-		Log.d("ArrayAccess", aMan.toString() +"\n"+aTir.toString()+"\n"+aOns.toString()+"\n"+aTor.toString());
-	}
 	
 	
 	private void parcelableLog(ArrayList<Appointment> appointments){

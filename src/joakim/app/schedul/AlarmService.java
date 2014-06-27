@@ -1,6 +1,7 @@
 package joakim.app.schedul;
 
 import joakim.app.data.Appointment;
+import joakim.app.data.MySQLHelper;
 import android.app.AlarmManager;
 import android.app.IntentService;
 import android.app.Notification;
@@ -19,7 +20,8 @@ import android.widget.Toast;
 
 public class AlarmService extends IntentService{
 	//current context and appointment
-	private static Context context; 
+	private static Context context;
+	private MySQLHelper db;
 	
 	public AlarmService() {
 		super("AlarmService");
@@ -63,12 +65,8 @@ public class AlarmService extends IntentService{
     	mNM.notify(1, notify);
     	
     	
-    	Time t = new Time();
-    	t.setToNow();
-    	Log.d("AS.time", t.toString());
-    	((Schedul) this.context).checkArrays();
-    	Log.d("AS.CurAppointment", a.toString());
-    	Log.d("AS.NextAppointment",((Schedul) this.context).findMostRecentAppointment(t).toString());
+    	db = new MySQLHelper(context);
+    	db.deleteAppointment(a);
 //    	callNextAlarm(a);
     }
     
@@ -86,7 +84,7 @@ public class AlarmService extends IntentService{
 		am.set(AlarmManager.RTC_WAKEUP, app.getTime().toMillis(false), pi);
 		
 		Toast.makeText(context, "ALARM SET to: " + app.getTime().hour, Toast.LENGTH_SHORT).show();
-
+		
 	}
     
 	public void cancelAlarm(Context context) {

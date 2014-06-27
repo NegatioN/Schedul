@@ -127,31 +127,21 @@ public class Appointment implements Parcelable{
 		int[] array = {time.month, time.monthDay, time.hour, time.minute, time.second};
 		return array;
 	}
-	public void setDateTime(int year, int datetime){
-		String string = Integer.toString(datetime);
-		Log.d("APPOINTMENT", string);
-		
-		int length = string.length();
-		int month, day, hour, minute, second;
-		if(length == 14){
-			month = Integer.parseInt(string.substring(4, 5));
-		}
-		else if (length == 13){
-			
-		}
+	public void setDateTime(int year, String datetime){
+		Log.d("APPOINTMENT", datetime);
 			
 		
 		Time time = new Time();
 		time.year = year;
-		time.month = Integer.parseInt(string.substring(0, 1));
-		time.monthDay = Integer.parseInt(string.substring(2, 3));
-		time.hour = Integer.parseInt(string.substring(4, 5));
-		time.minute = Integer.parseInt(string.substring(6, 7));
-		time.second = Integer.parseInt(string.substring(8, 9));
+		time.month = Integer.parseInt(datetime.substring(0, 2));
+		time.monthDay = Integer.parseInt(datetime.substring(2, 4));
+		time.hour = Integer.parseInt(datetime.substring(4, 6));
+		time.minute = Integer.parseInt(datetime.substring(6, 8));
+		time.second = Integer.parseInt(datetime.substring(8, 10));
 		
 		time.normalize(false);
 		
-		Log.d("setDateTime", time.year+":"+time.month+":"+time.monthDay+":"+time.hour+":"+time.minute+":"+time.second+ "    "+ time.toString());
+		Log.d("appointment.setDateTime", time.year+":"+time.month+":"+time.monthDay+":"+time.hour+":"+time.minute+":"+time.second+ "    "+ time.toString());
 		setTime(time);
 		
 	}
