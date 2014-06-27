@@ -99,7 +99,7 @@ public class AlarmService extends IntentService{
 	private void callNextAlarm(Appointment a){
     	Schedul master = (Schedul) this.context;
     	//we delete the appointment from the database
-    	master.removeExpiredAppointment(a);
+//    	master.removeExpiredAppointment(a);
     	
     	//we set the next alarm when the notification is sent.
     	Time t = new Time();

@@ -39,9 +39,7 @@ public class AddTodo extends Activity implements CreateAppointmentDialogListener
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		if(getIntent().hasExtra(Schedul.RESULT_REQUEST))
-			loadArrayLists(getIntent());
-		
+		fillArraysFromDb();
 		setContentView(R.layout.activity_add_todo);
 		
 		//define the area where we make a new appointment.
@@ -122,14 +120,6 @@ public class AddTodo extends Activity implements CreateAppointmentDialogListener
 		return recentAppointment;
 	}
 	
-	//avslutter activity og sender alle arrays til main.
-	public void finish(){
-		setResult(RESULT_OK, sendArrayLists());
-		super.finish();
-	}
-	
-	
-	
 	
 	//initialize views, dropzoneadapters, ontouchadapters
 	private void initializeViews(){
@@ -175,26 +165,24 @@ public class AddTodo extends Activity implements CreateAppointmentDialogListener
 		if(!appLocked)
 		lw.setOnDragListener(new DragZoneListener(this, db));
 	}
-	
-	private void loadArrayLists(Intent data){
-		aMan = data.getParcelableArrayListExtra("man");
-		aTir = data.getParcelableArrayListExtra("tir");
-		aOns = data.getParcelableArrayListExtra("ons");
-		aTor = data.getParcelableArrayListExtra("tor");
-		aFre = data.getParcelableArrayListExtra("fre");
-		aLør = data.getParcelableArrayListExtra("lør");
-		aSøn = data.getParcelableArrayListExtra("søn");
-	}
-	private Intent sendArrayLists(){
-		Intent result = new Intent();
-		result.putParcelableArrayListExtra("man", aMan);
-		result.putParcelableArrayListExtra("tir", aTir);
-		result.putParcelableArrayListExtra("ons", aOns);
-		result.putParcelableArrayListExtra("tor", aTor);
-		result.putParcelableArrayListExtra("fre", aFre);
-		result.putParcelableArrayListExtra("lør", aLør);
-		result.putParcelableArrayListExtra("søn", aSøn);
-		return result;
+	//gets all the information from the database and fills in our arrays.
+	private void fillArraysFromDb(){
+		MySQLHelper db = new MySQLHelper(this);
+		ArrayList<ArrayList<Appointment>> appointmentDays = db.getAllAppointments();
+		if(appointmentDays == null){
+			newLists();
+			return;
+		}
+		
+		
+		aMan = appointmentDays.get(1);
+		aTir = appointmentDays.get(2);
+		aOns = appointmentDays.get(3);
+		aTor = appointmentDays.get(4);
+		aFre = appointmentDays.get(5);
+		aLør = appointmentDays.get(6);
+		aSøn = appointmentDays.get(0);
+		
 	}
 	
 
