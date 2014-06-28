@@ -38,11 +38,9 @@ public class AlarmService extends IntentService{
     	Appointment a;
     	String appTitle = "";
     	String time = "";
-//    	if(intent.hasExtra("appointment")){
     		a = intent.getParcelableExtra("appointment");
     		appTitle = a.getDescription();
     		time = a.getTime().hour + ":" + a.getTime().minute;
-//    	}
     	
     	Uri sound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
     	
@@ -104,7 +102,7 @@ public class AlarmService extends IntentService{
     	//we set the next alarm when the notification is sent.
     	Time t = new Time();
     	t.setToNow();
-    	Appointment nextAppointment = master.findMostRecentAppointment(t);
+    	Appointment nextAppointment = master.findMostRecentAppointment();
     	setAlarm(this.context, nextAppointment);
 	}
 

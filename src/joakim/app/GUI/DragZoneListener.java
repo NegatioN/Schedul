@@ -1,5 +1,6 @@
 package joakim.app.GUI;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -25,10 +26,12 @@ public class DragZoneListener implements OnDragListener {
 
 	private Context	context;
 	private MySQLHelper db;
+	private AlarmService as;
 	
-	public DragZoneListener(Context c, MySQLHelper db) {
+	public DragZoneListener(Context c, MySQLHelper db, AlarmService as) {
 		context = c;
 		this.db = db;
+		this.as = as;
 	}
 	
 	
@@ -67,7 +70,7 @@ public class DragZoneListener implements OnDragListener {
 				appointment = getter.getRecentAppointment();
 				//edits day/week of appointment based on where we start and end.
 				TimeHandler.changeTimeOfAppointment(appointment, v);
-				//add appointment to database
+				//add new appointment to database
 				db.addAppointment(appointment);
 				
 				
@@ -88,7 +91,7 @@ public class DragZoneListener implements OnDragListener {
 				//edits day/week of appointment based on where we start and end.
 				TimeHandler.changeTimeOfAppointment(appointment, v);
 
-				//update appointment in DB
+				//update old appointment in DB
 				db.updateAppointment(appointment);
 				// use all variables and update listviews
 				removeItem(appointment, startList, startAdapter);
@@ -123,8 +126,7 @@ public class DragZoneListener implements OnDragListener {
 		al.add(a);
 		Collections.sort(al, new AppointmentComparator());
 		taa.notifyDataSetChanged();
-		AlarmService as = new AlarmService();
-		as.setAlarm(context, a);
+		as.setAlarm(context, db.getClosestAppointment());
 	}
 
 	private void removeItem(Appointment a, ArrayList<Appointment> al,

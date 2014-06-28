@@ -11,7 +11,6 @@ import joakim.app.data.Appointment;
 import joakim.app.data.MySQLHelper;
 import android.app.Activity;
 import android.app.FragmentManager;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -34,6 +33,7 @@ public class AddTodo extends Activity implements CreateAppointmentDialogListener
 	private TextView draggableAppointment;
 	private Button bFragmentStart;
 	private Appointment recentAppointment;
+	private AlarmService as = new AlarmService();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -163,7 +163,7 @@ public class AddTodo extends Activity implements CreateAppointmentDialogListener
 	private void initializeListeners(ListView lw, ArrayList<Appointment> al, boolean appLocked, MySQLHelper db){
 		lw.setAdapter(new ArrayListAdapter(this,al));
 		if(!appLocked)
-		lw.setOnDragListener(new DragZoneListener(this, db));
+		lw.setOnDragListener(new DragZoneListener(this, db, as));
 	}
 	//gets all the information from the database and fills in our arrays.
 	private void fillArraysFromDb(){
