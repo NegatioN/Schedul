@@ -23,9 +23,6 @@ import android.widget.TextView;
 
 public class Schedul extends Activity {
 
-	private static final int		REQUEST_CODE	= 10;
-	public static final String		RESULT_REQUEST	= "startForResult";
-
 	private TextView				displayAppointment, countDown;
 	private Runnable				tvUpdater;
 	private Handler					tvHandler;
@@ -46,24 +43,25 @@ public class Schedul extends Activity {
 
 			@Override
 			public void run() {
-				Time t = new Time();
-				t.setToNow();
-
-				Appointment appointment = findMostRecentAppointment(t);
+				Log.d("schedul.run", "ping");
+				Appointment appointment = findMostRecentAppointment();
 				if (appointment != null) {
 //					removeExpiredAppointment(appointment);
 					displayAppointment.setBackgroundColor(appointment
 							.getPriority());
 					displayAppointment.setText(appointment.getSummary());
-					setAlarmFragment(appointment);
+//					setAlarmFragment(appointment);
 					
 				}
-
 			}
-
 		};
-		tvHandler.post(tvUpdater);
 
+	}
+	
+	protected void onStart(){
+		super.onStart();
+		//updates our displayed appointment on start-screen.
+		tvHandler.post(tvUpdater);
 	}
 
 	@Override
@@ -89,23 +87,23 @@ public class Schedul extends Activity {
 		return true;
 	}
 
-	public Appointment findMostRecentAppointment(Time t){
-		return db.getClosestAppointment(t);
+	public Appointment findMostRecentAppointment(){
+		return db.getClosestAppointment();
 	}
 
 	// makes an alarm and will remove the previous one if it has not triggered
 // (last part not implemented yet)
-	public boolean setAlarmFragment(Appointment app) {
-		if (app != null) {
-			alarm = new AlarmService();
-
-			alarm.setAlarm(this, app);
-
-			return true;
-		}
-
-		return false;
-	}
+//	public boolean setAlarmFragment(Appointment app) {
+//		if (app != null) {
+//			alarm = new AlarmService();
+//
+//			alarm.setAlarm(this, app);
+//
+//			return true;
+//		}
+//
+//		return false;
+//	}
 
 
 	//method will not be needed later because alarm will call removeappointment after it's run.

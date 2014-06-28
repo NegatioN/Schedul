@@ -114,7 +114,9 @@ public class MySQLHelper extends SQLiteOpenHelper{
 	}
 	
 	//should find the closest appointment to given appointment forward in time.
-	public Appointment getClosestAppointment(Time time){
+	public Appointment getClosestAppointment(){
+		Time time = new Time();
+		time.setToNow();
 		SQLiteDatabase db = this.getReadableDatabase();
 		int[] array = {time.month, time.monthDay, time.hour, time.minute, time.second};
 		
