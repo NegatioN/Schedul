@@ -26,7 +26,6 @@ public class Schedul extends Activity {
 	private TextView				displayAppointment, countDown;
 	private Runnable				tvUpdater;
 	private Handler					tvHandler;
-	private AlarmService					alarm;
 	private AlarmCountdown alarmCountDown;
 	private MySQLHelper db = new MySQLHelper(this);
 

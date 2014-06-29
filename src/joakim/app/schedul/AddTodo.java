@@ -148,23 +148,13 @@ public class AddTodo extends Activity implements CreateAppointmentDialogListener
 		
 	}
 	
-	//generates new arraylists if the database is empty.
-	private void newLists(){
-		aMan = new ArrayList<Appointment>();
-		aTir = new ArrayList<Appointment>();
-		aOns = new ArrayList<Appointment>();
-		aTor = new ArrayList<Appointment>();
-		aFre = new ArrayList<Appointment>();
-		aLør = new ArrayList<Appointment>();
-		aSøn = new ArrayList<Appointment>();
-	}
-	
 	//initializes listeners based on user-settings
 	private void initializeListeners(ListView lw, ArrayList<Appointment> al, boolean appLocked, MySQLHelper db){
 		lw.setAdapter(new ArrayListAdapter(this,al));
 		if(!appLocked)
 		lw.setOnDragListener(new DragZoneListener(this, db, as));
 	}
+	
 	//gets all the information from the database and fills in our arrays.
 	private void fillArraysFromDb(){
 		MySQLHelper db = new MySQLHelper(this);
@@ -183,6 +173,17 @@ public class AddTodo extends Activity implements CreateAppointmentDialogListener
 		aLør = appointmentDays.get(6);
 		aSøn = appointmentDays.get(0);
 		
+	}
+	
+	//generates new arraylists if the database is empty.
+	private void newLists(){
+		aMan = new ArrayList<Appointment>();
+		aTir = new ArrayList<Appointment>();
+		aOns = new ArrayList<Appointment>();
+		aTor = new ArrayList<Appointment>();
+		aFre = new ArrayList<Appointment>();
+		aLør = new ArrayList<Appointment>();
+		aSøn = new ArrayList<Appointment>();
 	}
 	
 

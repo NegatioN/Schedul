@@ -14,6 +14,7 @@ public class TimeHandler {
 	public static void changeTimeOfAppointment(Appointment a, View slutt){
 		Time time = new Time();
 		time.setToNow();
+		time.normalize(false);
 
 		int endDay = findWeekDay(slutt);
 		int nowDay = time.weekDay;
@@ -26,8 +27,15 @@ public class TimeHandler {
 		
 		int displaceDays = endDay - startDay;
 		
+		Log.d("Timehandler.YearDay", "Appointment: " +a.getTime().yearDay + " now: " + time.yearDay);
 		if(displaceDays == 0)
 			return;
+		//if this appointment has been made new, and gets moved back to the previous week again.
+		else if(a.getTime().yearDay - time.yearDay == 7){
+			//we always move backwards one week comparatively.
+			displaceDays -= 7;
+			Log.d("Timehandler.madenew", "Appointment: " +a.getTime().yearDay + " now: " + time.yearDay);
+		}
 		else if(displaceDays < 0 ){
 			//our appointment has been moved "backwards" since END - START < 0
 			//if we traverse back, but both start and end are HIGHER than NOW, it should be unchanged! we have moved back in current week
@@ -62,13 +70,13 @@ public class TimeHandler {
 
 	//metoden funker ikke som den skal. Vi vil incremente med 7 dager på appointmenten.
 	public static Appointment makeNew(Appointment a) {
-		Log.d("TimeHandler makenew", a.getTime().toString());
+		Log.d("TimeHandler makenew old", a.getTime().toString());
 		Time appTime = a.getTime();
-		appTime.yearDay+=7;
+		appTime.monthDay+=7;
 		appTime.normalize(false);
 		a.setTime(appTime);
 		
-		Log.d("TimeHandler makenew", a.getTime().toString());
+		Log.d("TimeHandler makenew new", a.getTime().toString());
 		return a;
 	}
 

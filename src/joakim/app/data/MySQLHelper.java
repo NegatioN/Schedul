@@ -113,7 +113,7 @@ public class MySQLHelper extends SQLiteOpenHelper{
 		return app;
 	}
 	
-	//should find the closest appointment to given appointment forward in time.
+	//finds the closest appointment forward in time.
 	public Appointment getClosestAppointment(){
 		Time time = new Time();
 		time.setToNow();
@@ -121,7 +121,7 @@ public class MySQLHelper extends SQLiteOpenHelper{
 		int[] array = {time.month, time.monthDay, time.hour, time.minute, time.second};
 		
 		String currentDate = outputDateTime(array);
-		Log.d("db.getClosest", currentDate);
+		Log.d("db.getClosestOfTime", currentDate);
 		int year = time.year;
 		String sql = "SELECT * FROM "+  TABLE_APPOINTMENTS + 
 				" WHERE " + year + " <= " + KEY_YEAR + 
@@ -199,6 +199,7 @@ public class MySQLHelper extends SQLiteOpenHelper{
 		SQLiteDatabase db = this.getWritableDatabase();
 		
 		String datetime = outputDateTime(appointment.getDateTime());
+		Log.d("updateAppointment", datetime + " : " + appointment.getId());
 		
 		ContentValues values = new ContentValues();
 		values.put(KEY_PRIORITY, appointment.getPriority());
@@ -219,7 +220,6 @@ public class MySQLHelper extends SQLiteOpenHelper{
 //		c.moveToFirst();
 		
 		Log.d("updateAppointment", appointment.getTime().toString() + " : " + appointment.getId());
-//		+ c.getInt(0) + ":" + c.getInt(1) + ":" + c.getString(2) + ":" + c.getString(3) + ":" + c.getString(4) + ":" + c.getInt(5));
 		
 		db.close();
 		
@@ -228,12 +228,16 @@ public class MySQLHelper extends SQLiteOpenHelper{
 	public void deleteAppointment(Appointment appointment){
 		SQLiteDatabase db = this.getWritableDatabase();
 		
+//		if(appointment.isPersistent()){
+//			updateAppointment(TimeHandler.makeNew(appointment));
+//		}
+//		else{
 		db.delete(TABLE_APPOINTMENTS, 
 				KEY_ID+" = ?", 
 				new String[] {String.valueOf(appointment.getId())});
-		
-		db.close();
 		Log.d("deleteAppointment()", appointment.toString());
+//		}
+		db.close();
 	}
 	
 	//how many rows are in the table?
