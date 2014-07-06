@@ -11,6 +11,7 @@ import joakim.app.data.Appointment;
 import joakim.app.data.MySQLHelper;
 import android.app.Activity;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -93,6 +94,14 @@ public class AddTodo extends Activity implements CreateAppointmentDialogListener
 //			NavUtils.navigateUpFromSameTask(this);
 			finish();
 			return true;
+			
+		case R.id.action_add:
+			showFragment();
+			break;
+		case R.id.action_settings:
+			Intent intent = new Intent(this, UserSettings.class);
+			startActivity(intent);
+			break;
 		}
 		return super.onOptionsItemSelected(item);
 	}

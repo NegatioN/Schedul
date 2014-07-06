@@ -228,15 +228,10 @@ public class MySQLHelper extends SQLiteOpenHelper{
 	public void deleteAppointment(Appointment appointment){
 		SQLiteDatabase db = this.getWritableDatabase();
 		
-//		if(appointment.isPersistent()){
-//			updateAppointment(TimeHandler.makeNew(appointment));
-//		}
-//		else{
 		db.delete(TABLE_APPOINTMENTS, 
-				KEY_ID+" = ?", 
-				new String[] {String.valueOf(appointment.getId())});
+				KEY_ID+" = " + appointment.getId(), 
+				null);
 		Log.d("deleteAppointment()", appointment.toString());
-//		}
 		db.close();
 	}
 	

@@ -30,10 +30,12 @@ public class TimeHandler {
 		Log.d("Timehandler.YearDay", "Appointment: " +a.getTime().yearDay + " now: " + time.yearDay);
 		if(displaceDays == 0)
 			return;
+		
+		
 		//if this appointment has been made new, and gets moved back to the previous week again.
 		else if(a.getTime().yearDay - time.yearDay == 7){
 			//we always move backwards one week comparatively.
-			displaceDays -= 7;
+//			displaceDays -= 7;
 			Log.d("Timehandler.madenew", "Appointment: " +a.getTime().yearDay + " now: " + time.yearDay);
 		}
 		else if(displaceDays < 0 ){

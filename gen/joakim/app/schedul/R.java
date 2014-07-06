@@ -35,8 +35,8 @@ public final class R {
         public static final int shape_droptarget=0x7f020006;
     }
     public static final class id {
-        public static final int action_add=0x7f0a001e;
-        public static final int action_settings=0x7f0a001d;
+        public static final int action_add=0x7f0a001d;
+        public static final int action_settings=0x7f0a001e;
         public static final int bCloseFragment=0x7f0a0017;
         public static final int bCreate=0x7f0a001b;
         public static final int bDummy=0x7f0a0012;

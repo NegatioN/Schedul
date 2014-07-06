@@ -2,6 +2,7 @@ package joakim.app.schedul;
 
 import joakim.app.data.Appointment;
 import joakim.app.data.MySQLHelper;
+import joakim.app.data.TimeHandler;
 import android.app.AlarmManager;
 import android.app.IntentService;
 import android.app.Notification;
@@ -63,9 +64,8 @@ public class AlarmService extends IntentService{
     	mNM.notify(1, notify);
     	
     	
-    	db = new MySQLHelper(context);
-    	db.deleteAppointment(a);
-    	callNextAlarm(a);
+    	db = new MySQLHelper(context.getApplicationContext());
+    	callNextAlarm(db, a);
     }
     
 	public void setAlarm(Context context, Appointment app) {
@@ -86,7 +86,7 @@ public class AlarmService extends IntentService{
 	}
     
 	public void cancelAlarm(Context context) {
-		Intent intent = new Intent(context, Alarm.class);
+		Intent intent = new Intent(context, AlarmService.class);
 		PendingIntent sender = PendingIntent
 				.getBroadcast(context, 0, intent, 0);
 		AlarmManager alarmManager = (AlarmManager) context
@@ -94,9 +94,18 @@ public class AlarmService extends IntentService{
 		alarmManager.cancel(sender);
 	}
 	
-	private void callNextAlarm(Appointment a){
-    	//we delete the appointment from the database
-    	db.deleteAppointment(a);
+	private void callNextAlarm(MySQLHelper db, Appointment a){
+		
+		//is the appointment repeatable?
+		if(a.isPersistent()){
+			//move the appointment one week forward
+			//update database-entry
+			db.updateAppointment(TimeHandler.makeNew(a));
+		}
+		else{
+	    	//we delete the appointment from the database
+	    	db.deleteAppointment(a);
+		}
     	
     	//we set the next alarm when the notification is sent.
     	Appointment nextAppointment = db.getClosestAppointment();
