@@ -29,7 +29,7 @@ public class Appointment implements Parcelable{
 		this.persistent = persistent;
 		this.summary = summary(description);	
 	}
-	//constructor for create parcelable i main.
+	//constructor for create parcelable
 	public Appointment(Parcel in){
 		Time time = new Time();
 		this.id = in.readInt();

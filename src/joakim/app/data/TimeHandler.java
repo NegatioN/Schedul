@@ -35,8 +35,10 @@ public class TimeHandler {
 		//if this appointment has been made new, and gets moved back to the previous week again.
 		else if(a.getTime().yearDay - time.yearDay == 7){
 			//we always move backwards one week comparatively.
-//			displaceDays -= 7;
-			Log.d("Timehandler.madenew", "Appointment: " +a.getTime().yearDay + " now: " + time.yearDay);
+			//so if we move "forward", we're actually moving backward.
+			if(nowDay < endDay){
+				displaceDays -= 7;
+				}
 		}
 		else if(displaceDays < 0 ){
 			//our appointment has been moved "backwards" since END - START < 0
