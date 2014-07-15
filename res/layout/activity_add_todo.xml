@@ -2,34 +2,17 @@
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:columnCount="3"
+    android:columnCount="2"
     android:columnWidth="106dp"
     android:orientation="vertical"
-    android:rowCount="3" >
+    android:rowCount="4" >
 
-    <LinearLayout
-        android:id="@+id/buttonHolder"
-        android:layout_width="106dp"
-        android:layout_height="120dp"
-        android:layout_column="0"
-        android:layout_columnSpan="1"
-        android:layout_row="0"
-        android:orientation="vertical" >
-
-        <Button
-            android:id="@+id/bFragmentStart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:paddingTop="40dp"
-            android:text="@string/button_add" />
-    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/objectHolder"
-        android:layout_width="106dp"
-        android:layout_height="120dp"
-        android:layout_column="1"
+        android:layout_width="160dp"
+        android:layout_height="115dp"
+        android:layout_column="0"
         android:layout_columnSpan="1"
         android:layout_row="0"
         android:orientation="vertical" >
@@ -44,12 +27,12 @@
 
     <LinearLayout
         android:id="@+id/mondayHolder"
-        android:layout_width="106dp"
-        android:layout_height="120dp"
-        android:layout_column="2"
+        android:layout_width="160dp"
+        android:layout_height="115dp"
+        android:layout_column="1"
         android:layout_columnSpan="1"
         android:layout_row="0"
-        android:background="@drawable/shape"
+        android:background="@drawable/right_list_shape"
         android:orientation="vertical" >
 
         <ListView
@@ -61,12 +44,12 @@
 
     <LinearLayout
         android:id="@+id/tuesdayHolder"
-        android:layout_width="106dp"
-        android:layout_height="120dp"
+        android:layout_width="160dp"
+        android:layout_height="115dp"
         android:layout_column="0"
         android:layout_columnSpan="1"
         android:layout_row="1"
-        android:background="@drawable/shape"
+        android:background="@drawable/left_list_shape"
         android:orientation="vertical" >
 
         <ListView
@@ -78,11 +61,11 @@
 
     <LinearLayout
         android:id="@+id/wednesdayHolder"
-        android:layout_width="106dp"
-        android:layout_height="120dp"
+        android:layout_width="160dp"
+        android:layout_height="115dp"
         android:layout_column="1"
         android:layout_row="1"
-        android:background="@drawable/shape"
+        android:background="@drawable/right_list_shape"
         android:orientation="vertical" >
 
         <ListView
@@ -94,11 +77,11 @@
 
     <LinearLayout
         android:id="@+id/thursdayHolder"
-        android:layout_width="106dp"
-        android:layout_height="120dp"
-        android:layout_column="2"
-        android:layout_row="1"
-        android:background="@drawable/shape"
+        android:layout_width="160dp"
+        android:layout_height="115dp"
+        android:layout_column="0"
+        android:layout_row="2"
+        android:background="@drawable/left_list_shape"
         android:orientation="vertical" >
 
         <ListView
@@ -110,11 +93,11 @@
 
     <LinearLayout
         android:id="@+id/fridayHolder"
-        android:layout_width="106dp"
-        android:layout_height="120dp"
-        android:layout_column="0"
+        android:layout_width="160dp"
+        android:layout_height="115dp"
+        android:layout_column="1"
         android:layout_row="2"
-        android:background="@drawable/shape"
+        android:background="@drawable/right_list_shape"
         android:orientation="vertical" >
 
         <ListView
@@ -126,11 +109,11 @@
 
     <LinearLayout
         android:id="@+id/saturdayHolder"
-        android:layout_width="106dp"
-        android:layout_height="120dp"
-        android:layout_column="1"
-        android:layout_row="2"
-        android:background="@drawable/shape"
+        android:layout_width="160dp"
+        android:layout_height="115dp"
+        android:layout_column="0"
+        android:layout_row="3"
+        android:background="@drawable/left_list_shape"
         android:orientation="vertical" >
 
         <ListView
@@ -142,11 +125,11 @@
 
     <LinearLayout
         android:id="@+id/sundayHolder"
-        android:layout_width="106dp"
-        android:layout_height="120dp"
-        android:layout_column="2"
-        android:layout_row="2"
-        android:background="@drawable/shape"
+        android:layout_width="160dp"
+        android:layout_height="115dp"
+        android:layout_column="1"
+        android:layout_row="3"
+        android:background="@drawable/right_list_shape"
         android:orientation="vertical" >
 
         <ListView

@@ -47,13 +47,13 @@ public class AddTodo extends Activity implements CreateAppointmentDialogListener
 		draggableAppointment = (TextView) findViewById(R.id.tvDraggableAppointment);
 		draggableAppointment.setOnTouchListener(new LvOnItemTouchListener());
 		draggableAppointment.setVisibility(View.GONE);
-		bFragmentStart = (Button) findViewById(R.id.bFragmentStart);
-		bFragmentStart.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				showFragment();
-			}
-		});
+//		bFragmentStart = (Button) findViewById(R.id.bFragmentStart);
+//		bFragmentStart.setOnClickListener(new View.OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//				showFragment();
+//			}
+//		});
 		
 		
 		
