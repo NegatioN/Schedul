@@ -38,10 +38,20 @@ public class DragZoneListener implements OnDragListener {
 
 	public boolean onDrag(View v, DragEvent event) {
 
-		Drawable enterShape = context.getResources().getDrawable(
-				R.drawable.shape_droptarget);
-		Drawable normalShape = context.getResources().getDrawable(
-				R.drawable.shape);
+		boolean isRightSide = isRightSidePanel(v);
+		Drawable enterShape;
+		Drawable normalShape;
+		if(isRightSide){
+			enterShape = context.getResources().getDrawable(
+					R.drawable.right_list_droptarget);
+			normalShape = context.getResources().getDrawable(
+					R.drawable.right_list_shape);
+		}else{
+			enterShape = context.getResources().getDrawable(
+					R.drawable.left_list_droptarget);
+			normalShape = context.getResources().getDrawable(
+					R.drawable.left_list_shape);
+		}
 		// finn parent av view som er dropzone, altså linearlayouten under.
 		LinearLayout parent = (LinearLayout) v.getParent();
 		// finn textview som har blitt flyttet
@@ -134,6 +144,18 @@ public class DragZoneListener implements OnDragListener {
 		al.remove(a);
 		taa.notifyDataSetChanged();
 
+	}
+	//tells us if the panel is on the right or left side of the UI
+	//lets us draw the correct updated shape onto the panel.
+	private boolean isRightSidePanel(View v){
+		int id = v.getId();
+			switch(id){
+			case R.id.mondayLv: return true;
+			case R.id.wednesdayLv: return true;
+			case R.id.fridayLv: return true;
+			case R.id.sundayLv: return true;
+			default: return false;
+			}
 	}
 
 	
