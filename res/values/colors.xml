@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="lightRed">#E04728</color>
+    <color name="urgent">#E04728</color>
+    <color name="medium">#E04728</color>
+    <color name="unimportant">#E04728</color>
     
 </resources>
