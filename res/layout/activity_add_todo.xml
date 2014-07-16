@@ -54,8 +54,7 @@
             android:id="@+id/mondayLv"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:divider="@color/lightRed"
-            android:dividerHeight="0.75dp" >
+            style="@style/listview" >
         </ListView>
     </LinearLayout>
 
@@ -80,8 +79,7 @@
             android:id="@+id/tuesdayLv"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:divider="@color/lightRed"
-            android:dividerHeight="0.75dp" >
+            style="@style/listview" >
         </ListView>
     </LinearLayout>
 
@@ -105,8 +103,7 @@
             android:id="@+id/wednesdayLv"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:divider="@color/lightRed"
-            android:dividerHeight="0.75dp" >
+            style="@style/listview" >
         </ListView>
     </LinearLayout>
 
@@ -129,8 +126,7 @@
             android:id="@+id/thursdayLv"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:divider="@color/lightRed"
-            android:dividerHeight="0.75dp" >
+            style="@style/listview" >
         </ListView>
         
     </LinearLayout>
@@ -155,8 +151,7 @@
             android:id="@+id/fridayLv"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:divider="@color/lightRed"
-            android:dividerHeight="0.75dp" >
+            style="@style/listview" >
         </ListView>
     </LinearLayout>
 
@@ -180,8 +175,7 @@
             android:id="@+id/saturdayLv"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:divider="@color/lightRed"
-            android:dividerHeight="0.75dp" >
+			style="@style/listview" >
         </ListView>
     </LinearLayout>
 
@@ -205,8 +199,7 @@
             android:id="@+id/sundayLv"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:divider="@color/lightRed"
-            android:dividerHeight="0.75dp" >
+           	style="@style/listview" >"
         </ListView>
     </LinearLayout>
 

@@ -147,6 +147,8 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f090001;
+        public static final int listitem=0x7f090003;
+        public static final int listview=0x7f090002;
     }
     public static final class xml {
         public static final int settings=0x7f040000;

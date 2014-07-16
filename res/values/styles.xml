@@ -17,5 +17,16 @@
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        
+    </style>
+    
+    <style name="listview">
+        <item name="android:divider">@color/lightRed</item>
+        <item name="android:dividerHeight">0.75dp</item>
+    </style>
+    
+    <style name="listitem">
+        
+        
     </style>
 </resources>
