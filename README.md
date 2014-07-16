@@ -11,7 +11,7 @@ Start-screen with the most current appointment-object loaded:
 Appointment overview:
 
 
-![Appointment-lists](https://raw.githubusercontent.com/NegatioN/Schedul/master/Preview/Screenshot_2014-05-08-22-50-02.png)
+![Appointment-lists](https://raw.githubusercontent.com/NegatioN/Schedul/master/Preview/Screenshot_2014-07-16-20-14-01.png)
 
 Appointment-creation:
 
