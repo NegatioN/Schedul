@@ -13,6 +13,7 @@ import android.app.Activity;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
@@ -24,15 +25,8 @@ import android.widget.TextView;
 
 public class AddTodo extends Activity implements CreateAppointmentDialogListener{
 
-	private ArrayList<Appointment> aMan;
-	private ArrayList<Appointment> aTir;
-	private ArrayList<Appointment> aOns;
-	private ArrayList<Appointment> aTor;
-	private ArrayList<Appointment> aFre;
-	private ArrayList<Appointment> aLør;
-	private ArrayList<Appointment> aSøn;
+	private ArrayList<Appointment> aMan, aTir, aOns, aTor, aFre, aLør, aSøn;
 	private TextView draggableAppointment;
-	private Button bFragmentStart;
 	private Appointment recentAppointment;
 	private AlarmService as = new AlarmService();
 	
@@ -47,13 +41,6 @@ public class AddTodo extends Activity implements CreateAppointmentDialogListener
 		draggableAppointment = (TextView) findViewById(R.id.tvDraggableAppointment);
 		draggableAppointment.setOnTouchListener(new LvOnItemTouchListener());
 		draggableAppointment.setVisibility(View.GONE);
-//		bFragmentStart = (Button) findViewById(R.id.bFragmentStart);
-//		bFragmentStart.setOnClickListener(new View.OnClickListener() {
-//			@Override
-//			public void onClick(View v) {
-//				showFragment();
-//			}
-//		});
 		
 		
 		
@@ -139,7 +126,6 @@ public class AddTodo extends Activity implements CreateAppointmentDialogListener
 		ListView lw5 = (ListView)findViewById(R.id.fridayLv);
 		ListView lw6 = (ListView)findViewById(R.id.saturdayLv);
 		ListView lw7 = (ListView)findViewById(R.id.sundayLv);
-		
 		
 		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
 		boolean appointmentLocked = preferences.getBoolean("checkbox_preference", false);

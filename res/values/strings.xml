@@ -18,5 +18,13 @@
     <string name="bClose">Close</string>
     <string name="title_activity_dummy_alarm_activity">Dummy</string>
     <string name="service_alarm">AlarmService</string>
+    <string name="monday">Mandag</string>
+    <string name="tuesday">Tirsdag</string>
+    <string name="wednesday">Onsdag</string>
+    <string name="thursday">Torsdag</string>
+    <string name="friday">Fredag</string>
+    <string name="saturday">Lørdag</string>
+    <string name="sunday">Søndag</string>
+    <string name="newappointment">Ny avtale</string>
 
 </resources>

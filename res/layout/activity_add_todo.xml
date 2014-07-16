@@ -18,6 +18,13 @@
         android:background="@drawable/left_list_shape"
         android:orientation="vertical" >
 
+        <TextView 
+            android:id="@+id/tvNewAppointment"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/newappointment"
+            android:background="@drawable/listviewheader_shape"/>
+        
         <TextView
             android:id="@+id/tvDraggableAppointment"
             android:layout_width="wrap_content"
@@ -35,11 +42,20 @@
         android:layout_row="0"
         android:background="@drawable/right_list_shape"
         android:orientation="vertical" >
-
+		
+        <TextView 
+            android:id="@+id/tvMonday"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/monday"
+            android:background="@drawable/listviewheader_shape"/>
+        
         <ListView
             android:id="@+id/mondayLv"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent" >
+            android:layout_height="fill_parent"
+            android:divider="@color/lightRed"
+            android:dividerHeight="0.75dp" >
         </ListView>
     </LinearLayout>
 
@@ -53,10 +69,19 @@
         android:background="@drawable/left_list_shape"
         android:orientation="vertical" >
 
+        <TextView 
+            android:id="@+id/tvTuesday"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tuesday"
+            android:background="@drawable/listviewheader_shape"/>
+        
         <ListView
             android:id="@+id/tuesdayLv"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent" >
+            android:layout_height="fill_parent"
+            android:divider="@color/lightRed"
+            android:dividerHeight="0.75dp" >
         </ListView>
     </LinearLayout>
 
@@ -68,11 +93,20 @@
         android:layout_row="1"
         android:background="@drawable/right_list_shape"
         android:orientation="vertical" >
-
+        
+        <TextView 
+            android:id="@+id/tvWednesday"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/wednesday"
+            android:background="@drawable/listviewheader_shape"/>
+        
         <ListView
             android:id="@+id/wednesdayLv"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent" >
+            android:layout_height="fill_parent"
+            android:divider="@color/lightRed"
+            android:dividerHeight="0.75dp" >
         </ListView>
     </LinearLayout>
 
@@ -84,12 +118,21 @@
         android:layout_row="2"
         android:background="@drawable/left_list_shape"
         android:orientation="vertical" >
-
+        
+        <TextView 
+            android:id="@+id/tvThursday"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/thursday"
+            android:background="@drawable/listviewheader_shape"/>
         <ListView
             android:id="@+id/thursdayLv"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent" >
+            android:layout_height="fill_parent"
+            android:divider="@color/lightRed"
+            android:dividerHeight="0.75dp" >
         </ListView>
+        
     </LinearLayout>
 
     <LinearLayout
@@ -101,10 +144,19 @@
         android:background="@drawable/right_list_shape"
         android:orientation="vertical" >
 
+        <TextView 
+            android:id="@+id/tvFriday"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/friday"
+            android:background="@drawable/listviewheader_shape"/>
+                
         <ListView
             android:id="@+id/fridayLv"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent" >
+            android:layout_height="fill_parent"
+            android:divider="@color/lightRed"
+            android:dividerHeight="0.75dp" >
         </ListView>
     </LinearLayout>
 
@@ -117,10 +169,19 @@
         android:background="@drawable/left_list_shape"
         android:orientation="vertical" >
 
+        <TextView 
+            android:id="@+id/tvSaturday"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/saturday"
+            android:background="@drawable/listviewheader_shape"/>        
+        
         <ListView
             android:id="@+id/saturdayLv"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent" >
+            android:layout_height="fill_parent"
+            android:divider="@color/lightRed"
+            android:dividerHeight="0.75dp" >
         </ListView>
     </LinearLayout>
 
@@ -133,10 +194,19 @@
         android:background="@drawable/right_list_shape"
         android:orientation="vertical" >
 
+        <TextView 
+            android:id="@+id/tvSunday"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sunday"
+            android:background="@drawable/listviewheader_shape"/>
+                
         <ListView
             android:id="@+id/sundayLv"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent" >
+            android:layout_height="fill_parent"
+            android:divider="@color/lightRed"
+            android:dividerHeight="0.75dp" >
         </ListView>
     </LinearLayout>
 

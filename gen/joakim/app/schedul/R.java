@@ -15,6 +15,9 @@ public final class R {
     }
     public static final class attr {
     }
+    public static final class color {
+        public static final int lightRed=0x7f060000;
+    }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
 
@@ -22,52 +25,57 @@ public final class R {
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static final int activity_horizontal_margin=0x7f060000;
-        public static final int activity_vertical_margin=0x7f060001;
+        public static final int activity_horizontal_margin=0x7f070000;
+        public static final int activity_vertical_margin=0x7f070001;
     }
     public static final class drawable {
-        public static final int day_shape=0x7f020000;
-        public static final int daysshape=0x7f020001;
-        public static final int ic_action_add=0x7f020002;
-        public static final int ic_action_settings=0x7f020003;
-        public static final int ic_launcher=0x7f020004;
-        public static final int left_list_droptarget=0x7f020005;
-        public static final int left_list_shape=0x7f020006;
-        public static final int right_list_droptarget=0x7f020007;
-        public static final int right_list_shape=0x7f020008;
-        public static final int shape=0x7f020009;
-        public static final int shape_droptarget=0x7f02000a;
+        public static final int ic_action_add=0x7f020000;
+        public static final int ic_action_settings=0x7f020001;
+        public static final int ic_launcher=0x7f020002;
+        public static final int left_list_droptarget=0x7f020003;
+        public static final int left_list_shape=0x7f020004;
+        public static final int listviewheader_shape=0x7f020005;
+        public static final int right_list_droptarget=0x7f020006;
+        public static final int right_list_shape=0x7f020007;
     }
     public static final class id {
-        public static final int action_add=0x7f0a001b;
-        public static final int action_settings=0x7f0a001c;
-        public static final int bCloseFragment=0x7f0a0015;
-        public static final int bCreate=0x7f0a0019;
-        public static final int bDummy=0x7f0a0010;
-        public static final int descriptionAppointment=0x7f0a0016;
-        public static final int fridayHolder=0x7f0a000a;
-        public static final int fridayLv=0x7f0a000b;
-        public static final int mondayHolder=0x7f0a0002;
-        public static final int mondayLv=0x7f0a0003;
-        public static final int objectHolder=0x7f0a0000;
-        public static final int priority_spinnerAppointment=0x7f0a0018;
-        public static final int saturdayHolder=0x7f0a000c;
-        public static final int saturdayLv=0x7f0a000d;
-        public static final int summary=0x7f0a001a;
-        public static final int sundayHolder=0x7f0a000e;
-        public static final int sundayLv=0x7f0a000f;
-        public static final int thursdayHolder=0x7f0a0008;
-        public static final int thursdayLv=0x7f0a0009;
-        public static final int tpAppointment=0x7f0a0017;
-        public static final int tuesdayHolder=0x7f0a0004;
-        public static final int tuesdayLv=0x7f0a0005;
-        public static final int tvAlarmAppointment=0x7f0a0013;
-        public static final int tvAppointmentTime=0x7f0a0014;
-        public static final int tvCountDown=0x7f0a0012;
-        public static final int tvDisplayAppointment=0x7f0a0011;
-        public static final int tvDraggableAppointment=0x7f0a0001;
-        public static final int wednesdayHolder=0x7f0a0006;
-        public static final int wednesdayLv=0x7f0a0007;
+        public static final int action_add=0x7f0b0023;
+        public static final int action_settings=0x7f0b0024;
+        public static final int bCloseFragment=0x7f0b001d;
+        public static final int bCreate=0x7f0b0021;
+        public static final int bDummy=0x7f0b0018;
+        public static final int descriptionAppointment=0x7f0b001e;
+        public static final int fridayHolder=0x7f0b000f;
+        public static final int fridayLv=0x7f0b0011;
+        public static final int mondayHolder=0x7f0b0003;
+        public static final int mondayLv=0x7f0b0005;
+        public static final int objectHolder=0x7f0b0000;
+        public static final int priority_spinnerAppointment=0x7f0b0020;
+        public static final int saturdayHolder=0x7f0b0012;
+        public static final int saturdayLv=0x7f0b0014;
+        public static final int summary=0x7f0b0022;
+        public static final int sundayHolder=0x7f0b0015;
+        public static final int sundayLv=0x7f0b0017;
+        public static final int thursdayHolder=0x7f0b000c;
+        public static final int thursdayLv=0x7f0b000e;
+        public static final int tpAppointment=0x7f0b001f;
+        public static final int tuesdayHolder=0x7f0b0006;
+        public static final int tuesdayLv=0x7f0b0008;
+        public static final int tvAlarmAppointment=0x7f0b001b;
+        public static final int tvAppointmentTime=0x7f0b001c;
+        public static final int tvCountDown=0x7f0b001a;
+        public static final int tvDisplayAppointment=0x7f0b0019;
+        public static final int tvDraggableAppointment=0x7f0b0002;
+        public static final int tvFriday=0x7f0b0010;
+        public static final int tvMonday=0x7f0b0004;
+        public static final int tvNewAppointment=0x7f0b0001;
+        public static final int tvSaturday=0x7f0b0013;
+        public static final int tvSunday=0x7f0b0016;
+        public static final int tvThursday=0x7f0b000d;
+        public static final int tvTuesday=0x7f0b0007;
+        public static final int tvWednesday=0x7f0b000a;
+        public static final int wednesdayHolder=0x7f0b0009;
+        public static final int wednesdayLv=0x7f0b000b;
     }
     public static final class layout {
         public static final int activity_add_todo=0x7f030000;
@@ -78,28 +86,36 @@ public final class R {
         public static final int row_layout=0x7f030005;
     }
     public static final class menu {
-        public static final int add_todo=0x7f090000;
-        public static final int mainmenu=0x7f090001;
-        public static final int schedul=0x7f090002;
+        public static final int add_todo=0x7f0a0000;
+        public static final int mainmenu=0x7f0a0001;
+        public static final int schedul=0x7f0a0002;
     }
     public static final class string {
-        public static final int action_settings=0x7f070001;
-        public static final int actionbar_add=0x7f070004;
-        public static final int actionbar_settings=0x7f07000c;
-        public static final int app_name=0x7f070000;
-        public static final int app_settings=0x7f070008;
-        public static final int bClose=0x7f07000e;
-        public static final int button_add=0x7f070005;
-        public static final int dialog_title_alarm_frequency=0x7f070009;
-        public static final int hello_world=0x7f070002;
-        public static final int service_alarm=0x7f070010;
-        public static final int summary_alarm_frequency=0x7f07000a;
-        public static final int summary_locked_appointments=0x7f070006;
-        public static final int title_activity_add_todo=0x7f070003;
-        public static final int title_activity_dummy_alarm_activity=0x7f07000f;
-        public static final int title_activity_user_settings=0x7f07000d;
-        public static final int title_alarm_frequency=0x7f07000b;
-        public static final int title_locked_appointments=0x7f070007;
+        public static final int action_settings=0x7f080001;
+        public static final int actionbar_add=0x7f080004;
+        public static final int actionbar_settings=0x7f08000c;
+        public static final int app_name=0x7f080000;
+        public static final int app_settings=0x7f080008;
+        public static final int bClose=0x7f08000e;
+        public static final int button_add=0x7f080005;
+        public static final int dialog_title_alarm_frequency=0x7f080009;
+        public static final int friday=0x7f080015;
+        public static final int hello_world=0x7f080002;
+        public static final int monday=0x7f080011;
+        public static final int newappointment=0x7f080018;
+        public static final int saturday=0x7f080016;
+        public static final int service_alarm=0x7f080010;
+        public static final int summary_alarm_frequency=0x7f08000a;
+        public static final int summary_locked_appointments=0x7f080006;
+        public static final int sunday=0x7f080017;
+        public static final int thursday=0x7f080014;
+        public static final int title_activity_add_todo=0x7f080003;
+        public static final int title_activity_dummy_alarm_activity=0x7f08000f;
+        public static final int title_activity_user_settings=0x7f08000d;
+        public static final int title_alarm_frequency=0x7f08000b;
+        public static final int title_locked_appointments=0x7f080007;
+        public static final int tuesday=0x7f080012;
+        public static final int wednesday=0x7f080013;
     }
     public static final class style {
         /** 
@@ -123,11 +139,11 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f080000;
+        public static final int AppBaseTheme=0x7f090000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f080001;
+        public static final int AppTheme=0x7f090001;
     }
     public static final class xml {
         public static final int settings=0x7f040000;
