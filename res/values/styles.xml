@@ -31,4 +31,11 @@
         <item name="android:textStyle">bold</item>
         <item name="android:gravity">center</item>
     </style>
+    
+    <style name="textview">
+        <item name="android:background">@drawable/textview_shape</item>
+    </style>
+    <style name="countdown">
+        <item name="android:background">@drawable/countdown_shape</item>
+    </style>
 </resources>

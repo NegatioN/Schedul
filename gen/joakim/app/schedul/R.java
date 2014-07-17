@@ -34,41 +34,44 @@ public final class R {
         public static final int activity_vertical_margin=0x7f070001;
     }
     public static final class drawable {
-        public static final int ic_action_add=0x7f020000;
-        public static final int ic_action_settings=0x7f020001;
-        public static final int ic_launcher=0x7f020002;
-        public static final int left_list_droptarget=0x7f020003;
-        public static final int left_list_shape=0x7f020004;
-        public static final int listviewheader_shape=0x7f020005;
-        public static final int right_list_droptarget=0x7f020006;
-        public static final int right_list_shape=0x7f020007;
+        public static final int countdown_shape=0x7f020000;
+        public static final int ic_action_add=0x7f020001;
+        public static final int ic_action_settings=0x7f020002;
+        public static final int ic_launcher=0x7f020003;
+        public static final int left_list_droptarget=0x7f020004;
+        public static final int left_list_shape=0x7f020005;
+        public static final int listviewheader_shape=0x7f020006;
+        public static final int right_list_droptarget=0x7f020007;
+        public static final int right_list_shape=0x7f020008;
+        public static final int textview_shape=0x7f020009;
     }
     public static final class id {
-        public static final int action_add=0x7f0b0023;
-        public static final int action_settings=0x7f0b0024;
-        public static final int bCloseFragment=0x7f0b001d;
-        public static final int bCreate=0x7f0b0021;
+        public static final int action_add=0x7f0b0024;
+        public static final int action_settings=0x7f0b0025;
+        public static final int bCloseFragment=0x7f0b001e;
+        public static final int bCreate=0x7f0b0022;
         public static final int bDummy=0x7f0b0018;
-        public static final int descriptionAppointment=0x7f0b001e;
+        public static final int descriptionAppointment=0x7f0b001f;
         public static final int fridayHolder=0x7f0b000f;
         public static final int fridayLv=0x7f0b0011;
         public static final int mondayHolder=0x7f0b0003;
         public static final int mondayLv=0x7f0b0005;
         public static final int objectHolder=0x7f0b0000;
-        public static final int priority_spinnerAppointment=0x7f0b0020;
+        public static final int priority_spinnerAppointment=0x7f0b0021;
         public static final int saturdayHolder=0x7f0b0012;
         public static final int saturdayLv=0x7f0b0014;
-        public static final int summary=0x7f0b0022;
+        public static final int summary=0x7f0b0023;
         public static final int sundayHolder=0x7f0b0015;
         public static final int sundayLv=0x7f0b0017;
         public static final int thursdayHolder=0x7f0b000c;
         public static final int thursdayLv=0x7f0b000e;
-        public static final int tpAppointment=0x7f0b001f;
+        public static final int tpAppointment=0x7f0b0020;
         public static final int tuesdayHolder=0x7f0b0006;
         public static final int tuesdayLv=0x7f0b0008;
-        public static final int tvAlarmAppointment=0x7f0b001b;
-        public static final int tvAppointmentTime=0x7f0b001c;
-        public static final int tvCountDown=0x7f0b001a;
+        public static final int tvAds=0x7f0b001a;
+        public static final int tvAlarmAppointment=0x7f0b001c;
+        public static final int tvAppointmentTime=0x7f0b001d;
+        public static final int tvCountDown=0x7f0b001b;
         public static final int tvDisplayAppointment=0x7f0b0019;
         public static final int tvDraggableAppointment=0x7f0b0002;
         public static final int tvFriday=0x7f0b0010;
@@ -106,6 +109,7 @@ public final class R {
         public static final int dialog_title_alarm_frequency=0x7f080009;
         public static final int friday=0x7f080015;
         public static final int hello_world=0x7f080002;
+        public static final int lacking_appointment=0x7f080019;
         public static final int monday=0x7f080011;
         public static final int newappointment=0x7f080018;
         public static final int saturday=0x7f080016;
@@ -149,8 +153,10 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f090001;
+        public static final int countdown=0x7f090005;
         public static final int header=0x7f090003;
         public static final int listview=0x7f090002;
+        public static final int textview=0x7f090004;
     }
     public static final class xml {
         public static final int settings=0x7f040000;
