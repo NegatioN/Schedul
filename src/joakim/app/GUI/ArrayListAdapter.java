@@ -30,6 +30,8 @@ public class ArrayListAdapter extends ArrayAdapter<Appointment>{
 		    LayoutInflater inflater = (LayoutInflater) context
 		        .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		    View rowView = inflater.inflate(R.layout.row_layout, parent, false);
+		    
+		    //R.id.summary defined in row_layout.xml
 		    TextView textView = (TextView) rowView.findViewById(R.id.summary);
 		    
 		    //sets the color and alpha of our textview in the list.

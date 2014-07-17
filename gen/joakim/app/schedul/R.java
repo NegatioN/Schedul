@@ -16,10 +16,12 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
+        public static final int alphalightRed=0x7f060001;
         public static final int lightRed=0x7f060000;
-        public static final int medium=0x7f060002;
-        public static final int unimportant=0x7f060003;
-        public static final int urgent=0x7f060001;
+        public static final int medium=0x7f060003;
+        public static final int unimportant=0x7f060004;
+        public static final int urgent=0x7f060002;
+        public static final int white=0x7f060005;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -147,7 +149,7 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f090001;
-        public static final int listitem=0x7f090003;
+        public static final int header=0x7f090003;
         public static final int listview=0x7f090002;
     }
     public static final class xml {

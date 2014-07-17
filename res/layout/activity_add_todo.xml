@@ -23,7 +23,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/newappointment"
-            android:background="@drawable/listviewheader_shape"/>
+            style="@style/header"
+            />
         
         <TextView
             android:id="@+id/tvDraggableAppointment"
@@ -48,7 +49,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/monday"
-            android:background="@drawable/listviewheader_shape"/>
+            style="@style/header"/>
         
         <ListView
             android:id="@+id/mondayLv"
@@ -73,7 +74,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/tuesday"
-            android:background="@drawable/listviewheader_shape"/>
+            style="@style/header"/>
         
         <ListView
             android:id="@+id/tuesdayLv"
@@ -97,7 +98,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/wednesday"
-            android:background="@drawable/listviewheader_shape"/>
+            style="@style/header"/>
         
         <ListView
             android:id="@+id/wednesdayLv"
@@ -121,7 +122,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/thursday"
-            android:background="@drawable/listviewheader_shape"/>
+            style="@style/header"/>
         <ListView
             android:id="@+id/thursdayLv"
             android:layout_width="fill_parent"
@@ -145,7 +146,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/friday"
-            android:background="@drawable/listviewheader_shape"/>
+            style="@style/header"/>
                 
         <ListView
             android:id="@+id/fridayLv"
@@ -169,7 +170,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/saturday"
-            android:background="@drawable/listviewheader_shape"/>        
+            style="@style/header"/>        
         
         <ListView
             android:id="@+id/saturdayLv"
@@ -193,7 +194,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/sunday"
-            android:background="@drawable/listviewheader_shape"/>
+            style="@style/header"/>
                 
         <ListView
             android:id="@+id/sundayLv"
