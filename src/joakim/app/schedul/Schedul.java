@@ -7,6 +7,7 @@ import java.util.GregorianCalendar;
 import joakim.app.GUI.AlarmCountdown;
 import joakim.app.data.Appointment;
 import joakim.app.data.AppointmentComparator;
+import joakim.app.data.ColorHandler;
 import joakim.app.data.MySQLHelper;
 import android.app.Activity;
 import android.app.AlarmManager;
@@ -46,8 +47,8 @@ public class Schedul extends Activity {
 				Appointment appointment = findMostRecentAppointment();
 				if (appointment != null) {
 //					removeExpiredAppointment(appointment);
-					displayAppointment.setBackgroundColor(appointment
-							.getPriority());
+					int alphaColor = ColorHandler.convertColorAlpha(appointment.getPriority());
+					displayAppointment.setBackgroundColor(alphaColor);
 					displayAppointment.setText(appointment.getSummary());
 //					setAlarmFragment(appointment);
 					

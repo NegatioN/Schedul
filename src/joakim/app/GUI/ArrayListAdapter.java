@@ -3,6 +3,7 @@ package joakim.app.GUI;
 import java.util.ArrayList;
 
 import joakim.app.data.Appointment;
+import joakim.app.data.ColorHandler;
 import joakim.app.schedul.R;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -35,9 +36,8 @@ public class ArrayListAdapter extends ArrayAdapter<Appointment>{
 		    TextView textView = (TextView) rowView.findViewById(R.id.summary);
 		    
 		    //sets the color and alpha of our textview in the list.
-		    int baseColor = objects.get(position).getPriority();
-		    int alpha = 50;
-		    textView.setBackgroundColor(Color.argb(alpha, Color.red(baseColor), Color.green(baseColor), Color.blue(baseColor)));
+		    int alphaColor = ColorHandler.convertColorAlpha(objects.get(position).getPriority());
+		    textView.setBackgroundColor(alphaColor);
 		    
 		    textView.setText(objects.get(position).getSummary());
 		    

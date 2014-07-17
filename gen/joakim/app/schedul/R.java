@@ -41,9 +41,10 @@ public final class R {
         public static final int left_list_droptarget=0x7f020004;
         public static final int left_list_shape=0x7f020005;
         public static final int listviewheader_shape=0x7f020006;
-        public static final int right_list_droptarget=0x7f020007;
-        public static final int right_list_shape=0x7f020008;
-        public static final int textview_shape=0x7f020009;
+        public static final int redline_shape=0x7f020007;
+        public static final int right_list_droptarget=0x7f020008;
+        public static final int right_list_shape=0x7f020009;
+        public static final int textview_shape=0x7f02000a;
     }
     public static final class id {
         public static final int action_add=0x7f0b0024;
