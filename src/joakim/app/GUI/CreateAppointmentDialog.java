@@ -76,8 +76,9 @@ public class CreateAppointmentDialog extends DialogFragment implements OnItemSel
         
         String title = getArguments().getString("title", "Enter Name");
         getDialog().setTitle(title);
+        
         // Show soft keyboard automatically
-        mEditText.requestFocus();
+//        mEditText.requestFocus();
         getDialog().getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         return view;
