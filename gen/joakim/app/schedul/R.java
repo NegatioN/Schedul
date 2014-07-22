@@ -41,10 +41,10 @@ public final class R {
         public static final int left_list_droptarget=0x7f020004;
         public static final int left_list_shape=0x7f020005;
         public static final int listviewheader_shape=0x7f020006;
-        public static final int redline_shape=0x7f020007;
-        public static final int right_list_droptarget=0x7f020008;
-        public static final int right_list_shape=0x7f020009;
-        public static final int textview_shape=0x7f02000a;
+        public static final int right_list_droptarget=0x7f020007;
+        public static final int right_list_shape=0x7f020008;
+        public static final int textview_shape=0x7f020009;
+        public static final int tpdivider=0x7f02000a;
     }
     public static final class id {
         public static final int action_add=0x7f0b0024;
@@ -90,9 +90,10 @@ public final class R {
         public static final int activity_add_todo=0x7f030000;
         public static final int activity_dummy=0x7f030001;
         public static final int activity_schedul=0x7f030002;
-        public static final int fragment_alarm=0x7f030003;
-        public static final int fragment_create_appointment=0x7f030004;
-        public static final int row_layout=0x7f030005;
+        public static final int customnumpick=0x7f030003;
+        public static final int fragment_alarm=0x7f030004;
+        public static final int fragment_create_appointment=0x7f030005;
+        public static final int row_layout=0x7f030006;
     }
     public static final class menu {
         public static final int add_todo=0x7f0a0000;
@@ -107,6 +108,8 @@ public final class R {
         public static final int app_settings=0x7f080008;
         public static final int bClose=0x7f08000e;
         public static final int button_add=0x7f080005;
+        public static final int createappbutton=0x7f08001b;
+        public static final int createhint=0x7f08001a;
         public static final int dialog_title_alarm_frequency=0x7f080009;
         public static final int friday=0x7f080015;
         public static final int hello_world=0x7f080002;
@@ -158,6 +161,7 @@ public final class R {
         public static final int header=0x7f090003;
         public static final int listview=0x7f090002;
         public static final int textview=0x7f090004;
+        public static final int timepicker=0x7f090006;
     }
     public static final class xml {
         public static final int settings=0x7f040000;

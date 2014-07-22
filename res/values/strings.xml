@@ -27,5 +27,7 @@
     <string name="sunday">Søndag</string>
     <string name="newappointment">Ny avtale</string>
     <string name="lacking_appointment">Legg til en avtale</string>
+    <string name="createhint">Beskrivelse av avtalen</string>
+    <string name="createappbutton">Lag Avtale</string>
 
 </resources>

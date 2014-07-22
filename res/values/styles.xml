@@ -38,4 +38,8 @@
     <style name="countdown">
         <item name="android:background">@drawable/countdown_shape</item>
     </style>
+    
+    <style name="timepicker" >
+        <item name="android:divider">@drawable/tpdivider</item>
+    </style>
 </resources>
