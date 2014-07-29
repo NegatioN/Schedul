@@ -216,10 +216,10 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     public static final class id {
         public static final int action_add=0x7f070037;
         public static final int action_settings=0x7f070038;
-        public static final int bCloseFragment=0x7f070035;
-        public static final int bCreate=0x7f070032;
+        public static final int bCloseFragment=0x7f070031;
+        public static final int bCreate=0x7f070035;
         public static final int bDummy=0x7f07001b;
-        public static final int descriptionAppointment=0x7f07002f;
+        public static final int descriptionAppointment=0x7f070032;
         public static final int dialog_button_panel=0x7f070022;
         public static final int dialog_button_separator=0x7f070023;
         public static final int dialog_horizontal_separator=0x7f070021;
@@ -229,7 +229,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int mondayHolder=0x7f070006;
         public static final int mondayLv=0x7f070008;
         public static final int objectHolder=0x7f070003;
-        public static final int priority_spinnerAppointment=0x7f070031;
+        public static final int priority_spinnerAppointment=0x7f070034;
         public static final int saturdayHolder=0x7f070015;
         public static final int saturdayLv=0x7f070017;
         public static final int sdl__button_panel=0x7f070020;
@@ -252,12 +252,12 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int sundayLv=0x7f07001a;
         public static final int thursdayHolder=0x7f07000f;
         public static final int thursdayLv=0x7f070011;
-        public static final int tpAppointment=0x7f070030;
+        public static final int tpAppointment=0x7f070033;
         public static final int tuesdayHolder=0x7f070009;
         public static final int tuesdayLv=0x7f07000b;
         public static final int tvAds=0x7f07001d;
-        public static final int tvAlarmAppointment=0x7f070033;
-        public static final int tvAppointmentTime=0x7f070034;
+        public static final int tvAlarmAppointment=0x7f07002f;
+        public static final int tvAppointmentTime=0x7f070030;
         public static final int tvCountDown=0x7f07001e;
         public static final int tvDisplayAppointment=0x7f07001c;
         public static final int tvDraggableAppointment=0x7f070005;
@@ -287,10 +287,9 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int dialog_part_progress=0x7f03000b;
         public static final int dialog_part_timepicker=0x7f03000c;
         public static final int dialog_part_title=0x7f03000d;
-        public static final int dialogfragment_layout=0x7f03000e;
-        public static final int fragment_alarm=0x7f03000f;
-        public static final int fragment_create_appointment=0x7f030010;
-        public static final int row_layout=0x7f030011;
+        public static final int fragment_alarm=0x7f03000e;
+        public static final int fragment_create_appointment=0x7f03000f;
+        public static final int row_layout=0x7f030010;
     }
     public static final class menu {
         public static final int add_todo=0x7f0b0000;
@@ -378,7 +377,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int SDL_TextView_Title=0x7f090012;
         public static final int SDL_TitleSeparator=0x7f09000c;
         public static final int countdown=0x7f09001b;
-        public static final int dialog=0x7f09001d;
         public static final int header=0x7f090019;
         public static final int listview=0x7f090018;
         public static final int textview=0x7f09001a;
