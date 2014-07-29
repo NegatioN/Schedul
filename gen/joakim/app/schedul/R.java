@@ -9,150 +9,19 @@ package joakim.app.schedul;
 
 public final class R {
     public static final class array {
-        public static final int array_alarm_frequency=0x7f0a0000;
-        public static final int entryvalues_alarm_frequency=0x7f0a0001;
-        public static final int priorities=0x7f0a0002;
+        public static final int array_alarm_frequency=0x7f050000;
+        public static final int entryvalues_alarm_frequency=0x7f050001;
+        public static final int priorities=0x7f050002;
     }
     public static final class attr {
-        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-         */
-        public static final int buttonBackgroundColorFocused=0x7f01000b;
-        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-         */
-        public static final int buttonBackgroundColorNormal=0x7f010009;
-        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-         */
-        public static final int buttonBackgroundColorPressed=0x7f01000a;
-        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-         */
-        public static final int buttonSeparatorColor=0x7f010008;
-        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-         */
-        public static final int buttonTextColor=0x7f010007;
-        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-         */
-        public static final int dialogBackground=0x7f010003;
-        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-         */
-        public static final int listItemColorFocused=0x7f01000d;
-        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-         */
-        public static final int listItemColorNormal=0x7f01000c;
-        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-         */
-        public static final int listItemColorPressed=0x7f01000e;
-        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-         */
-        public static final int listItemSeparatorColor=0x7f01000f;
-        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-         */
-        public static final int messageTextColor=0x7f010006;
-        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-         */
-        public static final int sdlDialogStyle=0x7f010000;
-        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-         */
-        public static final int sdlMessageTextStyle=0x7f010002;
-        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-         */
-        public static final int sdlTitleTextStyle=0x7f010001;
-        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-         */
-        public static final int titleSeparatorColor=0x7f010005;
-        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-         */
-        public static final int titleTextColor=0x7f010004;
     }
     public static final class color {
-        public static final int alphalightRed=0x7f050017;
-        public static final int lightRed=0x7f050016;
-        public static final int medium=0x7f050019;
-        public static final int sdl_bright_foreground_disabled_holo_dark=0x7f050014;
-        public static final int sdl_bright_foreground_disabled_holo_light=0x7f050015;
-        /**  7% opacity 
- holo colors: 
-         */
-        public static final int sdl_bright_foreground_holo_dark=0x7f050012;
-        public static final int sdl_bright_foreground_holo_light=0x7f050013;
-        /**  60 % opacity 
-         */
-        public static final int sdl_button_focused_dark=0x7f050006;
-        /**  60 % opacity 
-         */
-        public static final int sdl_button_focused_light=0x7f05000f;
-        public static final int sdl_button_normal_dark=0x7f050004;
-        public static final int sdl_button_normal_light=0x7f05000d;
-        public static final int sdl_button_pressed_dark=0x7f050005;
-        public static final int sdl_button_pressed_light=0x7f05000e;
-        /**  30 % opacity 
-         */
-        public static final int sdl_button_separator_dark=0x7f050007;
-        /**  30 % opacity 
-         */
-        public static final int sdl_button_separator_light=0x7f050010;
-        public static final int sdl_button_text_dark=0x7f050003;
-        public static final int sdl_button_text_light=0x7f05000c;
-        /**  7% opacity 
-         */
-        public static final int sdl_list_item_separator_dark=0x7f050008;
-        /**  7% opacity 
-         */
-        public static final int sdl_list_item_separator_light=0x7f050011;
-        /**  dark colors: 
-         */
-        public static final int sdl_message_text_dark=0x7f050000;
-        /**  light colors: 
-         */
-        public static final int sdl_message_text_light=0x7f050009;
-        public static final int sdl_primary_text_holo_dark=0x7f05001c;
-        public static final int sdl_primary_text_holo_light=0x7f05001d;
-        public static final int sdl_title_separator_dark=0x7f050002;
-        public static final int sdl_title_separator_light=0x7f05000b;
-        public static final int sdl_title_text_dark=0x7f050001;
-        public static final int sdl_title_text_light=0x7f05000a;
-        public static final int unimportant=0x7f05001a;
-        public static final int urgent=0x7f050018;
-        public static final int white=0x7f05001b;
+        public static final int alphalightRed=0x7f060001;
+        public static final int lightRed=0x7f060000;
+        public static final int medium=0x7f060003;
+        public static final int unimportant=0x7f060004;
+        public static final int urgent=0x7f060002;
+        public static final int white=0x7f060005;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -161,42 +30,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static final int activity_horizontal_margin=0x7f06001e;
-        public static final int activity_vertical_margin=0x7f06001f;
-        /**  grid size 
-         */
-        public static final int grid_1=0x7f060000;
-        public static final int grid_10=0x7f060009;
-        public static final int grid_11=0x7f06000a;
-        public static final int grid_12=0x7f06000b;
-        public static final int grid_13=0x7f06000c;
-        public static final int grid_14=0x7f06000d;
-        public static final int grid_15=0x7f06000e;
-        public static final int grid_16=0x7f06000f;
-        public static final int grid_17=0x7f060010;
-        public static final int grid_18=0x7f060011;
-        /**  one square in grid 
-         */
-        public static final int grid_2=0x7f060001;
-        public static final int grid_20=0x7f060012;
-        public static final int grid_26=0x7f060013;
-        public static final int grid_27=0x7f060014;
-        public static final int grid_28=0x7f060015;
-        public static final int grid_3=0x7f060002;
-        public static final int grid_4=0x7f060003;
-        public static final int grid_43=0x7f060016;
-        public static final int grid_44=0x7f060017;
-        public static final int grid_45=0x7f060018;
-        public static final int grid_46=0x7f060019;
-        public static final int grid_5=0x7f060004;
-        public static final int grid_55=0x7f06001a;
-        public static final int grid_57=0x7f06001b;
-        public static final int grid_58=0x7f06001c;
-        public static final int grid_6=0x7f060005;
-        public static final int grid_7=0x7f060006;
-        public static final int grid_8=0x7f060007;
-        public static final int grid_9=0x7f060008;
-        public static final int grid_90=0x7f06001d;
+        public static final int activity_horizontal_margin=0x7f070000;
+        public static final int activity_vertical_margin=0x7f070001;
     }
     public static final class drawable {
         public static final int countdown_shape=0x7f020000;
@@ -208,124 +43,92 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int listviewheader_shape=0x7f020006;
         public static final int right_list_droptarget=0x7f020007;
         public static final int right_list_shape=0x7f020008;
-        public static final int sdl_background_dark=0x7f020009;
-        public static final int sdl_background_light=0x7f02000a;
-        public static final int textview_shape=0x7f02000b;
-        public static final int tpdivider=0x7f02000c;
+        public static final int textview_shape=0x7f020009;
+        public static final int tpdivider=0x7f02000a;
     }
     public static final class id {
-        public static final int action_add=0x7f070037;
-        public static final int action_settings=0x7f070038;
-        public static final int bCloseFragment=0x7f070031;
-        public static final int bCreate=0x7f070035;
-        public static final int bDummy=0x7f07001b;
-        public static final int descriptionAppointment=0x7f070032;
-        public static final int dialog_button_panel=0x7f070022;
-        public static final int dialog_button_separator=0x7f070023;
-        public static final int dialog_horizontal_separator=0x7f070021;
-        public static final int fridayHolder=0x7f070012;
-        public static final int fridayLv=0x7f070014;
-        public static final int list_item_text=0x7f07001f;
-        public static final int mondayHolder=0x7f070006;
-        public static final int mondayLv=0x7f070008;
-        public static final int objectHolder=0x7f070003;
-        public static final int priority_spinnerAppointment=0x7f070034;
-        public static final int saturdayHolder=0x7f070015;
-        public static final int saturdayLv=0x7f070017;
-        public static final int sdl__button_panel=0x7f070020;
-        public static final int sdl__content=0x7f07002e;
-        public static final int sdl__contentPanel=0x7f070028;
-        public static final int sdl__custom=0x7f070025;
-        public static final int sdl__customPanel=0x7f070024;
-        public static final int sdl__datepicker=0x7f070026;
-        public static final int sdl__listview=0x7f070027;
-        public static final int sdl__message=0x7f070029;
-        public static final int sdl__negative_button=0x7f070002;
-        public static final int sdl__neutral_button=0x7f070001;
-        public static final int sdl__positive_button=0x7f070000;
-        public static final int sdl__progress=0x7f07002b;
-        public static final int sdl__progressPanel=0x7f07002a;
-        public static final int sdl__title=0x7f07002c;
-        public static final int sdl__titleDivider=0x7f07002d;
-        public static final int summary=0x7f070036;
-        public static final int sundayHolder=0x7f070018;
-        public static final int sundayLv=0x7f07001a;
-        public static final int thursdayHolder=0x7f07000f;
-        public static final int thursdayLv=0x7f070011;
-        public static final int tpAppointment=0x7f070033;
-        public static final int tuesdayHolder=0x7f070009;
-        public static final int tuesdayLv=0x7f07000b;
-        public static final int tvAds=0x7f07001d;
-        public static final int tvAlarmAppointment=0x7f07002f;
-        public static final int tvAppointmentTime=0x7f070030;
-        public static final int tvCountDown=0x7f07001e;
-        public static final int tvDisplayAppointment=0x7f07001c;
-        public static final int tvDraggableAppointment=0x7f070005;
-        public static final int tvFriday=0x7f070013;
-        public static final int tvMonday=0x7f070007;
-        public static final int tvNewAppointment=0x7f070004;
-        public static final int tvSaturday=0x7f070016;
-        public static final int tvSunday=0x7f070019;
-        public static final int tvThursday=0x7f070010;
-        public static final int tvTuesday=0x7f07000a;
-        public static final int tvWednesday=0x7f07000d;
-        public static final int wednesdayHolder=0x7f07000c;
-        public static final int wednesdayLv=0x7f07000e;
+        public static final int action_add=0x7f0b0024;
+        public static final int action_settings=0x7f0b0025;
+        public static final int bCloseFragment=0x7f0b001e;
+        public static final int bCreate=0x7f0b0022;
+        public static final int bDummy=0x7f0b0018;
+        public static final int descriptionAppointment=0x7f0b001f;
+        public static final int fridayHolder=0x7f0b000f;
+        public static final int fridayLv=0x7f0b0011;
+        public static final int mondayHolder=0x7f0b0003;
+        public static final int mondayLv=0x7f0b0005;
+        public static final int objectHolder=0x7f0b0000;
+        public static final int priority_spinnerAppointment=0x7f0b0021;
+        public static final int saturdayHolder=0x7f0b0012;
+        public static final int saturdayLv=0x7f0b0014;
+        public static final int summary=0x7f0b0023;
+        public static final int sundayHolder=0x7f0b0015;
+        public static final int sundayLv=0x7f0b0017;
+        public static final int thursdayHolder=0x7f0b000c;
+        public static final int thursdayLv=0x7f0b000e;
+        public static final int tpAppointment=0x7f0b0020;
+        public static final int tuesdayHolder=0x7f0b0006;
+        public static final int tuesdayLv=0x7f0b0008;
+        public static final int tvAds=0x7f0b001a;
+        public static final int tvAlarmAppointment=0x7f0b001c;
+        public static final int tvAppointmentTime=0x7f0b001d;
+        public static final int tvCountDown=0x7f0b001b;
+        public static final int tvDisplayAppointment=0x7f0b0019;
+        public static final int tvDraggableAppointment=0x7f0b0002;
+        public static final int tvFriday=0x7f0b0010;
+        public static final int tvMonday=0x7f0b0004;
+        public static final int tvNewAppointment=0x7f0b0001;
+        public static final int tvSaturday=0x7f0b0013;
+        public static final int tvSunday=0x7f0b0016;
+        public static final int tvThursday=0x7f0b000d;
+        public static final int tvTuesday=0x7f0b0007;
+        public static final int tvWednesday=0x7f0b000a;
+        public static final int wednesdayHolder=0x7f0b0009;
+        public static final int wednesdayLv=0x7f0b000b;
     }
     public static final class layout {
         public static final int activity_add_todo=0x7f030000;
         public static final int activity_dummy=0x7f030001;
         public static final int activity_schedul=0x7f030002;
-        public static final int dialog_list_item=0x7f030003;
-        public static final int dialog_part_button=0x7f030004;
-        public static final int dialog_part_button_panel=0x7f030005;
-        public static final int dialog_part_button_separator=0x7f030006;
-        public static final int dialog_part_custom=0x7f030007;
-        public static final int dialog_part_datepicker=0x7f030008;
-        public static final int dialog_part_list=0x7f030009;
-        public static final int dialog_part_message=0x7f03000a;
-        public static final int dialog_part_progress=0x7f03000b;
-        public static final int dialog_part_timepicker=0x7f03000c;
-        public static final int dialog_part_title=0x7f03000d;
-        public static final int fragment_alarm=0x7f03000e;
-        public static final int fragment_create_appointment=0x7f03000f;
-        public static final int row_layout=0x7f030010;
+        public static final int customnumpick=0x7f030003;
+        public static final int fragment_alarm=0x7f030004;
+        public static final int fragment_create_appointment=0x7f030005;
+        public static final int row_layout=0x7f030006;
     }
     public static final class menu {
-        public static final int add_todo=0x7f0b0000;
-        public static final int mainmenu=0x7f0b0001;
-        public static final int schedul=0x7f0b0002;
+        public static final int add_todo=0x7f0a0000;
+        public static final int mainmenu=0x7f0a0001;
+        public static final int schedul=0x7f0a0002;
     }
     public static final class string {
-        public static final int action_settings=0x7f080002;
-        public static final int actionbar_add=0x7f080005;
-        public static final int actionbar_settings=0x7f08000d;
-        public static final int app_name=0x7f080001;
-        public static final int app_settings=0x7f080009;
-        public static final int bClose=0x7f08000f;
-        public static final int button_add=0x7f080006;
-        public static final int createappbutton=0x7f08001c;
-        public static final int createhint=0x7f08001b;
-        public static final int dialog_close=0x7f080000;
-        public static final int dialog_title_alarm_frequency=0x7f08000a;
-        public static final int friday=0x7f080016;
-        public static final int hello_world=0x7f080003;
-        public static final int lacking_appointment=0x7f08001a;
-        public static final int monday=0x7f080012;
-        public static final int newappointment=0x7f080019;
-        public static final int saturday=0x7f080017;
-        public static final int service_alarm=0x7f080011;
-        public static final int summary_alarm_frequency=0x7f08000b;
-        public static final int summary_locked_appointments=0x7f080007;
-        public static final int sunday=0x7f080018;
-        public static final int thursday=0x7f080015;
-        public static final int title_activity_add_todo=0x7f080004;
-        public static final int title_activity_dummy_alarm_activity=0x7f080010;
-        public static final int title_activity_user_settings=0x7f08000e;
-        public static final int title_alarm_frequency=0x7f08000c;
-        public static final int title_locked_appointments=0x7f080008;
-        public static final int tuesday=0x7f080013;
-        public static final int wednesday=0x7f080014;
+        public static final int action_settings=0x7f080001;
+        public static final int actionbar_add=0x7f080004;
+        public static final int actionbar_settings=0x7f08000c;
+        public static final int app_name=0x7f080000;
+        public static final int app_settings=0x7f080008;
+        public static final int bClose=0x7f08000e;
+        public static final int button_add=0x7f080005;
+        public static final int createappbutton=0x7f08001b;
+        public static final int createhint=0x7f08001a;
+        public static final int dialog_title_alarm_frequency=0x7f080009;
+        public static final int friday=0x7f080015;
+        public static final int hello_world=0x7f080002;
+        public static final int lacking_appointment=0x7f080019;
+        public static final int monday=0x7f080011;
+        public static final int newappointment=0x7f080018;
+        public static final int saturday=0x7f080016;
+        public static final int service_alarm=0x7f080010;
+        public static final int summary_alarm_frequency=0x7f08000a;
+        public static final int summary_locked_appointments=0x7f080006;
+        public static final int sunday=0x7f080017;
+        public static final int thursday=0x7f080014;
+        public static final int title_activity_add_todo=0x7f080003;
+        public static final int title_activity_dummy_alarm_activity=0x7f08000f;
+        public static final int title_activity_user_settings=0x7f08000d;
+        public static final int title_alarm_frequency=0x7f08000b;
+        public static final int title_locked_appointments=0x7f080007;
+        public static final int tuesday=0x7f080012;
+        public static final int wednesday=0x7f080013;
     }
     public static final class style {
         /** 
@@ -349,283 +152,18 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f090016;
+        public static final int AppBaseTheme=0x7f090000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f090017;
-        public static final int DialogStyleDark=0x7f090002;
-        public static final int DialogStyleLight=0x7f090003;
-        public static final int ListItemText=0x7f090015;
-        public static final int SDL=0x7f090000;
-        public static final int SDL_Button=0x7f09000d;
-        public static final int SDL_ButtonSeparator=0x7f09000b;
-        public static final int SDL_DatePicker=0x7f09000e;
-        public static final int SDL_Dialog=0x7f090001;
-        public static final int SDL_Group=0x7f090004;
-        public static final int SDL_Group_ButtonPanel=0x7f090005;
-        public static final int SDL_Group_Content=0x7f090006;
-        public static final int SDL_Group_Horizontal=0x7f090007;
-        public static final int SDL_Group_Horizontal_ButtonPanel=0x7f090008;
-        public static final int SDL_Group_Wrap=0x7f090009;
-        public static final int SDL_HorizontalSeparator=0x7f09000a;
-        public static final int SDL_ListItem=0x7f090014;
-        public static final int SDL_ListView=0x7f09000f;
-        public static final int SDL_Progress=0x7f090013;
-        public static final int SDL_TextView=0x7f090010;
-        public static final int SDL_TextView_Message=0x7f090011;
-        public static final int SDL_TextView_Title=0x7f090012;
-        public static final int SDL_TitleSeparator=0x7f09000c;
-        public static final int countdown=0x7f09001b;
-        public static final int header=0x7f090019;
-        public static final int listview=0x7f090018;
-        public static final int textview=0x7f09001a;
-        public static final int timepicker=0x7f09001c;
+        public static final int AppTheme=0x7f090001;
+        public static final int countdown=0x7f090005;
+        public static final int header=0x7f090003;
+        public static final int listview=0x7f090002;
+        public static final int textview=0x7f090004;
+        public static final int timepicker=0x7f090006;
     }
     public static final class xml {
         public static final int settings=0x7f040000;
     }
-    public static final class styleable {
-        /** Attributes that can be used with a DialogStyle.
-           <p>Includes the following attributes:</p>
-           <table>
-           <colgroup align="left" />
-           <colgroup align="left" />
-           <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #DialogStyle_buttonBackgroundColorFocused joakim.app.schedul:buttonBackgroundColorFocused}</code></td><td></td></tr>
-           <tr><td><code>{@link #DialogStyle_buttonBackgroundColorNormal joakim.app.schedul:buttonBackgroundColorNormal}</code></td><td></td></tr>
-           <tr><td><code>{@link #DialogStyle_buttonBackgroundColorPressed joakim.app.schedul:buttonBackgroundColorPressed}</code></td><td></td></tr>
-           <tr><td><code>{@link #DialogStyle_buttonSeparatorColor joakim.app.schedul:buttonSeparatorColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #DialogStyle_buttonTextColor joakim.app.schedul:buttonTextColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #DialogStyle_dialogBackground joakim.app.schedul:dialogBackground}</code></td><td></td></tr>
-           <tr><td><code>{@link #DialogStyle_listItemColorFocused joakim.app.schedul:listItemColorFocused}</code></td><td></td></tr>
-           <tr><td><code>{@link #DialogStyle_listItemColorNormal joakim.app.schedul:listItemColorNormal}</code></td><td></td></tr>
-           <tr><td><code>{@link #DialogStyle_listItemColorPressed joakim.app.schedul:listItemColorPressed}</code></td><td></td></tr>
-           <tr><td><code>{@link #DialogStyle_listItemSeparatorColor joakim.app.schedul:listItemSeparatorColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #DialogStyle_messageTextColor joakim.app.schedul:messageTextColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #DialogStyle_titleSeparatorColor joakim.app.schedul:titleSeparatorColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #DialogStyle_titleTextColor joakim.app.schedul:titleTextColor}</code></td><td></td></tr>
-           </table>
-           @see #DialogStyle_buttonBackgroundColorFocused
-           @see #DialogStyle_buttonBackgroundColorNormal
-           @see #DialogStyle_buttonBackgroundColorPressed
-           @see #DialogStyle_buttonSeparatorColor
-           @see #DialogStyle_buttonTextColor
-           @see #DialogStyle_dialogBackground
-           @see #DialogStyle_listItemColorFocused
-           @see #DialogStyle_listItemColorNormal
-           @see #DialogStyle_listItemColorPressed
-           @see #DialogStyle_listItemSeparatorColor
-           @see #DialogStyle_messageTextColor
-           @see #DialogStyle_titleSeparatorColor
-           @see #DialogStyle_titleTextColor
-         */
-        public static final int[] DialogStyle = {
-            0x7f010003, 0x7f010004, 0x7f010005, 0x7f010006,
-            0x7f010007, 0x7f010008, 0x7f010009, 0x7f01000a,
-            0x7f01000b, 0x7f01000c, 0x7f01000d, 0x7f01000e,
-            0x7f01000f
-        };
-        /**
-          <p>This symbol is the offset where the {@link joakim.app.schedul.R.attr#buttonBackgroundColorFocused}
-          attribute's value can be found in the {@link #DialogStyle} array.
-
-
-          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-          @attr name joakim.app.schedul:buttonBackgroundColorFocused
-        */
-        public static final int DialogStyle_buttonBackgroundColorFocused = 8;
-        /**
-          <p>This symbol is the offset where the {@link joakim.app.schedul.R.attr#buttonBackgroundColorNormal}
-          attribute's value can be found in the {@link #DialogStyle} array.
-
-
-          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-          @attr name joakim.app.schedul:buttonBackgroundColorNormal
-        */
-        public static final int DialogStyle_buttonBackgroundColorNormal = 6;
-        /**
-          <p>This symbol is the offset where the {@link joakim.app.schedul.R.attr#buttonBackgroundColorPressed}
-          attribute's value can be found in the {@link #DialogStyle} array.
-
-
-          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-          @attr name joakim.app.schedul:buttonBackgroundColorPressed
-        */
-        public static final int DialogStyle_buttonBackgroundColorPressed = 7;
-        /**
-          <p>This symbol is the offset where the {@link joakim.app.schedul.R.attr#buttonSeparatorColor}
-          attribute's value can be found in the {@link #DialogStyle} array.
-
-
-          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-          @attr name joakim.app.schedul:buttonSeparatorColor
-        */
-        public static final int DialogStyle_buttonSeparatorColor = 5;
-        /**
-          <p>This symbol is the offset where the {@link joakim.app.schedul.R.attr#buttonTextColor}
-          attribute's value can be found in the {@link #DialogStyle} array.
-
-
-          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-          @attr name joakim.app.schedul:buttonTextColor
-        */
-        public static final int DialogStyle_buttonTextColor = 4;
-        /**
-          <p>This symbol is the offset where the {@link joakim.app.schedul.R.attr#dialogBackground}
-          attribute's value can be found in the {@link #DialogStyle} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name joakim.app.schedul:dialogBackground
-        */
-        public static final int DialogStyle_dialogBackground = 0;
-        /**
-          <p>This symbol is the offset where the {@link joakim.app.schedul.R.attr#listItemColorFocused}
-          attribute's value can be found in the {@link #DialogStyle} array.
-
-
-          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-          @attr name joakim.app.schedul:listItemColorFocused
-        */
-        public static final int DialogStyle_listItemColorFocused = 10;
-        /**
-          <p>This symbol is the offset where the {@link joakim.app.schedul.R.attr#listItemColorNormal}
-          attribute's value can be found in the {@link #DialogStyle} array.
-
-
-          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-          @attr name joakim.app.schedul:listItemColorNormal
-        */
-        public static final int DialogStyle_listItemColorNormal = 9;
-        /**
-          <p>This symbol is the offset where the {@link joakim.app.schedul.R.attr#listItemColorPressed}
-          attribute's value can be found in the {@link #DialogStyle} array.
-
-
-          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-          @attr name joakim.app.schedul:listItemColorPressed
-        */
-        public static final int DialogStyle_listItemColorPressed = 11;
-        /**
-          <p>This symbol is the offset where the {@link joakim.app.schedul.R.attr#listItemSeparatorColor}
-          attribute's value can be found in the {@link #DialogStyle} array.
-
-
-          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-          @attr name joakim.app.schedul:listItemSeparatorColor
-        */
-        public static final int DialogStyle_listItemSeparatorColor = 12;
-        /**
-          <p>This symbol is the offset where the {@link joakim.app.schedul.R.attr#messageTextColor}
-          attribute's value can be found in the {@link #DialogStyle} array.
-
-
-          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-          @attr name joakim.app.schedul:messageTextColor
-        */
-        public static final int DialogStyle_messageTextColor = 3;
-        /**
-          <p>This symbol is the offset where the {@link joakim.app.schedul.R.attr#titleSeparatorColor}
-          attribute's value can be found in the {@link #DialogStyle} array.
-
-
-          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-          @attr name joakim.app.schedul:titleSeparatorColor
-        */
-        public static final int DialogStyle_titleSeparatorColor = 2;
-        /**
-          <p>This symbol is the offset where the {@link joakim.app.schedul.R.attr#titleTextColor}
-          attribute's value can be found in the {@link #DialogStyle} array.
-
-
-          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-          @attr name joakim.app.schedul:titleTextColor
-        */
-        public static final int DialogStyle_titleTextColor = 1;
-        /** Attributes that can be used with a StyledDialogs.
-           <p>Includes the following attributes:</p>
-           <table>
-           <colgroup align="left" />
-           <colgroup align="left" />
-           <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #StyledDialogs_sdlDialogStyle joakim.app.schedul:sdlDialogStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #StyledDialogs_sdlMessageTextStyle joakim.app.schedul:sdlMessageTextStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #StyledDialogs_sdlTitleTextStyle joakim.app.schedul:sdlTitleTextStyle}</code></td><td></td></tr>
-           </table>
-           @see #StyledDialogs_sdlDialogStyle
-           @see #StyledDialogs_sdlMessageTextStyle
-           @see #StyledDialogs_sdlTitleTextStyle
-         */
-        public static final int[] StyledDialogs = {
-            0x7f010000, 0x7f010001, 0x7f010002
-        };
-        /**
-          <p>This symbol is the offset where the {@link joakim.app.schedul.R.attr#sdlDialogStyle}
-          attribute's value can be found in the {@link #StyledDialogs} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name joakim.app.schedul:sdlDialogStyle
-        */
-        public static final int StyledDialogs_sdlDialogStyle = 0;
-        /**
-          <p>This symbol is the offset where the {@link joakim.app.schedul.R.attr#sdlMessageTextStyle}
-          attribute's value can be found in the {@link #StyledDialogs} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name joakim.app.schedul:sdlMessageTextStyle
-        */
-        public static final int StyledDialogs_sdlMessageTextStyle = 2;
-        /**
-          <p>This symbol is the offset where the {@link joakim.app.schedul.R.attr#sdlTitleTextStyle}
-          attribute's value can be found in the {@link #StyledDialogs} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name joakim.app.schedul:sdlTitleTextStyle
-        */
-        public static final int StyledDialogs_sdlTitleTextStyle = 1;
-    };
 }
