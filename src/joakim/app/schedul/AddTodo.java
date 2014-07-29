@@ -1,29 +1,27 @@
 package joakim.app.schedul;
 
+import java.eu.inmite.android.lib.dialogs.SimpleDialogFragment;
 import java.util.ArrayList;
 
 import joakim.app.GUI.ArrayListAdapter;
-import joakim.app.GUI.CreateAppointmentDialog;
 import joakim.app.GUI.CreateAppointmentDialog.CreateAppointmentDialogListener;
 import joakim.app.GUI.DragZoneListener;
 import joakim.app.GUI.LvOnItemTouchListener;
 import joakim.app.data.Appointment;
 import joakim.app.data.MySQLHelper;
-import android.app.Activity;
-import android.app.FragmentManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class AddTodo extends Activity implements CreateAppointmentDialogListener{
+public class AddTodo extends FragmentActivity implements CreateAppointmentDialogListener{
 
 	private ArrayList<Appointment> aMan, aTir, aOns, aTor, aFre, aLør, aSøn;
 	private TextView draggableAppointment;
@@ -95,10 +93,11 @@ public class AddTodo extends Activity implements CreateAppointmentDialogListener
 	
 	
 	private void showFragment() {
-		FragmentManager fm = getFragmentManager();
-		CreateAppointmentDialog appDialog = CreateAppointmentDialog
-				.newInstance(this, "Create Appointment");
-		appDialog.show(fm, "fragment_create_appointment");
+//		FragmentManager fm = getFragmentManager();
+//		CreateAppointmentDialog appDialog = CreateAppointmentDialog
+//				.newInstance(this, "Create Appointment");
+//		appDialog.show(fm, "fragment_create_appointment");
+		SimpleDialogFragment.createBuilder((Context)this, getSupportFragmentManager()).setMessage(R.string.message).show();
 	}
 
 	public void onFinishCreateAppointmentDialog(Appointment app) {

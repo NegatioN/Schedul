@@ -5,7 +5,7 @@
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
     <style name="AppBaseTheme" parent="android:Theme.Light">
-        
+        <item name="sdlDialogStyle">@style/dialog</item>
         
         <!--
             Theme customizations available in newer API levels can go in
@@ -41,5 +41,16 @@
     
     <style name="timepicker" >
         <item name="android:divider">@drawable/tpdivider</item>
+    </style>
+    <style name="dialog">
+        <item name="titleTextColor">@color/lightRed</item>
+    	<item name="titleSeparatorColor">@color/lightRed</item>
+    	<item name="messageTextColor">@color/lightRed</item>
+    	<item name="buttonTextColor">@color/lightRed</item>
+    	<item name="buttonSeparatorColor">@color/lightRed</item>
+    	<item name="buttonBackgroundColorNormal">@color/white</item>
+    	<item name="buttonBackgroundColorPressed">@color/white</item>
+    	<item name="buttonBackgroundColorFocused">@color/white</item>
+    	<item name="dialogBackground">@color/white</item>
     </style>
 </resources>
