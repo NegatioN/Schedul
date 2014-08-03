@@ -1,8 +1,5 @@
 package joakim.app.GUI;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-
 import joakim.app.data.Appointment;
 import joakim.app.schedul.R;
 import android.app.DialogFragment;
@@ -81,6 +78,7 @@ public class CreateAppointmentDialog extends DialogFragment implements OnItemSel
 //        mEditText.requestFocus();
         getDialog().getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+        
         return view;
     }
     

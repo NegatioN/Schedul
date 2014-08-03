@@ -34,17 +34,18 @@ public final class R {
         public static final int activity_vertical_margin=0x7f070001;
     }
     public static final class drawable {
-        public static final int countdown_shape=0x7f020000;
-        public static final int ic_action_add=0x7f020001;
-        public static final int ic_action_settings=0x7f020002;
-        public static final int ic_launcher=0x7f020003;
-        public static final int left_list_droptarget=0x7f020004;
-        public static final int left_list_shape=0x7f020005;
-        public static final int listviewheader_shape=0x7f020006;
-        public static final int right_list_droptarget=0x7f020007;
-        public static final int right_list_shape=0x7f020008;
-        public static final int textview_shape=0x7f020009;
-        public static final int tpdivider=0x7f02000a;
+        public static final int actionbardrawable=0x7f020000;
+        public static final int countdown_shape=0x7f020001;
+        public static final int ic_action_add=0x7f020002;
+        public static final int ic_action_settings=0x7f020003;
+        public static final int ic_launcher=0x7f020004;
+        public static final int left_list_droptarget=0x7f020005;
+        public static final int left_list_shape=0x7f020006;
+        public static final int listviewheader_shape=0x7f020007;
+        public static final int right_list_droptarget=0x7f020008;
+        public static final int right_list_shape=0x7f020009;
+        public static final int textview_shape=0x7f02000a;
+        public static final int tpdivider=0x7f02000b;
     }
     public static final class id {
         public static final int action_add=0x7f0b0024;
@@ -90,10 +91,9 @@ public final class R {
         public static final int activity_add_todo=0x7f030000;
         public static final int activity_dummy=0x7f030001;
         public static final int activity_schedul=0x7f030002;
-        public static final int customnumpick=0x7f030003;
-        public static final int fragment_alarm=0x7f030004;
-        public static final int fragment_create_appointment=0x7f030005;
-        public static final int row_layout=0x7f030006;
+        public static final int fragment_alarm=0x7f030003;
+        public static final int fragment_create_appointment=0x7f030004;
+        public static final int row_layout=0x7f030005;
     }
     public static final class menu {
         public static final int add_todo=0x7f0a0000;
@@ -157,6 +157,9 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f090001;
+        /**  Actionbar style. 
+         */
+        public static final int MyActionBar=0x7f090007;
         public static final int countdown=0x7f090005;
         public static final int header=0x7f090003;
         public static final int listview=0x7f090002;
