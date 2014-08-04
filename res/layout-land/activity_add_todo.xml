@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:columnCount="4"
+    android:columnWidth="106dp"
+    android:orientation="vertical"
+    android:rowCount="2" >
+
+
+    <LinearLayout
+        android:id="@+id/objectHolder"
+        android:layout_width="133dp"
+        android:layout_height="127.5dp"
+        android:layout_column="0"
+        android:layout_row="0"
+        android:background="@drawable/left_list_shape"
+        android:orientation="vertical" >
+
+        <TextView 
+            android:id="@+id/tvNewAppointment"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/newappointment"
+            style="@style/header"
+            />
+        
+        <TextView
+            android:id="@+id/tvDraggableAppointment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:paddingTop="40dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/mondayHolder"
+        android:layout_width="133dp"
+        android:layout_height="127.5dp"
+        android:layout_column="1"
+        android:layout_row="0"
+        android:background="@drawable/right_list_shape"
+        android:orientation="vertical" >
+		
+        <TextView 
+            android:id="@+id/tvMonday"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/monday"
+            style="@style/header"/>
+        
+        <ListView
+            android:id="@+id/mondayLv"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            style="@style/listview" >
+        </ListView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/tuesdayHolder"
+        android:layout_width="133dp"
+        android:layout_height="127.5dp"
+        android:layout_column="2"
+        android:layout_row="0"
+        android:background="@drawable/left_list_shape"
+        android:orientation="vertical" >
+
+        <TextView 
+            android:id="@+id/tvTuesday"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tuesday"
+            style="@style/header"/>
+        
+        <ListView
+            android:id="@+id/tuesdayLv"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            style="@style/listview" >
+        </ListView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/wednesdayHolder"
+        android:layout_width="133dp"
+        android:layout_height="127.5dp"
+        android:layout_column="3"
+        android:layout_row="0"
+        android:background="@drawable/right_list_shape"
+        android:orientation="vertical" >
+        
+        <TextView 
+            android:id="@+id/tvWednesday"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/wednesday"
+            style="@style/header"/>
+        
+        <ListView
+            android:id="@+id/wednesdayLv"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            style="@style/listview" >
+        </ListView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/thursdayHolder"
+        android:layout_width="133dp"
+        android:layout_height="127.5dp"
+        android:layout_column="0"
+        android:layout_row="1"
+        android:background="@drawable/left_list_shape"
+        android:orientation="vertical" >
+        
+        <TextView 
+            android:id="@+id/tvThursday"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/thursday"
+            style="@style/header"/>
+        <ListView
+            android:id="@+id/thursdayLv"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            style="@style/listview" >
+        </ListView>
+        
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fridayHolder"
+        android:layout_width="133dp"
+        android:layout_height="127.5dp"
+        android:layout_column="1"
+        android:layout_row="1"
+        android:background="@drawable/right_list_shape"
+        android:orientation="vertical" >
+
+        <TextView 
+            android:id="@+id/tvFriday"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/friday"
+            style="@style/header"/>
+                
+        <ListView
+            android:id="@+id/fridayLv"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            style="@style/listview" >
+        </ListView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/saturdayHolder"
+        android:layout_width="133dp"
+        android:layout_height="127.5dp"
+        android:layout_column="2"
+        android:layout_row="1"
+        android:background="@drawable/left_list_shape"
+        android:orientation="vertical" >
+
+        <TextView 
+            android:id="@+id/tvSaturday"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/saturday"
+            style="@style/header"/>        
+        
+        <ListView
+            android:id="@+id/saturdayLv"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+			style="@style/listview" >
+        </ListView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/sundayHolder"
+        android:layout_width="133dp"
+        android:layout_height="127.5dp"
+        android:layout_column="3"
+        android:layout_row="1"
+        android:background="@drawable/right_list_shape"
+        android:orientation="vertical" >
+
+        <TextView 
+            android:id="@+id/tvSunday"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sunday"
+            style="@style/header"/>
+                
+        <ListView
+            android:id="@+id/sundayLv"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+           	style="@style/listview" >"
+        </ListView>
+    </LinearLayout>
+
+</GridLayout>
