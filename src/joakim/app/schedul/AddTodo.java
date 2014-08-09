@@ -7,19 +7,18 @@ import joakim.app.GUI.CreateAppointmentDialog;
 import joakim.app.GUI.CreateAppointmentDialog.CreateAppointmentDialogListener;
 import joakim.app.GUI.DragZoneListener;
 import joakim.app.GUI.LvOnItemTouchListener;
+import joakim.app.GUI.QustomDialogBuilder;
 import joakim.app.data.Appointment;
 import joakim.app.data.MySQLHelper;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -95,10 +94,20 @@ public class AddTodo extends Activity implements CreateAppointmentDialogListener
 	
 	
 	private void showFragment() {
-		FragmentManager fm = getFragmentManager();
-		CreateAppointmentDialog appDialog = CreateAppointmentDialog
-				.newInstance(this, "Create Appointment");
-		appDialog.show(fm, "fragment_create_appointment");
+//		FragmentManager fm = getFragmentManager();
+//		CreateAppointmentDialog appDialog = CreateAppointmentDialog
+//				.newInstance(this, "Create Appointment");
+//		appDialog.show(fm, "fragment_create_appointment");
+		
+		QustomDialogBuilder qustomDialogBuilder = new QustomDialogBuilder(this).
+				setTitle("Testcity Lelmate").
+				setTitleColor("#E04728").
+				setDividerColor("#E04728").
+				setMessage("You are now entering the 10th dimension.").
+				setCustomView(R.layout.fragment_create_appointment, this).
+				setIcon(getResources().getDrawable(R.drawable.ic_launcher));
+		
+		qustomDialogBuilder.show();
 	}
 
 	public void onFinishCreateAppointmentDialog(Appointment app) {

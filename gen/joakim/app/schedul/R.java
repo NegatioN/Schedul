@@ -48,25 +48,34 @@ public final class R {
         public static final int tpdivider=0x7f02000b;
     }
     public static final class id {
-        public static final int action_add=0x7f0b0024;
-        public static final int action_settings=0x7f0b0025;
+        public static final int action_add=0x7f0b002d;
+        public static final int action_settings=0x7f0b002e;
+        public static final int alertTitle=0x7f0b0027;
         public static final int bCloseFragment=0x7f0b001e;
         public static final int bCreate=0x7f0b0022;
         public static final int bDummy=0x7f0b0018;
+        public static final int contentPanel=0x7f0b0029;
+        public static final int customPanel=0x7f0b002b;
         public static final int descriptionAppointment=0x7f0b001f;
         public static final int fridayHolder=0x7f0b000f;
         public static final int fridayLv=0x7f0b0011;
+        public static final int icon=0x7f0b0026;
+        public static final int message=0x7f0b002a;
         public static final int mondayHolder=0x7f0b0003;
         public static final int mondayLv=0x7f0b0005;
         public static final int objectHolder=0x7f0b0000;
+        public static final int parentPanel=0x7f0b0023;
         public static final int priority_spinnerAppointment=0x7f0b0021;
         public static final int saturdayHolder=0x7f0b0012;
         public static final int saturdayLv=0x7f0b0014;
-        public static final int summary=0x7f0b0023;
+        public static final int summary=0x7f0b002c;
         public static final int sundayHolder=0x7f0b0015;
         public static final int sundayLv=0x7f0b0017;
         public static final int thursdayHolder=0x7f0b000c;
         public static final int thursdayLv=0x7f0b000e;
+        public static final int titleDivider=0x7f0b0028;
+        public static final int title_template=0x7f0b0025;
+        public static final int topPanel=0x7f0b0024;
         public static final int tpAppointment=0x7f0b0020;
         public static final int tuesdayHolder=0x7f0b0006;
         public static final int tuesdayLv=0x7f0b0008;
@@ -93,7 +102,8 @@ public final class R {
         public static final int activity_schedul=0x7f030002;
         public static final int fragment_alarm=0x7f030003;
         public static final int fragment_create_appointment=0x7f030004;
-        public static final int row_layout=0x7f030005;
+        public static final int qustom_dialog_layout=0x7f030005;
+        public static final int row_layout=0x7f030006;
     }
     public static final class menu {
         public static final int add_todo=0x7f0a0000;
