@@ -3,10 +3,12 @@ package joakim.app.GUI;
 import joakim.app.data.Appointment;
 import joakim.app.data.FragmentDataHandler;
 import joakim.app.schedul.R;
+import net.simonvt.numberpicker.NumberPicker;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.text.format.Time;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -18,7 +20,6 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import net.simonvt.numberpicker.*;
 
 public class QustomDialogBuilder extends AlertDialog.Builder implements OnItemSelectedListener{
 
@@ -120,7 +121,7 @@ public class QustomDialogBuilder extends AlertDialog.Builder implements OnItemSe
 			//caller interface-metoden fra main og lukker fragmentet.
 			public void onClick(View v) {
 				CustomAppointmentDialogListener listener = (CustomAppointmentDialogListener) mDialogView.getContext();
-				listener.onFinishCreateAppointmentDialog(FragmentDataHandler.createAppointmentObject(priorityColor, mEditText, tp));
+				listener.onFinishCreateAppointmentDialog(FragmentDataHandler.createAppointmentObject(priorityColor, mEditText, hp, mp));
 				
 	            ad.dismiss();
 		    	
@@ -203,6 +204,7 @@ public class QustomDialogBuilder extends AlertDialog.Builder implements OnItemSe
 
 	}
 	
+	//defines our custom time-picker from simonvt's library
 	private void setupTimePicker(){
 		hp = (NumberPicker) inflatedView.findViewById(R.id.hourPicker);
 		mp = (NumberPicker) inflatedView.findViewById(R.id.minutePicker);
@@ -212,8 +214,11 @@ public class QustomDialogBuilder extends AlertDialog.Builder implements OnItemSe
 		mp.setMinValue(0);
 		mp.setMaxValue(59);
 		
-		Drawable divider = mDialogView.getContext().getResources().getDrawable(R.drawable.tpdivider);
-		hp.setDividerDrawable(divider);
+		//sets the numberpickers to now-time
+		Time t = new Time();
+		t.setToNow();
+		hp.setValue(t.hour);
+		mp.setValue(t.minute);
 		
         hp.setFocusable(true);
         hp.setFocusableInTouchMode(true);

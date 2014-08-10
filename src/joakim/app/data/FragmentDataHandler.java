@@ -1,5 +1,6 @@
 package joakim.app.data;
 
+import net.simonvt.numberpicker.NumberPicker;
 import android.text.format.Time;
 import android.util.Log;
 import android.widget.EditText;
@@ -9,12 +10,12 @@ public class FragmentDataHandler {
 
 
 	//create an appointment for display on screen so user can drag into desired week-day
-	public static Appointment createAppointmentObject(int priorityColor, EditText et, TimePicker tp){
+	public static Appointment createAppointmentObject(int priorityColor, EditText et, NumberPicker hours, NumberPicker minutes){
 		Time time = new Time();
 		
 		time.setToNow();
 		//set all Time-variables except seconds.
-		time.set(0, tp.getCurrentMinute(), tp.getCurrentHour(), time.monthDay, time.month, time.year);
+		time.set(0, minutes.getValue(), hours.getValue(), time.monthDay, time.month, time.year);
 		
 		time.normalize(false);
 		

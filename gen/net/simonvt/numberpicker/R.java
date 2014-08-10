@@ -21,7 +21,8 @@ public final class R {
 		public static final int virtualButtonPressedDrawable = 0x7f01000a;
 	}
 	public static final class color {
-		public static final int transparent = 0x7f050000;
+		public static final int lightRed = 0x7f050000;
+		public static final int transparent = 0x7f050001;
 	}
 	public static final class drawable {
 		public static final int item_background_holo_dark = 0x7f020005;
@@ -35,11 +36,12 @@ public final class R {
 		public static final int list_selector_disabled_holo_dark = 0x7f02000f;
 		public static final int list_selector_disabled_holo_light = 0x7f020010;
 		public static final int np_numberpicker_selection_divider = 0x7f020012;
+		public static final int tpdivider = 0x7f020016;
 	}
 	public static final class id {
 		public static final int np__decrement = 0x7f060001;
 		public static final int np__increment = 0x7f060000;
-		public static final int np__numberpicker_input = 0x7f060026;
+		public static final int np__numberpicker_input = 0x7f060027;
 	}
 	public static final class layout {
 		public static final int number_picker_with_selector_wheel = 0x7f030005;
