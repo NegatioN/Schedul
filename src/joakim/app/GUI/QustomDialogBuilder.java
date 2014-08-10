@@ -6,9 +6,11 @@ import joakim.app.schedul.R;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -42,8 +44,15 @@ public class QustomDialogBuilder extends AlertDialog.Builder implements OnItemSe
 	private Spinner sPriorities;
 	private int priorityColor = 5;
 	private int[] priorityColors = new int[3];
+	private View inflatedView;
 	
-    public QustomDialogBuilder(Context context) {
+    @Override
+	public AlertDialog create() {
+    	if (mTitle.getText().equals("")) mDialogView.findViewById(R.id.topPanel).setVisibility(View.GONE);
+		return super.create();
+	}
+
+	public QustomDialogBuilder(Context context) {
         super(context);
 
         mDialogView = View.inflate(context, R.layout.qustom_dialog_layout, null);
@@ -104,15 +113,26 @@ public class QustomDialogBuilder extends AlertDialog.Builder implements OnItemSe
         mIcon.setImageDrawable(icon);
         return this;
     }
+    private QustomDialogBuilder setCloseButton(final AlertDialog ad) {
+        bAdd = (Button)inflatedView.findViewById(R.id.bCreate);
+		//creates the onclicklistener for the button in our fragment.
+		//hack-ish way of solving it.
+        bAdd.setOnClickListener(new View.OnClickListener() {
+			
+			//caller interface-metoden fra main og lukker fragmentet.
+			public void onClick(View v) {
+				Log.d("BUTTON", "ISCLICKED");
+				
+//				onFinishCreateAppointmentDialog(FragmentDataHandler.createAppointmentObject(priorityColor, mEditText, tp));
+	            ad.dismiss();
+		    	
+			}
+		});
+        
+        return this;
+    }
     
     
-    
-	public Builder setPositiveButton(int textId) {
-		// TODO Auto-generated method stub
-    	OnClickListener listener = new OnClickListener(
-    			new OnClickListener());
-		return super.setPositiveButton(textId, listener);
-	}
 
 	/**
      * This allows you to specify a custom layout for the area below the title divider bar
@@ -125,26 +145,16 @@ public class QustomDialogBuilder extends AlertDialog.Builder implements OnItemSe
     public QustomDialogBuilder setCustomView(int resId, Context context) {
     	final View customView = View.inflate(context, resId, null);
     	((FrameLayout)mDialogView.findViewById(R.id.customPanel)).addView(customView);
-
+    	
+    	inflatedView = customView;
         //find all views
         mEditText = (EditText) customView.findViewById(R.id.descriptionAppointment);
         tp = (TimePicker) customView.findViewById(R.id.tpAppointment);
         tp.setIs24HourView(true);
         sPriorities = (Spinner) customView.findViewById(R.id.priority_spinnerAppointment);
         makeSpinner(sPriorities,customView.getContext());
-        //finner knapp, setter listener
-        bAdd = (Button) customView.findViewById(R.id.bCreate);
+        
         fillPriorityArray();
-        bAdd.setOnClickListener(new View.OnClickListener() {
-			
-			//caller interface-metoden fra main og lukker fragmentet.
-			public void onClick(View v) {
-	            CreateAppointmentDialogListener listener = (CreateAppointmentDialogListener)this;
-	            listener.onFinishCreateAppointmentDialog(FragmentDataHandler.createAppointmentObject(priorityColor, mEditText, tp));
-//	            this.dismiss();
-		    	
-			}
-		});
     	
     	
     	return this;
@@ -153,7 +163,10 @@ public class QustomDialogBuilder extends AlertDialog.Builder implements OnItemSe
     @Override
     public AlertDialog show() {
     	if (mTitle.getText().equals("")) mDialogView.findViewById(R.id.topPanel).setVisibility(View.GONE);
-    	return super.show();
+    	AlertDialog ad = super.show();
+    	setCloseButton(ad);
+    	
+    	return ad;
     }
     
     
