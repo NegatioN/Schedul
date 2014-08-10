@@ -27,7 +27,6 @@ public class AddTodo extends Activity implements CustomAppointmentDialogListener
 	private TextView draggableAppointment;
 	private Appointment recentAppointment;
 	private AlarmService as = new AlarmService();
-	private Button bAdd = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -94,16 +93,11 @@ public class AddTodo extends Activity implements CustomAppointmentDialogListener
 	
 	
 	private void showFragment() {
-//		FragmentManager fm = getFragmentManager();
-//		CreateAppointmentDialog appDialog = CreateAppointmentDialog
-//				.newInstance(this, "Create Appointment");
-//		appDialog.show(fm, "fragment_create_appointment");
 		
 		QustomDialogBuilder qustomDialogBuilder = new QustomDialogBuilder(this).
-				setTitle("Testcity Lelmate").
+				setTitle("Create Appointment").
 				setTitleColor("#E04728").
 				setDividerColor("#E04728").
-				setMessage("You are now entering the 10th dimension.").
 				setCustomView(R.layout.fragment_create_appointment, this).
 				setIcon(getResources().getDrawable(R.drawable.ic_launcher));
 		

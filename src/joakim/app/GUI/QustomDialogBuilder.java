@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import net.simonvt.numberpicker.*;
 
 public class QustomDialogBuilder extends AlertDialog.Builder implements OnItemSelectedListener{
 
@@ -41,6 +42,7 @@ public class QustomDialogBuilder extends AlertDialog.Builder implements OnItemSe
 	private int priorityColor = 5;
 	private int[] priorityColors = new int[3];
 	private View inflatedView;
+	private NumberPicker hp, mp;
 	
     @Override
 	public AlertDialog create() {
@@ -145,8 +147,9 @@ public class QustomDialogBuilder extends AlertDialog.Builder implements OnItemSe
     	inflatedView = customView;
         //find all views
         mEditText = (EditText) customView.findViewById(R.id.descriptionAppointment);
-        tp = (TimePicker) customView.findViewById(R.id.tpAppointment);
-        tp.setIs24HourView(true);
+//        tp = (TimePicker) customView.findViewById(R.id.tpAppointment);
+//        tp.setIs24HourView(true);
+        setupTimePicker();
         sPriorities = (Spinner) customView.findViewById(R.id.priority_spinnerAppointment);
         makeSpinner(sPriorities,customView.getContext());
         
@@ -198,6 +201,24 @@ public class QustomDialogBuilder extends AlertDialog.Builder implements OnItemSe
 		priorityColors[1] = Appointment.MEDIUM;
 		priorityColors[2] = Appointment.URGENT;
 
+	}
+	
+	private void setupTimePicker(){
+		hp = (NumberPicker) inflatedView.findViewById(R.id.hourPicker);
+		mp = (NumberPicker) inflatedView.findViewById(R.id.minutePicker);
+		
+		hp.setMinValue(0);
+		hp.setMaxValue(23);
+		mp.setMinValue(0);
+		mp.setMaxValue(59);
+		
+		Drawable divider = mDialogView.getContext().getResources().getDrawable(R.drawable.tpdivider);
+		hp.setDividerDrawable(divider);
+		
+        hp.setFocusable(true);
+        hp.setFocusableInTouchMode(true);
+        mp.setFocusable(true);
+        mp.setFocusableInTouchMode(true);
 	}
 	
 	//interface som importeres til main for sending av appointment-objekt.

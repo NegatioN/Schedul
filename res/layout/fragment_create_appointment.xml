@@ -10,13 +10,32 @@
         android:layout_height="wrap_content" 
         android:inputType="text"
         android:hint="@string/createhint" />
-  
-    
+
+    <!--
     <TimePicker
         android:id="@+id/tpAppointment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/timepicker"></TimePicker>"
+        style="@style/timepicker"></TimePicker>
+        -->
+     <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+  
+     
+    <net.simonvt.numberpicker.NumberPicker
+        android:id="@+id/hourPicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        ></net.simonvt.numberpicker.NumberPicker>
+    <net.simonvt.numberpicker.NumberPicker
+        android:id="@+id/minutePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        ></net.simonvt.numberpicker.NumberPicker>
+    </LinearLayout>
+    
     
     <Spinner
     android:id="@+id/priority_spinnerAppointment"
