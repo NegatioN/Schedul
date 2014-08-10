@@ -4,13 +4,9 @@ import joakim.app.data.Appointment;
 import joakim.app.data.FragmentDataHandler;
 import joakim.app.schedul.R;
 import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -121,9 +117,9 @@ public class QustomDialogBuilder extends AlertDialog.Builder implements OnItemSe
 			
 			//caller interface-metoden fra main og lukker fragmentet.
 			public void onClick(View v) {
-				Log.d("BUTTON", "ISCLICKED");
+				CustomAppointmentDialogListener listener = (CustomAppointmentDialogListener) mDialogView.getContext();
+				listener.onFinishCreateAppointmentDialog(FragmentDataHandler.createAppointmentObject(priorityColor, mEditText, tp));
 				
-//				onFinishCreateAppointmentDialog(FragmentDataHandler.createAppointmentObject(priorityColor, mEditText, tp));
 	            ad.dismiss();
 		    	
 			}
@@ -205,9 +201,9 @@ public class QustomDialogBuilder extends AlertDialog.Builder implements OnItemSe
 	}
 	
 	//interface som importeres til main for sending av appointment-objekt.
-    public interface CreateAppointmentDialogListener {
+    public interface CustomAppointmentDialogListener {
         void onFinishCreateAppointmentDialog(Appointment inputText);
     }
-    
+   
 
 }
