@@ -19,11 +19,12 @@ public class FragmentDataHandler {
 		
 		time.normalize(false);
 		
-		Log.d("createAppointmentDialog", time.toString());
 		String desc = et.getText().toString();
 		
+		
 		//endre til å lage en summary-text
-		Appointment app = new Appointment(priorityColor, desc, time, persistent.isEnabled());
+		Appointment app = new Appointment(priorityColor, desc, time, persistent.isChecked());
+		Log.d("createAppointmentDialog", app.toString());
 		return app;
 	}
 }

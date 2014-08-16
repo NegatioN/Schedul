@@ -20,7 +20,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.TimePicker;
 
 public class QustomDialogBuilder extends AlertDialog.Builder implements OnItemSelectedListener{
 
@@ -37,7 +36,6 @@ public class QustomDialogBuilder extends AlertDialog.Builder implements OnItemSe
 	private View mDivider;
 	
 	//self-added custom-views
-	private TimePicker tp;
 	private EditText mEditText;
 	private Button bAdd;
 	private Spinner sPriorities;
@@ -129,6 +127,8 @@ public class QustomDialogBuilder extends AlertDialog.Builder implements OnItemSe
 		    	
 			}
 		});
+        //find checkbox
+        cb = (CheckBox) inflatedView.findViewById(R.id.cbPersistent);
         
         return this;
     }
@@ -153,7 +153,6 @@ public class QustomDialogBuilder extends AlertDialog.Builder implements OnItemSe
         setupTimePicker();
         sPriorities = (Spinner) customView.findViewById(R.id.priority_spinnerAppointment);
         makeSpinner(sPriorities,customView.getContext());
-        cb = (CheckBox) customView.findViewById(R.id.cbPersistent);
         
         
         fillPriorityArray();
