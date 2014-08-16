@@ -10,8 +10,6 @@
         android:hint="@string/createhint"
         android:inputType="text" />
 
-
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -24,21 +22,22 @@
         </net.simonvt.numberpicker.NumberPicker>
 
         <!-- divider -->
+
         <TextView
             android:id="@+id/divider"
-            android:text=":"
-            android:textSize="22sp"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:paddingTop="70dp"
-            android:paddingBottom="70dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginEnd="6dip"
             android:layout_marginStart="6dip"
+            android:layout_toRightOf="@id/hourPicker"
             android:importantForAccessibility="no"
-            android:layout_toRightOf="@id/hourPicker" />
+            android:paddingBottom="70dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="70dp"
+            android:text=":"
+            android:textSize="22sp" />
 
         <net.simonvt.numberpicker.NumberPicker
             android:id="@+id/minutePicker"
@@ -46,6 +45,26 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/divider" >
         </net.simonvt.numberpicker.NumberPicker>
+
+        <TextView
+            android:id="@+id/tvCheckboxText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="65dp"
+            android:layout_toRightOf="@+id/minutePicker"
+            android:text="@string/repeatable" />
+
+        <CheckBox
+            android:id="@+id/checkBox1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/tvCheckboxText"
+            android:layout_below="@+id/tvCheckboxText"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="1dp" />
+
     </RelativeLayout>
 
     <Spinner

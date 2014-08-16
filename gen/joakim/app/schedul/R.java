@@ -157,21 +157,22 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int tpdivider=0x7f020016;
     }
     public static final class id {
-        public static final int action_add=0x7f060032;
-        public static final int action_settings=0x7f060033;
-        public static final int alertTitle=0x7f06002c;
+        public static final int action_add=0x7f060034;
+        public static final int action_settings=0x7f060035;
+        public static final int alertTitle=0x7f06002e;
         public static final int bCloseFragment=0x7f060020;
-        public static final int bCreate=0x7f060026;
+        public static final int bCreate=0x7f060028;
         public static final int bDummy=0x7f06001a;
-        public static final int contentPanel=0x7f06002e;
-        public static final int customPanel=0x7f060030;
+        public static final int checkBox1=0x7f060026;
+        public static final int contentPanel=0x7f060030;
+        public static final int customPanel=0x7f060032;
         public static final int descriptionAppointment=0x7f060021;
         public static final int divider=0x7f060023;
         public static final int fridayHolder=0x7f060011;
         public static final int fridayLv=0x7f060013;
         public static final int hourPicker=0x7f060022;
-        public static final int icon=0x7f06002b;
-        public static final int message=0x7f06002f;
+        public static final int icon=0x7f06002d;
+        public static final int message=0x7f060031;
         public static final int minutePicker=0x7f060024;
         public static final int mondayHolder=0x7f060005;
         public static final int mondayLv=0x7f060007;
@@ -179,25 +180,26 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         /**  Just adding these so I wont have to remove a lot of code from NumberPicker.java. 
          */
         public static final int np__increment=0x7f060000;
-        public static final int np__numberpicker_input=0x7f060027;
+        public static final int np__numberpicker_input=0x7f060029;
         public static final int objectHolder=0x7f060002;
-        public static final int parentPanel=0x7f060028;
-        public static final int priority_spinnerAppointment=0x7f060025;
+        public static final int parentPanel=0x7f06002a;
+        public static final int priority_spinnerAppointment=0x7f060027;
         public static final int saturdayHolder=0x7f060014;
         public static final int saturdayLv=0x7f060016;
-        public static final int summary=0x7f060031;
+        public static final int summary=0x7f060033;
         public static final int sundayHolder=0x7f060017;
         public static final int sundayLv=0x7f060019;
         public static final int thursdayHolder=0x7f06000e;
         public static final int thursdayLv=0x7f060010;
-        public static final int titleDivider=0x7f06002d;
-        public static final int title_template=0x7f06002a;
-        public static final int topPanel=0x7f060029;
+        public static final int titleDivider=0x7f06002f;
+        public static final int title_template=0x7f06002c;
+        public static final int topPanel=0x7f06002b;
         public static final int tuesdayHolder=0x7f060008;
         public static final int tuesdayLv=0x7f06000a;
         public static final int tvAds=0x7f06001c;
         public static final int tvAlarmAppointment=0x7f06001e;
         public static final int tvAppointmentTime=0x7f06001f;
+        public static final int tvCheckboxText=0x7f060025;
         public static final int tvCountDown=0x7f06001d;
         public static final int tvDisplayAppointment=0x7f06001b;
         public static final int tvDraggableAppointment=0x7f060004;
@@ -243,6 +245,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int lacking_appointment=0x7f0a0019;
         public static final int monday=0x7f0a0011;
         public static final int newappointment=0x7f0a0018;
+        public static final int repeatable=0x7f0a001c;
         public static final int saturday=0x7f0a0016;
         public static final int service_alarm=0x7f0a0010;
         public static final int summary_alarm_frequency=0x7f0a000a;
