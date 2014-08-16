@@ -163,7 +163,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int bCloseFragment=0x7f060020;
         public static final int bCreate=0x7f060028;
         public static final int bDummy=0x7f06001a;
-        public static final int checkBox1=0x7f060026;
+        public static final int cbPersistent=0x7f060026;
         public static final int contentPanel=0x7f060030;
         public static final int customPanel=0x7f060032;
         public static final int descriptionAppointment=0x7f060021;

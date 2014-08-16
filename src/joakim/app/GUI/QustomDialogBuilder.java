@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -44,6 +45,7 @@ public class QustomDialogBuilder extends AlertDialog.Builder implements OnItemSe
 	private int[] priorityColors = new int[3];
 	private View inflatedView;
 	private NumberPicker hp, mp;
+	private CheckBox cb;
 	
     @Override
 	public AlertDialog create() {
@@ -121,7 +123,7 @@ public class QustomDialogBuilder extends AlertDialog.Builder implements OnItemSe
 			//caller interface-metoden fra main og lukker fragmentet.
 			public void onClick(View v) {
 				CustomAppointmentDialogListener listener = (CustomAppointmentDialogListener) mDialogView.getContext();
-				listener.onFinishCreateAppointmentDialog(FragmentDataHandler.createAppointmentObject(priorityColor, mEditText, hp, mp));
+				listener.onFinishCreateAppointmentDialog(FragmentDataHandler.createAppointmentObject(priorityColor, mEditText, hp, mp, cb));
 				
 	            ad.dismiss();
 		    	
@@ -148,11 +150,11 @@ public class QustomDialogBuilder extends AlertDialog.Builder implements OnItemSe
     	inflatedView = customView;
         //find all views
         mEditText = (EditText) customView.findViewById(R.id.descriptionAppointment);
-//        tp = (TimePicker) customView.findViewById(R.id.tpAppointment);
-//        tp.setIs24HourView(true);
         setupTimePicker();
         sPriorities = (Spinner) customView.findViewById(R.id.priority_spinnerAppointment);
         makeSpinner(sPriorities,customView.getContext());
+        cb = (CheckBox) customView.findViewById(R.id.cbPersistent);
+        
         
         fillPriorityArray();
     	

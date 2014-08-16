@@ -3,14 +3,14 @@ package joakim.app.data;
 import net.simonvt.numberpicker.NumberPicker;
 import android.text.format.Time;
 import android.util.Log;
+import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TimePicker;
 
 public class FragmentDataHandler {
 
 
 	//create an appointment for display on screen so user can drag into desired week-day
-	public static Appointment createAppointmentObject(int priorityColor, EditText et, NumberPicker hours, NumberPicker minutes){
+	public static Appointment createAppointmentObject(int priorityColor, EditText et, NumberPicker hours, NumberPicker minutes, CheckBox persistent){
 		Time time = new Time();
 		
 		time.setToNow();
@@ -23,7 +23,7 @@ public class FragmentDataHandler {
 		String desc = et.getText().toString();
 		
 		//endre til å lage en summary-text
-		Appointment app = new Appointment(priorityColor, desc, time,true);
+		Appointment app = new Appointment(priorityColor, desc, time, persistent.isEnabled());
 		return app;
 	}
 }
