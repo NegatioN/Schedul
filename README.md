@@ -1,10 +1,7 @@
+First App-attempt, dead project.
+=======
 Schedul
 =======
-First App-attempt, dead project.
-
-
-
-
 
 Android weekly schedule drag-n-drop app attempt.
 
